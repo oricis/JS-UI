@@ -11,10 +11,8 @@
         rel="stylesheet">
 
     <style>
-        .content {
-            margin    : 2rem auto;
-            max-width : 920px;
-            width     : 90%;
+        .border-top {
+            border-top: 1px solid grey;
         }
         .cblue {
             color: rgb(91, 133, 211);
@@ -42,6 +40,11 @@
         }
 
         /* custom styles */
+        .content {
+            margin    : 2rem auto;
+            max-width : 920px;
+            width     : 90%;
+        }
         header nav div {
             width: 130px;
         }
@@ -115,6 +118,15 @@
                     </button>
                 </section>
             </article>
+        </section>
+
+        <section class="button-group right-content top-5 border-top">
+            <button class="btn btn-danger btn-small top-2" id="remove-first-text">
+                Remove first text
+            </button>
+            <button class="btn btn-danger btn-small top-2" id="remove-all-texts">
+                Remove first text
+            </button>
         </section>
     </div>
 
