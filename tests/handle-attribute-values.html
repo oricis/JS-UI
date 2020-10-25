@@ -140,7 +140,7 @@
             const secondaryCssClass = 'cgrey';
 
 
-            const removeTextContent = (id) => {
+            const removeTextContentByTextId = (id) => {
                 console.log('removeTextContent() - ID: ' + id); // HACK:
                 const key = swapColor + id;
 
@@ -192,7 +192,7 @@
                     btn.addEventListener('click', (event, btn) => {
                         const id = getLastSlice(event.target.id, '-');
 
-                        removeTextContent(id);
+                        removeTextContentByTextId(id);
                     });
                 }
             });
