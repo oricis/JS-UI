@@ -1,8 +1,8 @@
-const replaceLastStrFragment = (route, newId, spearator = '/') => {
-    const routeParts = route.split('/');
-    routeParts[routeParts.length - 1] = newId;
+const replaceLastSlice = (str, newSlice, separator = '/') => {
+    const strSlices = str.split(separator);
+    strSlices[strSlices.length - 1] = newSlice;
 
-    return routeParts.join('/');
+    return strSlices.join(separator);
 }
 
 const submitFormTo = (route, form) => {
