@@ -125,30 +125,32 @@
                 Remove first text
             </button>
             <button class="btn btn-danger btn-small top-2" id="remove-all-texts">
-                Remove first text
+                Remove all texts
             </button>
         </section>
     </div>
 
     <script>
         window.onload = () => {
-            const removeText = 'remove-text-';
-            const swapColor  = 'swap-color-';
+            const removeAllTextsStr  = 'remove-all-texts'
+            const removeFirstTextStr = 'remove-first-text';
+            const removeTextStr      = 'remove-text-';
+            const swapColorStr       = 'swap-color-';
 
             const buttonDataObj     = {};
             const defaultCssClass   = 'cblue';
             const secondaryCssClass = 'cgrey';
-
+            const textsSelector     = 'section article p';
 
             const removeTextContentByTextId = (id) => {
                 console.log('removeTextContent() - ID: ' + id); // HACK:
-                const key = swapColor + id;
+                const key = swapColorStr + id;
 
                 const textId = 'text-' + id;
                 removeTextById(textId);
             }
             const swapTextColor = (id) => {
-                const key = removeText + id;
+                const key = removeTextStr + id;
 
                 // HACK: traces
                 // console.log('clicked button on element ID: ' + id);
@@ -178,7 +180,7 @@
             const buttons = $('.btn');
             buttons.forEach(btn => {
 
-                if (strpos(btn.id, swapColor)) {
+                if (strpos(btn.id, swapColorStr)) {
                     btn.addEventListener('click', (event, btn) => {
                         const id = getLastSlice(event.target.id, '-');
 
@@ -188,13 +190,21 @@
                     return;
                 }
 
-                if (strpos(btn.id, removeText)) {
+                if (strpos(btn.id, removeTextStr)) {
                     btn.addEventListener('click', (event, btn) => {
                         const id = getLastSlice(event.target.id, '-');
 
                         removeTextContentByTextId(id);
                     });
                 }
+            });
+
+            $('#' + removeAllTextsStr).addEventListener('click', (event) => {
+                removeText(textsSelector, 'all');
+            });
+
+            $('#' + removeFirstTextStr).addEventListener('click', (event) => {
+                removeText(textsSelector, 0);
             });
         };
     </script>

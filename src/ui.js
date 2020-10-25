@@ -52,7 +52,7 @@ const addTextById = (id, content) => {
 const removeText = (selector, position = 0) => {
     let target = $(selector);
 
-    if (Array.isArray(target)) {
+    if (target && target.length > 1) {
         if (position === 'all') {
             target.forEach(element => {
                 element.innerText = '';
@@ -66,7 +66,6 @@ const removeText = (selector, position = 0) => {
     }
 
     target.innerText = '';
-
 }
 
 const removeTextById = (id) => {
