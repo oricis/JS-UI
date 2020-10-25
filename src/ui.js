@@ -49,6 +49,26 @@ const addTextById = (id, content) => {
     $('#' + id).innerText = actual_content + content;
 }
 
+const removeText = (selector, position = 0) => {
+    let target = $(selector);
+
+    if (Array.isArray(target)) {
+        if (position === 'all') {
+            target.forEach(element => {
+                element.innerText = '';
+            });
+
+        } else {
+            target[position].innerText = '';
+        }
+
+        return;
+    }
+
+    target.innerText = '';
+
+}
+
 const removeTextById = (id) => {
     $('#' + id).innerText = '';
 }
