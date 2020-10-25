@@ -44,15 +44,15 @@ const getDataValue = (selector, dataName) => {
  *
  */
 
-const addText = (id, content) => {
+const addTextById = (id, content) => {
     let actual_content = $(id).innerText;
-    $(id).innerText = actual_content + content;
+    $('#' + id).innerText = actual_content + content;
 }
 
-const removeText = (id) => {
-    $(id).innerText = '';
+const removeTextById = (id) => {
+    $('#' + id).innerText = '';
 }
 
-const setText = (id, content) => {
-    $(id).innerText = content;
+const setTextById = (id, content) => {
+    $('#' + id).innerText = content;
 }
