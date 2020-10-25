@@ -1,3 +1,7 @@
+const existObjectKey = (obj, key) => {
+    return (obj[key] !== undefined);
+}
+
 const getLastSlice = (str, separator = '/') => {
     const strSlices = str.split(separator);
 
