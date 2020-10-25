@@ -1,3 +1,9 @@
+const getLastSlice = (str, separator = '/') => {
+    const strSlices = str.split(separator);
+
+    return strSlices[strSlices.length - 1];
+}
+
 const replaceLastSlice = (str, newSlice, separator = '/') => {
     const strSlices = str.split(separator);
     strSlices[strSlices.length - 1] = newSlice;
