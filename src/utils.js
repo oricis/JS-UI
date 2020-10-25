@@ -1,4 +1,12 @@
-const existObjectKey = (obj, key) => {
+/**
+ * JS-UI
+ *
+ * Moisés Alcocer, 2020
+ * https://www.ironwoods.es
+ * MIT Licence
+ */
+
+ const existObjectKey = (obj, key) => {
     return (obj[key] !== undefined);
 }
 
