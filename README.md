@@ -3,6 +3,32 @@
 Collection of JS functions to DOM manipulation.
 
 
+***
+
+## Available functions
+
+### ui.js
+
+ * $( selector )
+ * removeAttrFrom( element, attrName )
+ * getAttrValue( selector, attr )
+ * getDataValue( selector, dataName )
+
+
+### ui-styles.js
+
+ * addCssClass( selector, className, position = 0 )   --tested: handle-attr-values.html & swap-css-classes.html
+ * getCssClass( selector, className, position = 0 )
+ * removeCssClass( selector, className, position = 0 ) --tested: handle-attr-values.html & swap-css-classes.html
+
+
+### ui-texts.js
+
+ * addTextById( id, content )
+ * removeText( selector, position = 0 ) --tested: handle-attr-values.html
+ * removeTextById( id )                 --tested: handle-attr-values.html
+ * setTextById( id, content )
+
 
 ***
 ## About
