@@ -20,7 +20,7 @@ const $ = (selector) => {
  *
  */
 
-const removeAttrTo = (element, attrName) => {
+const removeAttrFrom = (element, attrName) => {
     element.removeAttribute(attrName);
 }
 
