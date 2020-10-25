@@ -70,7 +70,7 @@
             <article>
                 <h2>Lorem ipsum 1</h2>
 
-                <p class="cblue top-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta vero iste. Commodi recusandae quaerat sint quod illo libero officia, reiciendis explicabo voluptatum obcaecati saepe aliquam dolore impedit vel tempora.</p>
+                <p class="cblue top-2" id="text-one">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta vero iste. Commodi recusandae quaerat sint quod illo libero officia, reiciendis explicabo voluptatum obcaecati saepe aliquam dolore impedit vel tempora.</p>
 
                 <section class="button-group right-content top-2">
                     <button class="btn btn-primary btn-small" id="swap-color-one">
@@ -87,7 +87,7 @@
             <article>
                 <h2>Lorem ipsum 2</h2>
 
-                <p class="cblue top-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta vero iste. Commodi recusandae quaerat sint quod illo libero officia, reiciendis explicabo voluptatum obcaecati saepe aliquam dolore impedit vel tempora.</p>
+                <p class="cblue top-2" id="text-two">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta vero iste. Commodi recusandae quaerat sint quod illo libero officia, reiciendis explicabo voluptatum obcaecati saepe aliquam dolore impedit vel tempora.</p>
 
                 <section class="button-group right-content top-2">
                     <button class="btn btn-primary btn-small" id="swap-color-two">
@@ -104,7 +104,7 @@
             <article>
                 <h2>Lorem ipsum 3</h2>
 
-                <p class="cblue top-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta vero iste. Commodi recusandae quaerat sint quod illo libero officia, reiciendis explicabo voluptatum obcaecati saepe aliquam dolore impedit vel tempora.</p>
+                <p class="cblue top-2" id="text-three">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta vero iste. Commodi recusandae quaerat sint quod illo libero officia, reiciendis explicabo voluptatum obcaecati saepe aliquam dolore impedit vel tempora.</p>
 
                 <section class="button-group right-content top-2">
                     <button class="btn btn-primary btn-small" id="swap-color-three">
@@ -128,8 +128,15 @@
             const secondaryCssClass = 'cgrey';
 
 
-            const swapTextColor = (id) => {
+            const removeTextContent = (id) => {
+                console.log('removeTextContent() - ID: ' + id); // HACK:
                 const key = swapColor + id;
+
+                const textId = 'text-' + id;
+                removeTextById(textId);
+            }
+            const swapTextColor = (id) => {
+                const key = removeText + id;
 
                 // HACK: traces
                 // console.log('clicked button on element ID: ' + id);
@@ -170,8 +177,11 @@
                 }
 
                 if (strpos(btn.id, removeText)) {
+                    btn.addEventListener('click', (event, btn) => {
+                        const id = getLastSlice(event.target.id, '-');
 
-
+                        removeTextContent(id);
+                    });
                 }
             });
         };
