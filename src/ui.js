@@ -20,16 +20,71 @@ const $ = (selector) => {
  *
  */
 
+const removeAttrTo = (element, attrName) => {
+    element.removeAttribute(attrName);
+}
+
 const getAttrValue = (selector, attr) => {
     return $(selector).attr;
 }
 
 const getDataValue = (selector, dataName) => {
-    return $(selector).dataset.dataName;
+    let target = $(selector);
+
+    if (Array.isArray(target) && target) {
+        target = target[0];
+    }
+
+    return target.dataset.dataName;
 }
 
-const addCssClass = (element_id, class_name) => {
-    $(element_id).classList.add(class_name);
+const addCssClass = (selector, className, position = 0) => {
+    let target = $(selector);
+
+    if (Array.isArray(target)) {
+        if (position === 'all') {
+            target.forEach(element => {
+                element.classList.add(className);
+            });
+
+        } else {
+            target[position].classList.add(className);
+        }
+
+        return;
+    }
+
+    target.classList.add(className);
+}
+
+const getCssClass = (selector, className, position = 0) => {
+    let target = $(selector);
+
+    if (Array.isArray(target)) {
+
+        return target[position].className;
+    }
+
+    return target.className;
+}
+
+const removeCssClass = (selector, className, position = 0) => {
+    let target = $(selector);
+
+    if (Array.isArray(target)) {
+        if (position === 'all') {
+            target.forEach(element => {
+                element.classList.remove(className);
+            });
+
+        } else {
+            target[position].classList.remove(className);
+        }
+
+        return;
+    }
+
+    target.classList.remove(className);
 }
 
 
