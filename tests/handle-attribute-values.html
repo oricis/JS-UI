@@ -48,6 +48,7 @@
     </style>
 
     <script src="../src/ui.js" defer></script>
+    <script src="../src/ui_styles.js" defer></script>
     <script src="../src/utils.js" defer></script>
 </head>
 <body>
@@ -119,29 +120,56 @@
 
     <script>
         window.onload = () => {
-            const buttons = $('.btn');
+            const removeText = 'remove-text-';
+            const swapColor  = 'swap-color-';
 
+            const buttonDataObj     = {};
+            const defaultCssClass   = 'cblue';
+            const secondaryCssClass = 'cgrey';
+
+
+            const swapTextColor = (id) => {
+                const key = swapColor + id;
+
+                // HACK: traces
+                // console.log('clicked button on element ID: ' + id);
+                // console.log('button: ' + event.target.id);
+                // console.log($('#' + id).id, $('#' + id).className);
+
+                if (! existObjectKey(buttonDataObj, key)) {
+                    buttonDataObj[key] = defaultCssClass;
+                }
+
+                if (buttonDataObj[key] === defaultCssClass) {
+                    buttonDataObj[key] = secondaryCssClass;
+                    removeCssClass('#' + id + ' article p', defaultCssClass);
+                    addCssClass('#' + id + ' article p', secondaryCssClass);
+
+                } else {
+                    buttonDataObj[key] = defaultCssClass;
+                    removeCssClass('#' + id + ' article p', secondaryCssClass);
+                    addCssClass('#' + id + ' article p', defaultCssClass);
+                }
+
+                console.log('Actual CSS class (text with ID: ' + id + '): '
+                    + buttonDataObj[key]); // HACK: trace
+            }
+
+
+            const buttons = $('.btn');
             buttons.forEach(btn => {
 
-                if (strpos(btn.id, 'swap-color-')) {
-
-
+                if (strpos(btn.id, swapColor)) {
                     btn.addEventListener('click', (event, btn) => {
                         const id = getLastSlice(event.target.id, '-');
 
-                        // HACK: traces
-                        // console.log('clicked button on element ID: ' + id);
-                        // console.log('button: ' + event.target.id);
-                        // console.log($('#' + id).id, $('#' + id).className);
-
-                        removeCssClass('#' + id + ' article p', 'cblue');
-                        addCssClass('#' + id + ' article p', 'cgrey');
+                        swapTextColor(id);
                     });
 
                     return;
                 }
 
-                if (strpos(btn.id, 'remove-text-')) {
+                if (strpos(btn.id, removeText)) {
 
 
                 }
