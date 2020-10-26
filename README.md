@@ -1,4 +1,4 @@
-# JS UI
+# JS UI - v.1.0.0
 
 Collection of JS functions to DOM manipulation.
 
@@ -17,18 +17,19 @@ Collection of JS functions to DOM manipulation.
 
 ### ui-styles.js
 
- * addCssClass( selector, className, position = 0 )    --tested: handle-attr-values.html & swap-css-classes.html
- * addCssClassTo(element, className)                   --tested as aux. of "addCssClass()"
- * getCssClass( selector, position = 0 )               --tested: get-DOM-nodes-and-css-classes.html
- * getCssClassFrom(element)                            --tested as aux. of "getCssClass()"
- * removeCssClass( selector, className, position = 0 ) --tested: handle-attr-values.html & swap-css-classes.html
- * removeCssClassFrom(element, className)              --tested as aux. of "removeCssClass()"
+ * addCssClass( selector, className, position = 0 )             --tested
+ * addCssClassTo( element, className )                          --tested
+ * getCssClass( selector, position = 0 )                        --tested
+ * getCssClassFrom( element )                                   --tested
+ * hasCssClass( element, className )                            --tested
+ * removeCssClass( selector, className, position = 0 )          --tested
+ * removeCssClassFrom( element, className )                     --tested
 
 ### ui-texts.js
 
  * addTextById( id, content )
- * removeText( selector, position = 0 ) --tested: handle-attr-values.html
- * removeTextById( id )                 --tested: handle-attr-values.html
+ * removeText( selector, position = 0 )                         --tested
+ * removeTextById( id )                                         --tested
  * setTextById( id, content )
 
 
