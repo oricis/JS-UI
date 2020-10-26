@@ -1,0 +1,25 @@
+{
+  "name": "JS-UI",
+  "version": "1.0.0",
+  "description": "Collection of JS functions to DOM manipulation.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oricis/JS-UI.git"
+  },
+  "keywords": [],
+  "author": "Moisés Alcocer",
+  "license": "MIT License",
+  "bugs": {
+    "url": "https://github.com/oricis/JS-UI/issues"
+  },
+  "homepage": "https://github.com/oricis/JS-UI#readme"
+}
