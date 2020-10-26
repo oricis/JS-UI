@@ -5,11 +5,18 @@ Collection of JS functions to DOM manipulation.
 
 ***
 
+## How to use
+
+Import the bundle file with all the functions. For example:
+
+    <script src="../dist/src/index.js" defer></script>
+
+
 ## Available functions
 
 ### ui.js
 
- * $( selector )
+ * $( selector )                                                --tested
  * removeAttrFrom( element, attrName )
  * getAttrValue( selector, attr )
  * getDataValue( selector, dataName )
