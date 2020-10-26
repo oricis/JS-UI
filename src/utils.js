@@ -31,3 +31,12 @@ const submitFormTo = (route, form) => {
 const strpos = (haystack, needle) => {
     return (haystack.indexOf(needle) >= 0);
 }
+
+
+export default {
+    existObjectKey,
+    getLastSlice,
+    replaceLastSlice,
+    submitFormTo,
+    strpos,
+};

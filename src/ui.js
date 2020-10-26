@@ -37,3 +37,11 @@ const getDataValue = (selector, dataName) => {
 
     return target.dataset.dataName;
 }
+
+
+export default {
+    $,
+    removeAttrFrom,
+    getAttrValue,
+    getDataValue,
+};

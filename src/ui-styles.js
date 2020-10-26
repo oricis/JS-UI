@@ -91,3 +91,14 @@ const removeCssClass = (selector, className, position) => {
 const removeCssClassFrom = (element, className) => {
     element.classList.remove(className);
 }
+
+
+export default {
+    addCssClass,
+    addCssClassTo,
+    getCssClass,
+    getCssClassFrom,
+    hasCssClass,
+    removeCssClass,
+    removeCssClassFrom,
+};
