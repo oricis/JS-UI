@@ -59,6 +59,10 @@ const getCssClassFrom = (element) => {
     return element.className; // string
 }
 
+const hasCssClass = (element, className) => {
+    return element.classList.contains(className);
+}
+
 const removeCssClass = (selector, className, position) => {
     position = position ? position : 0;
     let target = $(selector);
