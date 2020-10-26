@@ -13,17 +13,21 @@ const addCssClass = (selector, className, position) => {
     if (target && target.length > 1) {
         if (position === 'all') {
             target.forEach(element => {
-                element.classList.add(className);
+                addCssClassTo(element, className);
             });
 
         } else {
-            target[position].classList.add(className);
+            addCssClassTo(target[position], className);
         }
 
         return;
     }
 
-    target.classList.add(className);
+    addCssClassTo(target, className);
+}
+
+const addCssClassTo = (element, className) => {
+    element.classList.add(className);
 }
 
 const getCssClass = (selector, position) => {
@@ -40,10 +44,14 @@ const getCssClass = (selector, position) => {
             return classNames; // array
         }
 
-        return target[position].className; // string
+        return getCssClassFrom(target[position]); // string
     }
 
-    return target[position].className; // string
+    return getCssClassFrom(target[position]); // string
+}
+
+const getCssClassFrom = (element) => {
+    return element.className; // string
 }
 
 const removeCssClass = (selector, className, position) => {
@@ -65,6 +73,7 @@ const removeCssClass = (selector, className, position) => {
 
     removeCssClassFrom(target, className);
 }
+
 const removeCssClassFrom = (element, className) => {
     element.classList.remove(className);
 }

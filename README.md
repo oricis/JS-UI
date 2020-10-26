@@ -18,7 +18,9 @@ Collection of JS functions to DOM manipulation.
 ### ui-styles.js
 
  * addCssClass( selector, className, position = 0 )    --tested: handle-attr-values.html & swap-css-classes.html
+ * addCssClassTo(element, className)                   --tested as aux. of "addCssClass()"
  * getCssClass( selector, position = 0 )               --tested: get-DOM-nodes-and-css-classes.html
+ * getCssClassFrom(element)                            --tested as aux. of "getCssClass()"
  * removeCssClass( selector, className, position = 0 ) --tested: handle-attr-values.html & swap-css-classes.html
  * removeCssClassFrom(element, className)              --tested as aux. of "removeCssClass()"
 
