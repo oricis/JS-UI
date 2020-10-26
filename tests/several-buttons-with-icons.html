@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="./assets/css/styles.css" rel="stylesheet">
+    <style>
+        svg {
+            fill: none;
+            stroke: rgb(212, 0, 89);
+        }
+        svg.filled-heart {
+            fill: rgb(212, 0, 89);
+        }
+    </style>
+</head>
+<body class="flex flex-center flex-column">
+    <section class="border-box flex flex-both flex-center w-80 pad-2 top-5">
+        <span>Lorem ipsum</span>
+
+        <div class="button-group">
+            <button id="button-one"
+                class="btn no-bg flex flex-both w-10 pad-10"
+                data-loved="false"
+                data-loves="2">
+                <span>2</span>
+                <svg id="one"
+                    viewBox="0 0 21 21" height="18" width="26" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                </svg>
+            </button>
+        </div>
+    </section>
+    <section class="border-box flex flex-both flex-center w-80 pad-2 top-5">
+        <span>Lorem ipsum</span>
+
+        <div class="button-group">
+            <button id="button-two"
+                class="btn no-bg flex flex-both w-10 pad-10"
+                data-loved="false"
+                data-loves="5">
+                <span>5</span>
+                <svg id="two"
+                    viewBox="0 0 21 21" height="18" width="26" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <script src="../src/ui.js"></script>
+    <script src="../src/ui-styles.js"></script>
+    <script src="../src/utils.js"></script>
+    <script>
+        const swapHeardAppearance = (targetId, clicked) => {
+            const cssClassName = 'filled-heart';
+            const target       = $('#' + targetId);
+
+            if (clicked == 1) {
+                addCssClassTo(target, cssClassName);
+            } else {
+                if (hasCssClass(target, cssClassName)) {
+                    removeCssClassFrom(target, cssClassName);
+                }
+            }
+        }
+
+        const updateLoves = (button, additionRange) => {
+            const loves = parseInt(button.dataset.loves) + additionRange;
+
+            button.dataset.loves = loves;
+            button.getElementsByTagName('span')[0].innerText = loves;
+        }
+
+
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function (event) {
+                // Avoid 'event.target' if exist nested elements
+                const button   = event.currentTarget;
+                const targetId = getLastSlice(button.id, '-');
+
+                let valueToAdd = 0;
+                if (button.getAttribute('data-loved') === 'false') {
+                    valueToAdd = 1;
+                    button.setAttribute('data-loved', 'true');
+
+                } else {
+                    valueToAdd = -1;
+                    button.setAttribute('data-loved', 'false');
+                }
+
+                swapHeardAppearance(targetId, valueToAdd);
+                updateLoves(button, valueToAdd); // TODO: edit number: +1 | -1
+            });
+        });
+    </script>
+</body>
+</html>
