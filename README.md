@@ -17,10 +17,10 @@ Collection of JS functions to DOM manipulation.
 
 ### ui-styles.js
 
- * addCssClass( selector, className, position = 0 )   --tested: handle-attr-values.html & swap-css-classes.html
- * getCssClass( selector, className, position = 0 )
+ * addCssClass( selector, className, position = 0 )    --tested: handle-attr-values.html & swap-css-classes.html
+ * getCssClass( selector, position = 0 )               --tested: get-DOM-nodes-and-css-classes.html
  * removeCssClass( selector, className, position = 0 ) --tested: handle-attr-values.html & swap-css-classes.html
-
+ * removeCssClassFrom(element, className)              --tested as aux. of "removeCssClass()"
 
 ### ui-texts.js
 
