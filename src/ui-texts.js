@@ -12,7 +12,8 @@ const addTextById = (id, content) => {
     $('#' + id).innerText = actual_content + content;
 }
 
-const removeText = (selector, position = 0) => {
+const removeText = (selector, position) => {
+    position = position ? position : 0;
     let target = $(selector);
 
     if (target && target.length > 1) {
