@@ -1,12 +1,163 @@
-parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcelRequire,u="function"==typeof require&&require;function f(t,n){if(!r[t]){if(!e[t]){var i="function"==typeof parcelRequire&&parcelRequire;if(!n&&i)return i(t,!0);if(o)return o(t,!0);if(u&&"string"==typeof t)return u(t);var c=new Error("Cannot find module '"+t+"'");throw c.code="MODULE_NOT_FOUND",c}p.resolve=function(r){return e[t][1][r]||r},p.cache={};var l=r[t]=new f.Module(t);e[t][0].call(l.exports,p,l,l.exports,this)}return r[t].exports;function p(e){return f(p.resolve(e))}}f.isParcelRequire=!0,f.Module=function(e){this.id=e,this.bundle=f,this.exports={}},f.modules=e,f.cache=r,f.parent=o,f.register=function(r,t){e[r]=[function(e,r){r.exports=t},{}]};for(var c=0;c<t.length;c++)try{f(t[c])}catch(e){i||(i=e)}if(t.length){var l=f(t[t.length-1]);"object"==typeof exports&&"undefined"!=typeof module?module.exports=l:"function"==typeof define&&define.amd?define(function(){return l}):n&&(this[n]=l)}if(parcelRequire=f,i)throw i;return f}({"K0yk":[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var t=function(t,e){return void 0!==t[e]},e=function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"/",n=t.split(e);return n[n.length-1]},n=function(t,e){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:"/",i=t.split(n);return i[i.length-1]=e,i.join(n)},i=function(t,e){e.action=t,e.submit()},r=function(t,e){return t.indexOf(e)>=0},o={existObjectKey:t,getLastSlice:e,replaceLastSlice:n,submitFormTo:i,strpos:r};exports.default=o;
-},{}],"Bj9A":[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var e=function(e){return e.indexOf("#")>=0?document.querySelector(e):document.querySelectorAll(e)},t=function(e,t){e.removeAttribute(t)},r=function(t,r){return e(t).attr},u=function(t,r){var u=e(t);return Array.isArray(u)&&u&&(u=u[0]),u.dataset.dataName},a={$:e,removeAttrFrom:t,getAttrValue:r,getDataValue:u};exports.default=a;
-},{}],"gboA":[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var s=function(s,n,t){t=t||0;var e=$(s);e&&e.length>1?"all"===t?e.forEach(function(s){a(s,n)}):a(e[t],n):null!=e[t]?a(e[t],n):a(e,n)},a=function(s,a){s.classList.add(a)},n=function(s,a){a=a||0;var n=$(s);if(n&&n.length>1){if("all"===a){var e=[];return n.forEach(function(s){e.push(s.className)}),e}return t(n[a])}return t(n[a])},t=function(s){return s.className},e=function(s,a){return s.classList.contains(a)},l=function(s,a,n){n=n||0;var t=$(s);t&&t.length>1?"all"===n?t.forEach(function(s){r(s,a)}):r(t[n],a):null!=t[n]?r(t[n],a):r(t,a)},r=function(s,a){s.classList.remove(a)},o={addCssClass:s,addCssClassTo:a,getCssClass:n,getCssClassFrom:t,hasCssClass:e,removeCssClass:l,removeCssClassFrom:r};exports.default=o;
-},{}],"Z4Mi":[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var e=function(e,t){var n=$(e).innerText;$("#"+e).innerText=n+t},t=function(e,t){t=t||0;var n=$(e);n&&n.length>1?"all"===t?n.forEach(function(e){e.innerText=""}):n[t].innerText="":n.innerText=""},n=function(e){$("#"+e).innerText=""},r=function(e,t){$("#"+e).innerText=t},i={addTextById:e,removeText:t,removeTextById:n,setTextById:r};exports.default=i;
-},{}],"H99C":[function(require,module,exports) {
-"use strict";var e=require("./utils.js"),r=require("./ui.js"),s=require("./ui-styles.js"),i=require("./ui-texts.js");
-},{"./utils.js":"K0yk","./ui.js":"Bj9A","./ui-styles.js":"gboA","./ui-texts.js":"Z4Mi"}]},{},["H99C"], null)
-//# sourceMappingURL=/src/index.js.map
+/**
+ * JS-UI
+ *
+ * Moisés Alcocer, 2020
+ * https://www.ironwoods.es
+ * MIT Licence
+ */
+const existObjectKey = (obj, key) => {
+  return (obj[key] !== undefined);
+}
+
+const getLastSlice = (str, separator = '/') => {
+  const strSlices = str.split(separator);
+
+  return strSlices[strSlices.length - 1];
+}
+
+const replaceLastSlice = (str, newSlice, separator = '/') => {
+  const strSlices = str.split(separator);
+  strSlices[strSlices.length - 1] = newSlice;
+
+  return strSlices.join(separator);
+}
+
+const submitFormTo = (route, form) => {
+  form.action = route;
+  form.submit();
+}
+
+const strpos = (haystack, needle) => {
+  return (haystack.indexOf(needle) >= 0);
+}
+
+var $ = function $(selector) {
+  if (selector.indexOf("#") >= 0) return document.querySelector(selector);
+  return document.querySelectorAll(selector);
+};
+var removeAttrFrom = function removeAttrFrom(element, attrName) {
+  element.removeAttribute(attrName);
+};
+
+var getAttrValue = function getAttrValue(selector, attr) {
+  return $(selector).attr;
+};
+
+var getDataValue = function getDataValue(selector, dataName) {
+  var target = $(selector);
+
+  if (Array.isArray(target) && target) {
+    target = target[0];
+  }
+
+  return target.dataset.dataName;
+};
+
+var addCssClass = function addCssClass(selector, className, position) {
+  position = position ? position : 0;
+  var target = $(selector);
+
+  if (target && target.length > 1) {
+    if (position === 'all') {
+      target.forEach(function (element) {
+        addCssClassTo(element, className);
+      });
+    } else {
+      addCssClassTo(target[position], className);
+    }
+
+    return;
+  } // $('#foo')  returns an element
+  // $('div p') returns an node collection
+
+
+  if (target[position] != undefined) addCssClassTo(target[position], className);else addCssClassTo(target, className);
+};
+
+var addCssClassTo = function addCssClassTo(element, className) {
+  element.classList.add(className);
+};
+
+var getCssClass = function getCssClass(selector, position) {
+  position = position ? position : 0;
+  var target = $(selector);
+
+  if (target && target.length > 1) {
+    if (position === 'all') {
+      var classNames = [];
+      target.forEach(function (element) {
+        classNames.push(element.className);
+      });
+      return classNames; // array
+    }
+
+    return getCssClassFrom(target[position]); // string
+  }
+
+  return getCssClassFrom(target[position]); // string
+};
+
+var getCssClassFrom = function getCssClassFrom(element) {
+  return element.className; // string
+};
+
+var hasCssClass = function hasCssClass(element, className) {
+  return element.classList.contains(className);
+};
+
+var removeCssClass = function removeCssClass(selector, className, position) {
+  position = position ? position : 0;
+  var target = $(selector);
+
+  if (target && target.length > 1) {
+    if (position === 'all') {
+      target.forEach(function (element) {
+        removeCssClassFrom(element, className);
+      });
+    } else {
+      removeCssClassFrom(target[position], className);
+    }
+
+    return;
+  } // $('#foo')  returns an element
+  // $('div p') returns an node collection
+
+
+  if (target[position] != undefined) removeCssClassFrom(target[position], className);else removeCssClassFrom(target, className);
+};
+
+var removeCssClassFrom = function removeCssClassFrom(element, className) {
+  element.classList.remove(className);
+};
+
+var addTextById = function addTextById(id, content) {
+  var actual_content = $(id).innerText;
+  $('#' + id).innerText = actual_content + content;
+};
+
+var removeText = function removeText(selector, position) {
+  position = position ? position : 0;
+  var target = $(selector);
+
+  if (target && target.length > 1) {
+    if (position === 'all') {
+      target.forEach(function (element) {
+        element.innerText = '';
+      });
+    } else {
+      target[position].innerText = '';
+    }
+
+    return;
+  }
+
+  target.innerText = '';
+};
+
+var removeTextById = function removeTextById(id) {
+  $('#' + id).innerText = '';
+};
+
+var setTextById = function setTextById(id, content) {
+  $('#' + id).innerText = content;
+};

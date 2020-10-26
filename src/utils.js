@@ -6,7 +6,7 @@
  * MIT Licence
  */
 
- const existObjectKey = (obj, key) => {
+const existObjectKey = (obj, key) => {
     return (obj[key] !== undefined);
 }
 
