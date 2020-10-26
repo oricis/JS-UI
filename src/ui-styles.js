@@ -23,7 +23,12 @@ const addCssClass = (selector, className, position) => {
         return;
     }
 
-    addCssClassTo(target, className);
+    // $('#foo')  returns an element
+    // $('div p') returns an node collection
+    if (target[position] != undefined)
+        addCssClassTo(target[position], className);
+    else
+        addCssClassTo(target, className);
 }
 
 const addCssClassTo = (element, className) => {
@@ -71,7 +76,12 @@ const removeCssClass = (selector, className, position) => {
         return;
     }
 
-    removeCssClassFrom(target, className);
+    // $('#foo')  returns an element
+    // $('div p') returns an node collection
+    if (target[position] != undefined)
+        removeCssClassFrom(target[position], className);
+    else
+        removeCssClassFrom(target, className);
 }
 
 const removeCssClassFrom = (element, className) => {
