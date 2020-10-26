@@ -6,10 +6,11 @@
  * MIT Licence
  */
 
-const addCssClass = (selector, className, position = 0) => {
+const addCssClass = (selector, className, position) => {
+    position = position ? position : 0;
     let target = $(selector);
 
-    if (Array.isArray(target)) {
+    if (target && target.length > 1) {
         if (position === 'all') {
             target.forEach(element => {
                 element.classList.add(className);
@@ -25,32 +26,45 @@ const addCssClass = (selector, className, position = 0) => {
     target.classList.add(className);
 }
 
-const getCssClass = (selector, className, position = 0) => {
+const getCssClass = (selector, position) => {
+    position = position ? position : 0;
     let target = $(selector);
 
-    if (Array.isArray(target)) {
+    if (target && target.length > 1) {
+        if (position === 'all') {
+            const classNames = [];
+            target.forEach(element => {
+                classNames.push(element.className);
+            });
 
-        return target[position].className;
+            return classNames; // array
+        }
+
+        return target[position].className; // string
     }
 
-    return target.className;
+    return target[position].className; // string
 }
 
-const removeCssClass = (selector, className, position = 0) => {
+const removeCssClass = (selector, className, position) => {
+    position = position ? position : 0;
     let target = $(selector);
 
-    if (Array.isArray(target)) {
+    if (target && target.length > 1) {
         if (position === 'all') {
             target.forEach(element => {
-                element.classList.remove(className);
+                removeCssClassFrom(element, className);
             });
 
         } else {
-            target[position].classList.remove(className);
+            removeCssClassFrom(target[position], className);
         }
 
         return;
     }
 
-    target.classList.remove(className);
+    removeCssClassFrom(target, className);
+}
+const removeCssClassFrom = (element, className) => {
+    element.classList.remove(className);
 }
