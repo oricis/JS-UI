@@ -32,6 +32,11 @@ var getSlice = function getSlice(str, position, separator) {
   return position < strSlices.length ? strSlices[position] : '';
 }
 
+var getSlicesLength = function getSlicesLength(str, separator) {
+  separator = separator ? separator : '/';
+  return str.split(separator).length;
+}
+
 var replaceLastSlice = function replaceLastSlice(str, newSlice, separator) {
   separator = separator ? separator : '/';
   var strSlices = str.split(separator);

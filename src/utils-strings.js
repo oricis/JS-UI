@@ -27,6 +27,12 @@ const getSlice = (str, position, separator) => {
         : '';
 }
 
+const getSlicesLength = (str, separator) => {
+    separator = separator ? separator : '/';
+
+    return str.split(separator).length;
+}
+
 const replaceLastSlice = (str, newSlice, separator) => {
     separator = separator ? separator : '/';
     const strSlices = str.split(separator);
