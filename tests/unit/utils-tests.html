@@ -8,6 +8,7 @@
     <link href="../assets/css/styles.css" rel="stylesheet">
     <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/asserts.js"></script>
     <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/datatype-checks.js"></script>
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/framework.js"></script>
     <script src="../../dist/src/index.js" defer></script>
 </head>
 <body>
@@ -30,6 +31,14 @@
             let key = '';
             let result = false;
             let testedFunName = '';
+
+            let greensCounter = 0;
+            let totalTests    = 0;
+            function check(expected, result)
+            {
+                if (expected === result)
+                    greensCounter++;
+            }
 
 
             /**
