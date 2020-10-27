@@ -17,7 +17,6 @@ const getSlice = (str, position, separator) => {
     separator = separator ? separator : '/';
 
     const strSlices = str.split(separator);
-
     if (position < 0) {
         position = strSlices.length + position;
     }
@@ -48,6 +47,10 @@ const replaceSlice = (str, newSlice, position, separator) => {
     separator = separator ? separator : '/';
 
     const strSlices = str.split(separator);
+    if (position < 0) {
+        position = strSlices.length + position;
+    }
+
     if (position >= strSlices.length) {
         console.error('ERR - too few parts for position: ' + position);
         return '';

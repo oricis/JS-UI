@@ -23,8 +23,8 @@ var getLastSlice = function getLastSlice(str, separator) {
 
 var getSlice = function getSlice(str, position, separator) {
   separator = separator ? separator : '/';
-  var strSlices = str.split(separator);
 
+  var strSlices = str.split(separator);
   if (position < 0) {
     position = strSlices.length + position;
   }
@@ -47,7 +47,11 @@ var replaceLastSlice = function replaceLastSlice(str, newSlice, separator) {
 var replaceSlice = function replaceSlice(str, newSlice, position, separator) {
   if (!str || !newSlice) return str;
   separator = separator ? separator : '/';
+
   var strSlices = str.split(separator);
+  if (position < 0) {
+    position = strSlices.length + position;
+  }
 
   if (position >= strSlices.length) {
     console.error('ERR - too few parts for position: ' + position);
