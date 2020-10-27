@@ -32,30 +32,40 @@
         <h3 class="top-5">Sandboxes:</h3>
         <div id="sandbox-one"></div>
         <div id="sandbox-two">Lorem ipsum...</div>
+        <div id="sandbox-three">Lorem ipsum...</div>
+        <div id="sandbox-four">Lorem ipsum...</div>
+        <div id="sandbox-five">Lorem ipsum...</div>
     </main>
 
     <script>
         window.onload = () => {
-
-            const addTextByIdX = (id, content) => {
-                id = (id.indexOf('#') === 0) ? id : '#' + id;
-
-                let textContent = $(id).innerText;
-                $(id).innerText = textContent + content;
-            }
 
             let funName = '';
             const idOne   = 'sandbox-one';
             const idTwo   = 'sandbox-two';
             const idThree = 'sandbox-three';
             const idFour  = 'sandbox-four';
+            const idFive  = 'sandbox-five';
 
-            funName = 'addTextById'
-            console.log('Adding text to "' + idOne + '"... with ' + funName + '()');
+            funName = 'addTextById';  // add text content
+            console.log('Adding text to "' + idOne + '" & "' + idTwo + '" with ' + funName + '()');
             addTextById(idOne, 'Some text here!');
-
-            console.log('Adding text to "' + idTwo + '"... with ' + funName + '()');
             addTextById(idTwo, ' And more...');
+
+            console.log('\n================================================');
+            funName = 'removeText';    // remove text content
+            console.log('Removing text from "' + idThree + '" with ' + funName + '()');
+            removeText('#' + idThree, 'all');
+
+            console.log('\n================================================');
+            funName = 'removeTextById'; // remove text content
+            console.log('Removing text from "' + idFour + '" with ' + funName + '()');
+            removeTextById('#' + idFour);
+
+            console.log('\n================================================');
+            funName = 'setTextById';    // replace text content
+            console.log('Adding text to "' + idFive + '" with ' + funName + '()');
+            setTextById(idFive, idFive + ': Some text here!');
         };
     </script>
 </body>
