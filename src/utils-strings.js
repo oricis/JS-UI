@@ -6,13 +6,15 @@
  * MIT Licence
  */
 
- const getLastSlice = (str, separator = '/') => {
+ const getLastSlice = (str, separator) => {
+    separator = separator ? separator : '/';
     const strSlices = str.split(separator);
 
     return strSlices[strSlices.length - 1];
 }
 
-const replaceLastSlice = (str, newSlice, separator = '/') => {
+const replaceLastSlice = (str, newSlice, separator) => {
+    separator = separator ? separator : '/';
     const strSlices = str.split(separator);
     strSlices[strSlices.length - 1] = newSlice;
 

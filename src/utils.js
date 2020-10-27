@@ -6,6 +6,7 @@
  * MIT Licence
  */
 
+// check if the key exist in object / array
 const existObjectKey = (obj, key) => {
     return (obj[key] !== undefined);
 }
