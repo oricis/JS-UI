@@ -61,5 +61,5 @@ const replaceSlice = (str, newSlice, position, separator) => {
 }
 
 const strpos = (haystack, needle) => {
-    return (haystack.indexOf(needle) >= 0);
+    return haystack.indexOf(needle);
 }
