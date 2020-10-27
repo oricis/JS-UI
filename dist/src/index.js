@@ -5,36 +5,58 @@
  * https://www.ironwoods.es
  * MIT Licence
  */
-const existObjectKey = (obj, key) => {
-  return (obj[key] !== undefined);
-}
+// check if the key exist in object / array
+var existObjectKey = function existObjectKey(obj, key) {
+  return obj[key] !== undefined;
+};
 
-const getLastSlice = (str, separator = '/') => {
-  const strSlices = str.split(separator);
-
-  return strSlices[strSlices.length - 1];
-}
-
-const replaceLastSlice = (str, newSlice, separator = '/') => {
-  const strSlices = str.split(separator);
-  strSlices[strSlices.length - 1] = newSlice;
-
-  return strSlices.join(separator);
-}
-
-const submitFormTo = (route, form) => {
+var submitFormTo = function submitFormTo(route, form) {
   form.action = route;
   form.submit();
-}
+};
 
-const strpos = (haystack, needle) => {
-  return (haystack.indexOf(needle) >= 0);
-}
+var getLastSlice = function getLastSlice(str, separator) {
+  separator = separator ? separator : '/';
+  var strSlices = str.split(separator);
+  return strSlices[strSlices.length - 1];
+};
+
+var getSlice = function getSlice(str, position, separator) {
+  separator = separator ? separator : '/';
+  var strSlices = str.split(separator);
+  return position < strSlices.length ? strSlices[position] : '';
+};
+
+var replaceLastSlice = function replaceLastSlice(str, newSlice, separator) {
+  separator = separator ? separator : '/';
+  var strSlices = str.split(separator);
+  strSlices[strSlices.length - 1] = newSlice;
+  return strSlices.join(separator);
+};
+
+var replaceSlice = function replaceSlice(str, newSlice, position, separator) {
+  if (!str || !newSlice) return str;
+  separator = separator ? separator : '/';
+  var strSlices = str.split(separator);
+
+  if (position >= strSlices.length) {
+    console.error('ERR - too few parts for position: ' + position);
+    return '';
+  }
+
+  strSlices[strSlices.length - 1] = newSlice;
+  return strSlices.join(separator);
+};
+
+var strpos = function strpos(haystack, needle) {
+  return haystack.indexOf(needle) >= 0;
+};
 
 var $ = function $(selector) {
   if (selector.indexOf("#") >= 0) return document.querySelector(selector);
   return document.querySelectorAll(selector);
 };
+
 var removeAttrFrom = function removeAttrFrom(element, attrName) {
   element.removeAttribute(attrName);
 };
