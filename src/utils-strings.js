@@ -18,6 +18,10 @@ const getSlice = (str, position, separator) => {
 
     const strSlices = str.split(separator);
 
+    if (position < 0) {
+        position = strSlices.length + position;
+    }
+
     return (position < strSlices.length)
         ? strSlices[position]
         : '';
