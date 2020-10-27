@@ -15,9 +15,3 @@ const submitFormTo = (route, form) => {
     form.action = route;
     form.submit();
 }
-
-
-export default {
-    existObjectKey,
-    submitFormTo,
-};

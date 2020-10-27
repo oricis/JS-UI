@@ -39,11 +39,3 @@ const removeTextById = (id) => {
 const setTextById = (id, content) => {
     $('#' + id).innerText = content;
 }
-
-
-export default {
-    addTextById,
-    removeText,
-    removeTextById,
-    setTextById,
-};
