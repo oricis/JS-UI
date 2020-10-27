@@ -54,7 +54,7 @@
 
     <script src="../dist/src/index.js"></script>
     <script>
-        const swapHeardAppearance = (targetId, clicked) => {
+        const swapHeartAppearance = (targetId, clicked) => {
             const cssClassName = 'filled-heart';
             const target       = $('#' + targetId);
 
@@ -91,7 +91,7 @@
                     button.setAttribute('data-loved', 'false');
                 }
 
-                swapHeardAppearance(targetId, valueToAdd);
+                swapHeartAppearance(targetId, valueToAdd);
                 updateLoves(button, valueToAdd); // TODO: edit number: +1 | -1
             });
         });
