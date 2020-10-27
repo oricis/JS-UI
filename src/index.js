@@ -1,10 +1,12 @@
 import {
     existObjectKey,
+    submitFormTo,
+} from './utils.js';
+import {
     getLastSlice,
     replaceLastSlice,
-    submitFormTo,
-    strpos
-} from './utils.js';
+    strpos,
+} from './utils-strings.js'
 import {
     $,
     removeAttrFrom,
