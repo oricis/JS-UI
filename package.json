@@ -10,6 +10,16 @@
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
   },
+  "extra": {
+    "unit-tests": {
+      "directory": "tests/unit/",
+      "library": "https://github.com/oricis/JS-Assertions",
+      "urls": [
+        "https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/asserts.js",
+        "https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/datatype-checks.js"
+      ]
+    }
+  },
   "scripts": {
     "build"     : "parcel ./src/index.js",
     "build-prod": "parcel build ./src/index.js",
