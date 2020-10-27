@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test "ui-texts.js" functions</title>
+
+    <link href="https://gitcdn.link/repo/oricis/notes/master/contents/css/reset.css" rel="stylesheet">
+    <link href="https://gitcdn.link/repo/oricis/bootstrap-based-styles/master/assets/buttons-bootstrap-based.css"
+        rel="stylesheet">
+
+    <link href="./assets/css/styles.css" rel="stylesheet">
+
+    <script src="../dist/src/index.js" defer></script>
+</head>
+<body>
+    <main class="content">
+        <h2>Test "ui-texts.js" functions</h2>
+
+        <p>Watch results on developer tools / console</p>
+
+        <section class="top-5">
+            <h3>Testing functions:</h3>
+            <ul id="list" class="top-2">
+                <li>addTextById( id, content )</li>
+                <li>removeText( selector, position = 0 )</li>
+                <li>removeTextById( id )</li>
+                <li>setTextById( id, content )</li>
+            </ul>
+        </section>
+
+        <h3 class="top-5">Sandboxes:</h3>
+        <div id="sandbox-one"></div>
+        <div id="sandbox-two">Lorem ipsum...</div>
+    </main>
+
+    <script>
+        window.onload = () => {
+
+            const addTextByIdX = (id, content) => {
+                id = (id.indexOf('#') === 0) ? id : '#' + id;
+
+                let textContent = $(id).innerText;
+                $(id).innerText = textContent + content;
+            }
+
+            let funName = '';
+            const idOne   = 'sandbox-one';
+            const idTwo   = 'sandbox-two';
+            const idThree = 'sandbox-three';
+            const idFour  = 'sandbox-four';
+
+            funName = 'addTextById'
+            console.log('Adding text to "' + idOne + '"... with ' + funName + '()');
+            addTextById(idOne, 'Some text here!');
+
+            console.log('Adding text to "' + idTwo + '"... with ' + funName + '()');
+            addTextById(idTwo, ' And more...');
+        };
+    </script>
+</body>
+</html>

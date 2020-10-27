@@ -6,10 +6,16 @@
  * MIT Licence
  */
 
-
 const addTextById = (id, content) => {
-    let actual_content = $(id).innerText;
-    $('#' + id).innerText = actual_content + content;
+    id = getId(id);
+
+    let textContent = $(id).innerText;
+    $(id).innerText = textContent + content;
+}
+
+function getId(id)
+{
+    return (id.indexOf('#') === 0) ? id : '#' + id;
 }
 
 const removeText = (selector, position) => {
@@ -33,9 +39,13 @@ const removeText = (selector, position) => {
 }
 
 const removeTextById = (id) => {
-    $('#' + id).innerText = '';
+    id = getId(id);
+
+    $(id).innerText = '';
 }
 
 const setTextById = (id, content) => {
-    $('#' + id).innerText = content;
+    id = getId(id);
+
+    $(id).innerText = content;
 }
