@@ -23,8 +23,8 @@ var getLastSlice = function getLastSlice(str, separator) {
 
 var getSlice = function getSlice(str, position, separator) {
   separator = separator ? separator : '/';
-
   var strSlices = str.split(separator);
+
   if (position < 0) {
     position = strSlices.length + position;
   }
@@ -47,8 +47,8 @@ var replaceLastSlice = function replaceLastSlice(str, newSlice, separator) {
 var replaceSlice = function replaceSlice(str, newSlice, position, separator) {
   if (!str || !newSlice) return str;
   separator = separator ? separator : '/';
-
   var strSlices = str.split(separator);
+
   if (position < 0) {
     position = strSlices.length + position;
   }
@@ -62,8 +62,12 @@ var replaceSlice = function replaceSlice(str, newSlice, position, separator) {
   return strSlices.join(separator);
 }
 
-var strpos = function strpos(haystack, needle) {
+var strhas = function strhas(haystack, needle) {
   return haystack.indexOf(needle) >= 0;
+}
+
+var strpos = function strpos(haystack, needle) {
+  return haystack.indexOf(needle);
 }
 
 var $ = function $(selector) {

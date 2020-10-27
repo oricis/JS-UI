@@ -60,6 +60,10 @@ const replaceSlice = (str, newSlice, position, separator) => {
     return strSlices.join(separator);
 }
 
+const strhas = (haystack, needle) => {
+    return (haystack.indexOf(needle) >= 0);
+}
+
 const strpos = (haystack, needle) => {
     return haystack.indexOf(needle);
 }
