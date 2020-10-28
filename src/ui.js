@@ -31,23 +31,29 @@ const removeAttrFrom = (element, attrName) => {
 }
 
 const getAttrValue = (selector, attrName) => {
-    let target = getTargetDomNode(selector);
+    const target = getTargetDomNode(selector);
+    const result = target.getAttribute(attrName);
 
-    return target.getAttribute(attrName);
+    return result ? result : '';
 }
 
 const getAttrValueFrom = (element, attrName) => {
-    return element.getAttribute(attrName);
+    const result = element.getAttribute(attrName);
+
+    return result ? result : '';
 }
 
 const getDataValue = (selector, dataName) => {
-    let target = getTargetDomNode(selector);
+    const target = getTargetDomNode(selector);
+    const result = target.dataset[dataName];
 
-    return target.dataset[dataName];
+    return result ? result : '';
 }
 
 const getDataValueFrom = (element, dataName) => {
-    return element.dataset[dataName];
+    const result = element.dataset[dataName];
+
+    return result ? result : '';
 }
 
 function getTargetDomNode(selector)
