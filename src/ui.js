@@ -28,6 +28,10 @@ const getAttrValue = (selector, attrName) => {
     return $(selector).getAttribute(attrName);
 }
 
+const getAttrValueFrom = (element, attrName) => {
+    return element.getAttribute(attrName);
+}
+
 const getDataValue = (selector, dataName) => {
     let target = $(selector);
 
