@@ -202,12 +202,16 @@ var removeCssClassFrom = function removeCssClassFrom(element, className) {
 
 var addTextById = function addTextById(id, content) {
   id = getId(id);
-  var textContent = $(id).innerText;
-  $(id).innerText = textContent + content;
+  var textContent = getText($(id));
+  setText($(id), textContent + content);
 }
 
 function getId(id) {
   return id.indexOf('#') === 0 ? id : '#' + id;
+}
+
+function getText(element) {
+  return element.innerText;
 }
 
 var removeText = function removeText(selector, position) {
@@ -226,15 +230,19 @@ var removeText = function removeText(selector, position) {
     return;
   }
 
-  target.innerText = '';
+  setText(target, '');
 }
 
 var removeTextById = function removeTextById(id) {
   id = getId(id);
-  $(id).innerText = '';
+  setText($(id), '');
+}
+
+function setText(element, content) {
+  element.innerText = content;
 }
 
 var setTextById = function setTextById(id, content) {
   id = getId(id);
-  $(id).innerText = content;
+  setText($(id), content);
 }

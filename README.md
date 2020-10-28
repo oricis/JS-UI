@@ -39,8 +39,10 @@ Import the bundle file with all the functions. For example:
 ### ui-texts.js
 
  * addTextById( id, content )                                   --tested
+ * getText( element )                                           --tested
  * removeText( selector, position = 0 )                         --tested
  * removeTextById( id )                                         --tested
+ * setText( element, content )                                  --tested
  * setTextById( id, content )                                   --tested
 
 

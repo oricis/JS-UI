@@ -9,13 +9,17 @@
 const addTextById = (id, content) => {
     id = getId(id);
 
-    let textContent = $(id).innerText;
-    $(id).innerText = textContent + content;
+    let textContent = getText($(id));
+    setText($(id), textContent + content)
 }
 
 function getId(id)
 {
     return (id.indexOf('#') === 0) ? id : '#' + id;
+}
+
+function getText(element) {
+    return element.innerText;
 }
 
 const removeText = (selector, position) => {
@@ -35,17 +39,21 @@ const removeText = (selector, position) => {
         return;
     }
 
-    target.innerText = '';
+    setText(target, '')
 }
 
 const removeTextById = (id) => {
     id = getId(id);
 
-    $(id).innerText = '';
+    setText($(id), '')
+}
+
+function setText(element, content) {
+    element.innerText = content;
 }
 
 const setTextById = (id, content) => {
     id = getId(id);
 
-    $(id).innerText = content;
+    setText($(id), content)
 }
