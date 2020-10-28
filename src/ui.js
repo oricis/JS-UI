@@ -24,8 +24,8 @@ const removeAttrFrom = (element, attrName) => {
     element.removeAttribute(attrName);
 }
 
-const getAttrValue = (selector, attr) => {
-    return $(selector).attr;
+const getAttrValue = (selector, attrName) => {
+    return $(selector).getAttribute(attrName);
 }
 
 const getDataValue = (selector, dataName) => {
