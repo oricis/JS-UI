@@ -1,4 +1,4 @@
-# JS UI - v.1.0.0
+# JS UI - v.1.2.0
 
 Collection of JS functions to DOM manipulation.
 
@@ -17,9 +17,12 @@ Import the bundle file with all the functions. For example:
 ### ui.js
 
  * $( selector )                                                --tested
- * removeAttrFrom( element, attrName )
- * getAttrValue( selector, attr )
- * getDataValue( selector, dataName )
+ * removeAttr( selector, attrName )                             --tested
+ * removeAttrFrom( element, attrName )                          --tested
+ * getAttrValue( selector, attrName )                           --tested
+ * getAttrValueFrom( element, attrName )                        --tested
+ * getDataValue( selector, dataName )                           --tested
+ * getDataValueFrom( element, dataName )                        --tested
 
 
 ### ui-styles.js
