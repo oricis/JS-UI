@@ -39,5 +39,5 @@ const getDataValue = (selector, dataName) => {
         target = target[0];
     }
 
-    return target.dataset.dataName;
+    return target.dataset[dataName];
 }
