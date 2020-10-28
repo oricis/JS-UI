@@ -8,8 +8,10 @@
 
 const $ = (selector) => {
 
-    if (selector.indexOf("#") >= 0)
+    if (selector.indexOf("#") === 0 && selector.indexOf(' ') < 0) {
         return document.querySelector(selector);
+    }
+
 
     return document.querySelectorAll(selector);
 }

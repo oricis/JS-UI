@@ -12,11 +12,11 @@
 
     <link href="./assets/css/styles.css" rel="stylesheet">
 
-    <script src="../dist/src/index.js" defer></script>
+    <script src="../src/ui.js" defer></script>
 </head>
 
 <body>
-    <main class="content">
+    <main class="content" id="wrap">
         <h2>Test "ui.js" functions</h2>
 
         <p>Watch results on developer tools / console</p>
@@ -59,6 +59,13 @@
             result = $('.sandbox');
             console.log('---> ' + result[result.length - 1].innerText);
 
+            console.log('\nGet first child of the parent ID with ' + funName + '()');
+            result = $('#wrap h2')[0];
+            console.log(result);
+
+            result = $('#wrap h3')[0];
+            console.log(result);
+
             /**/
             console.log('\n================================================');
             funName = 'removeAttr';  // remove attr DOM node
@@ -88,14 +95,14 @@
                 setTimeout(() => {
                     removeAttrFrom(element, 'class')
                     console.log('Without class: \n', element);
-                }, 300);
+                }, 200);
             }, 300);
             /**/
 
             setTimeout(() => {
                 console.log('\n================================================');
                 console.log('NOTE: Tests of getters: tests/unit/ui-tests.html');
-            }, 500);
+            }, 600);
         };
     </script>
 </body>
