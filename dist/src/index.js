@@ -45,7 +45,11 @@ var replaceLastSlice = function replaceLastSlice(str, newSlice, separator) {
 }
 
 var replaceSlice = function replaceSlice(str, newSlice, position, separator) {
-  if (!str || !newSlice) return str;
+  if (!str || !newSlice || position === undefined) {
+    console.error('ERR - Something is wrong with the params!');
+    return '';
+  }
+
   separator = separator ? separator : '/';
   var strSlices = str.split(separator);
 
@@ -54,11 +58,11 @@ var replaceSlice = function replaceSlice(str, newSlice, position, separator) {
   }
 
   if (position >= strSlices.length) {
-    console.error('ERR - too few parts for position: ' + position);
+    console.error('ERR - Too few parts for position: ' + position);
     return '';
   }
 
-  strSlices[strSlices.length - 1] = newSlice;
+  strSlices[position] = newSlice;
   return strSlices.join(separator);
 }
 
@@ -71,8 +75,10 @@ var strpos = function strpos(haystack, needle) {
 }
 
 var $ = function $(selector) {
-  if (selector.indexOf("#") === 0 && selector.indexOf(' ') < 0)
+  if (selector.indexOf("#") === 0 && selector.indexOf(' ') < 0) {
     return document.querySelector(selector);
+  }
+
   return document.querySelectorAll(selector);
 }
 
@@ -86,28 +92,24 @@ var removeAttrFrom = function removeAttrFrom(element, attrName) {
 }
 
 var getAttrValue = function getAttrValue(selector, attrName) {
-  const target = getTargetDomNode(selector);
-  const result = target.getAttribute(attrName);
-
+  var target = getTargetDomNode(selector);
+  var result = target.getAttribute(attrName);
   return result ? result : '';
 }
 
 var getAttrValueFrom = function getAttrValueFrom(element, attrName) {
-  const result = element.getAttribute(attrName);
-
+  var result = element.getAttribute(attrName);
   return result ? result : '';
 }
 
 var getDataValue = function getDataValue(selector, dataName) {
-  const target = getTargetDomNode(selector);
-  const result = target.dataset[dataName];
-
+  var target = getTargetDomNode(selector);
+  var result = target.dataset[dataName];
   return result ? result : '';
 }
 
 var getDataValueFrom = function getDataValueFrom(element, dataName) {
-  const result = element.dataset[dataName];
-
+  var result = element.dataset[dataName];
   return result ? result : '';
 }
 

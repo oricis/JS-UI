@@ -41,8 +41,10 @@ const replaceLastSlice = (str, newSlice, separator) => {
 }
 
 const replaceSlice = (str, newSlice, position, separator) => {
-    if (!str || !newSlice)
-        return str;
+    if (!str || !newSlice || position === undefined) {
+        console.error('ERR - Something is wrong with the params!');
+        return '';
+    }
 
     separator = separator ? separator : '/';
 
@@ -52,10 +54,10 @@ const replaceSlice = (str, newSlice, position, separator) => {
     }
 
     if (position >= strSlices.length) {
-        console.error('ERR - too few parts for position: ' + position);
+        console.error('ERR - Too few parts for position: ' + position);
         return '';
     }
-    strSlices[strSlices.length - 1] = newSlice;
+    strSlices[position] = newSlice;
 
     return strSlices.join(separator);
 }
