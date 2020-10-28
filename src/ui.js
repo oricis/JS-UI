@@ -20,12 +20,20 @@ const $ = (selector) => {
  *
  */
 
+const removeAttr = (selector, attrName) => {
+    let target = getTargetDomNode(selector);
+
+    target.removeAttribute(attrName);
+}
+
 const removeAttrFrom = (element, attrName) => {
     element.removeAttribute(attrName);
 }
 
 const getAttrValue = (selector, attrName) => {
-    return $(selector).getAttribute(attrName);
+    let target = getTargetDomNode(selector);
+
+    return target.getAttribute(attrName);
 }
 
 const getAttrValueFrom = (element, attrName) => {
@@ -33,11 +41,22 @@ const getAttrValueFrom = (element, attrName) => {
 }
 
 const getDataValue = (selector, dataName) => {
+    let target = getTargetDomNode(selector);
+
+    return target.dataset[dataName];
+}
+
+const getDataValueFrom = (element, dataName) => {
+    return element.dataset[dataName];
+}
+
+function getTargetDomNode(selector)
+{
     let target = $(selector);
 
     if (Array.isArray(target) && target) {
         target = target[0];
     }
 
-    return target.dataset[dataName];
+    return target;
 }

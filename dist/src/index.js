@@ -75,22 +75,41 @@ var $ = function $(selector) {
   return document.querySelectorAll(selector);
 }
 
+var removeAttr = function removeAttr(selector, attrName) {
+  var target = getTargetDomNode(selector);
+  target.removeAttribute(attrName);
+}
+
 var removeAttrFrom = function removeAttrFrom(element, attrName) {
   element.removeAttribute(attrName);
 }
 
-var getAttrValue = function getAttrValue(selector, attr) {
-  return $(selector).attr;
+var getAttrValue = function getAttrValue(selector, attrName) {
+  var target = getTargetDomNode(selector);
+  return target.getAttribute(attrName);
+}
+
+var getAttrValueFrom = function getAttrValueFrom(element, attrName) {
+  return element.getAttribute(attrName);
 }
 
 var getDataValue = function getDataValue(selector, dataName) {
+  var target = getTargetDomNode(selector);
+  return target.dataset[dataName];
+}
+
+var getDataValueFrom = function getDataValueFrom(element, dataName) {
+  return element.dataset[dataName];
+}
+
+function getTargetDomNode(selector) {
   var target = $(selector);
 
   if (Array.isArray(target) && target) {
     target = target[0];
   }
 
-  return target.dataset.dataName;
+  return target;
 }
 
 var addCssClass = function addCssClass(selector, className, position) {
