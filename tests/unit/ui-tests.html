@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="../assets/css/styles.css" rel="stylesheet">
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/asserts.js"></script>
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/datatype-checks.js"></script>
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/framework.js"></script>
+    <script src="../../dist/src/index.js" defer></script>
+</head>
+<body>
+    <main class="content">
+        <h2>Test "ui-texts.js" functions</h2>
+
+        <p>Watch results on developer tools / console</p>
+
+        <section class="top-5">
+            <h3>Testing functions:</h3>
+            <ul id="list" class="top-2">
+                <li>getAttrValue( selector, attrName )</li>
+                <li>getAttrValueFrom( element, attrName )</li>
+                <li>getDataValue( selector, dataName )</li>
+                <li>getDataValueFrom( element, dataName )</li>
+            </ul>
+        </section>
+
+        <h3 class="top-5">Sandboxes:</h3>
+        <div id="sandbox-one" class="sandbox" title="No text here"></div>
+        <div id="sandbox-two" class="sandbox" data-name="two" title="Hoo">Lorem ipsum...</div>
+        <div id="sandbox-three" class="sandbox">Lorem ipsum...</div>
+    </main>
+
+    <script>
+        window.onload = () => {
+            const idOne = 'sandbox-one';
+            const idTwo = 'sandbox-two';
+            const idThree = 'sandbox-three';
+
+            let attrName = '';
+            let dataName = '';
+            let element  = null;
+            let key      = '';
+            let result   = null;
+            let selector = '';
+            let testedFunName = '';
+
+            let greensCounter = 0;
+            let totalTests    = 0;
+            function check(expected, result) {
+                if (expected === result)
+                    greensCounter++;
+            }
+
+
+            /***********************************************************
+             * Data for test one
+             *
+             */
+
+            testedFunName = 'getAttrValue';
+            greensCounter = 0;
+            totalTests    = 3;
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+            console.log('Get a node attribute value');
+
+
+            selector = '#' + idOne;
+            attrName = 'class';
+            result = getAttrValue(selector, attrName);
+            check(true, assertEquals('sandbox', result));
+
+            attrName = 'data-name';
+            result = getAttrValue(selector, attrName); console.log(result)
+            check(true, assertEquals('', result));
+
+            attrName = 'title';
+            result = getAttrValue(selector, attrName);
+            check(true, assertEquals('No text here', result));
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+
+
+            /***********************************************************
+             * Data for test two
+             *
+             */
+
+            testedFunName = 'getAttrValueFrom';
+            greensCounter = 0;
+            totalTests    = 3;
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+            console.log('Get a node attribute value');
+
+            element = $('#' + idOne);
+            attrName = 'class';
+            result = getAttrValueFrom(element, attrName);
+            check(true, assertEquals('sandbox', result));
+
+            attrName = 'data-name';
+            result = getAttrValueFrom(element, attrName); console.log(result)
+            check(true, assertEquals('', result));
+
+            attrName = 'title';
+            result = getAttrValueFrom(element, attrName);
+            check(true, assertEquals('No text here', result));
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+
+
+
+
+            /***********************************************************
+             * Data for test three
+             *
+             */
+
+            testedFunName = 'getDataValue';
+            greensCounter = 0;
+            totalTests    = 2;
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+            console.log('Get a node data-x value');
+
+            selector = '#' + idTwo;
+            dataName = 'class';
+            result = getDataValue(selector, dataName);
+            check(true, assertEquals('', result));
+
+            dataName = 'name';
+            result = getDataValue(selector, dataName);
+            check(true, assertEquals('two', result));
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+
+
+            /***********************************************************
+             * Data for test four
+             *
+             */
+
+            testedFunName = 'getDataValueFrom';
+            greensCounter = 0;
+            totalTests    = 2;
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+            console.log('Get a node data-x value');
+
+            element = $('#' + idTwo);
+            dataName = 'class';
+            result = getDataValueFrom(element, dataName);
+            check(true, assertEquals('', result));
+
+            dataName = 'name';
+            result = getDataValueFrom(element, dataName);
+            check(true, assertEquals('two', result));
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+        };
+    </script>
+</body>
+</html>

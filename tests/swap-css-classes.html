@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://gitcdn.link/repo/oricis/notes/master/contents/css/reset.css"
+        rel="stylesheet">
+    <link href="https://gitcdn.link/repo/oricis/bootstrap-based-styles/master/assets/buttons-bootstrap-based.css"
+        rel="stylesheet">
+
+    <link href="./assets/css/styles.css" rel="stylesheet">
+
+    <script src="../dist/src/index.js" defer></script>
+</head>
+<body>
+    <div class="content">
+        <header>
+            <h1>Swap CSS classes</h1>
+        </header>
+
+        <section id="one" class="top-5">
+            <article>
+                <p class="cblue top-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta vero iste. Commodi recusandae quaerat sint quod illo libero officia, reiciendis explicabo voluptatum obcaecati saepe aliquam dolore impedit vel tempora.</p>
+
+                <section class="button-group right-content top-2">
+                    <button class="btn btn-primary btn-small" id="swap-css-one">
+                        Swap css class
+                    </button>
+                </section>
+            </article>
+        </section>
+        <section id="two" class="top-5">
+            <article>
+                <p class="cblue top-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta vero iste. Commodi
+                    recusandae quaerat sint quod illo libero officia, reiciendis explicabo voluptatum obcaecati saepe aliquam
+                    dolore impedit vel tempora.</p>
+
+                <section class="button-group right-content top-2">
+                    <button class="btn btn-primary btn-small" id="swap-css-two">
+                        Swap css class
+                    </button>
+                </section>
+            </article>
+        </section>
+    </div>
+
+    <script>
+        window.onload = () => {
+            const buttonDataObj     = {};
+            const defaultCssClass   = 'cblue';
+            const secondaryCssClass = 'cgrey';
+
+            const swapTextColor = (id) => {
+                const key = 'swap-color-' + id;
+                if (! existObjectKey(buttonDataObj, key)) {
+                    buttonDataObj[key] = defaultCssClass;
+                }
+
+                if (buttonDataObj[key] === defaultCssClass) {
+                    buttonDataObj[key] = secondaryCssClass;
+                    removeCssClass('#' + id + ' article p', defaultCssClass);
+                    addCssClass('#' + id + ' article p', secondaryCssClass);
+
+                } else {
+                    buttonDataObj[key] = defaultCssClass;
+                    removeCssClass('#' + id + ' article p', secondaryCssClass);
+                    addCssClass('#' + id + ' article p', defaultCssClass);
+                }
+
+                console.log('Actual CSS class (text with ID: ' + id + '): '
+                    + buttonDataObj[key]); // HACK: trace
+            }
+
+
+            const buttons = $('.btn');
+            buttons.forEach(btn => {
+
+                if (strpos(btn.id, 'swap-css-')) {
+                    btn.addEventListener('click', (event, btn) => {
+                        const id = getLastSlice(event.target.id, '-');
+
+                        swapTextColor(id);
+                    });
+
+                    return;
+                }
+            });
+        };
+    </script>
+</body>
+</html>

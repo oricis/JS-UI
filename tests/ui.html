@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test "ui.js" functions</title>
+
+    <link href="https://gitcdn.link/repo/oricis/notes/master/contents/css/reset.css" rel="stylesheet">
+    <link href="https://gitcdn.link/repo/oricis/bootstrap-based-styles/master/assets/buttons-bootstrap-based.css"
+        rel="stylesheet">
+
+    <link href="./assets/css/styles.css" rel="stylesheet">
+
+    <script src="../dist/src/index.js" defer></script>
+</head>
+
+<body>
+    <main class="content">
+        <h2>Test "ui.js" functions</h2>
+
+        <p>Watch results on developer tools / console</p>
+
+        <section class="top-5">
+            <h3>Testing functions:</h3>
+            <ul id="list" class="top-2">
+                <li>$( selector )</li>
+                <li>removeAttr( selector, attrName )</li>
+                <li>removeAttrFrom( element, attrName )</li>
+            </ul>
+        </section>
+
+        <h3 class="top-5">Sandboxes:</h3>
+        <div id="sandbox-one" class="sandbox" title="No text here"></div>
+        <div id="sandbox-two" class="sandbox" data-name="two" title="Hoo">Lorem ipsum...</div>
+        <div id="sandbox-three" class="sandbox">Lorem ipsum...</div>
+    </main>
+
+    <script>
+        window.onload = () => {
+            let funName = '';
+            let element = null;
+            let result  = null;
+            const idOne = 'sandbox-one';
+            const idTwo = 'sandbox-two';
+            const idThree = 'sandbox-three';
+
+            funName = '$';  // get DOM node
+            console.log('Get element by ID with ' + funName + '()');
+            console.log($('#' + idOne));
+
+            console.log('\nGet first element by HTML selector ' + funName + '()');
+            console.log($('main h3')[0]);
+
+            console.log('\nGet first element by CSS class ' + funName + '()');
+            console.log($('.sandbox')[0]);
+
+            console.log('\nGet last element text content by CSS class ' + funName + '()');
+            result = $('.sandbox');
+            console.log('---> ' + result[result.length - 1].innerText);
+
+            /**/
+            console.log('\n================================================');
+            funName = 'removeAttr';  // remove attr DOM node
+            console.log('Remove attribute from node with ' + funName + '()');
+            element = $('#' + idTwo);
+
+            console.log('Original: \n', element);
+            setTimeout(() => {
+
+                removeAttr(('#' + idTwo), 'title')
+                console.log('Without title: \n', element);
+                setTimeout(() => {
+                    removeAttr(('#' + idTwo), 'class')
+                    console.log('Without class: \n', element);
+                }, 100);
+            }, 100);
+            /**/
+
+            setTimeout(() => {
+                console.log('\n================================================');
+                funName = 'removeAttrFrom';  // remove attr DOM node
+                console.log('Remove attribute from node with ' + funName + '()');
+                console.log('Original: \n', $('#' + idOne));
+
+                removeAttrFrom(element, 'title')
+                console.log('Without title: \n', element);
+                setTimeout(() => {
+                    removeAttrFrom(element, 'class')
+                    console.log('Without class: \n', element);
+                }, 300);
+            }, 300);
+            /**/
+
+            setTimeout(() => {
+                console.log('\n================================================');
+                console.log('NOTE: Tests of getters: tests/unit/ui-tests.html');
+            }, 500);
+        };
+    </script>
+</body>
+
+</html>

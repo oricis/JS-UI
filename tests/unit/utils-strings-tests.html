@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing file "utils.js"</title>
+
+    <link href="../assets/css/styles.css" rel="stylesheet">
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/asserts.js"></script>
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/datatype-checks.js"></script>
+    <script>
+        const cRed = "red";
+        const cGreen = "green";
+    </script>
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/framework.js"></script>
+    <script src="../../dist/src/index.js" defer></script>
+</head>
+<body>
+    <main class="content">
+        <h2 class="cblue">Open the dev tools / console to watch the tests</h2>
+
+        <section class="top-5">
+            <h3>Tested:</h3>
+            <ul>
+                <li>getLastSlice()</li>
+                <li>getSlice()</li>
+                <li>getSlicesLength()</li>
+                <li>replaceLastSlice()</li>
+                <li>replaceSlice()</li>
+                <li>strhas()</li>
+                <li>strpos()</li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        window.onload = () => {
+            let key = '';
+            let result = false;
+            let testedFunName = '';
+
+            let greensCounter = 0;
+            let totalTests    = 0;
+            function check(expected, result)
+            {
+                if (expected === result)
+                    greensCounter++;
+            }
+
+            /***********************************************************
+             * Data for test one
+             *
+             */
+
+            testedFunName = 'getLastSlice';
+            totalTests    = 6;
+
+            const str1 = 'Open-bananas';
+            const str2 = 'https//www.miweb.com/param-1/param-2/foo';
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+
+            result = getLastSlice(str1);
+            check(false, assertEquals(result, 'xxx'));
+            check(true, assertEquals(result, str1));
+            result = getLastSlice(str1, '-');
+            check(true, assertEquals(result, 'bananas'));
+
+            result = getLastSlice(str2);
+            check(false, assertEquals(result, 'xxx'));
+            check(true, assertEquals(result, 'foo'));
+            result = getLastSlice(str2, '-');
+            check(true, assertEquals(result, '2/foo'));
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+
+
+            /***********************************************************
+             * Data for test two
+             *
+             */
+
+            testedFunName = 'getSlice';
+            greensCounter = 0;
+            totalTests    = 9;
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+
+            result = getSlice(str1, -1);
+            check(false, assertEquals(result, 'xxx'));
+            check(true, assertEquals(result, str1));
+            result = getSlice(str1, -1, '-');
+            check(true, assertEquals(result, 'bananas'));
+
+            result = getSlice(str2, -1);
+            check(false, assertEquals(result, 'xxx'));
+            check(true, assertEquals(result, 'foo'));
+            result = getSlice(str2, -1, '-');
+            check(true, assertEquals(result, '2/foo'));
+
+            result = getSlice(str2, 0);
+            check(true, assertEquals(result, 'https'));
+            result = getSlice(str2, 4);
+            check(true, assertEquals(result, 'param-2'));
+            check(true, assertEquals(getSlice(str2, 5), getSlice(str2, -1)));
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+
+
+            /***********************************************************
+             * Data for test three
+             *
+             */
+
+            testedFunName = 'getSlicesLength';
+            greensCounter = 0;
+            totalTests    = 6;
+
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+
+            result = getSlicesLength(str1);
+            check(false, assertEquals(99, result));
+            result = getSlicesLength(str1);
+            check(true, assertEquals(1, result));
+            result = getSlicesLength(str1, '-');
+            check(true, assertEquals(2, result));
+            result = getSlicesLength(str1, '*');
+            check(true, assertEquals(1, result));
+
+            result = getSlicesLength(str2);
+            check(true, assertEquals(6, result));
+            result = getSlicesLength(str2, '-');
+            check(true, assertEquals(3, result));
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+
+
+            /***********************************************************
+             * Data for test four
+             *
+             */
+            // const str1 = 'Open-bananas';
+            // const str2 = 'https//www.miweb.com/param-1/param-2/foo';
+
+            testedFunName = 'replaceLastSlice';
+            greensCounter = 0;
+            totalTests    = 4;
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+
+            result = replaceLastSlice(str1, 'got');
+            check(true, assertEquals('got', result));
+            result = replaceLastSlice(str1, 'got', '-');
+            check(true, assertEquals('Open-got', result));
+
+            result = replaceLastSlice(str2, 'got');
+            check(true, assertEquals('https//www.miweb.com/param-1/param-2/got', result));
+            result = replaceLastSlice(str2, 'got', '-');
+            check(true, assertEquals('https//www.miweb.com/param-1/param-got', result));
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+
+
+            /***********************************************************
+             * Data for test five
+             *
+             */
+
+            testedFunName = 'strhas';
+            greensCounter = 0;
+            totalTests    = 7;
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+
+            result = strhas(str1, 'xxx');
+            check(true, assertEquals(false, result));
+            result = strhas(str1, '-');
+            check(true, assertEquals(true, result));
+            result = strhas(str1, '-bananas');
+            check(true, assertEquals(true, result));
+            result = strhas(str1, 'bananas');
+            check(true, assertEquals(true, result));
+
+            result = strhas(str2, 'bananas');
+            check(true, assertEquals(false, result));
+            result = strhas(str2, 'www');
+            check(true, assertEquals(true, result));
+            result = strhas(str2, 'param-1');
+            check(true, assertEquals(true, result));
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+
+
+            /***********************************************************
+             * Data for test six
+             *
+             */
+
+            testedFunName = 'strpos';
+            greensCounter = 0;
+            totalTests = 7;
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+
+            result = strpos(str1, 'xxx');
+            check(true, assertEquals(-1, result));
+            result = strpos(str1, '-');
+            check(true, assertEquals(4, result));
+            result = strpos(str1, '-bananas');
+            check(true, assertEquals(4, result));
+            result = strpos(str1, 'bananas');
+            check(true, assertEquals(5, result));
+
+            result = strpos(str2, 'bananas');
+            check(true, assertEquals(-1, result));
+            result = strpos(str2, 'www');
+            check(true, assertEquals(7, result));
+            result = strpos(str2, 'param-1');
+            check(true, assertEquals(21, result));
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+
+
+            /***********************************************************
+             * Data for test n
+             *
+             */
+
+            // testedFunName = '';
+            // greensCounter = 0;
+            // totalTests    = 0;
+
+            // console.log('\n================================================');
+            // console.log('Testing "' + testedFunName + '()"...');
+
+
+            // Show results
+            // showTestsResult(totalTests, greensCounter);
+
+        }; // window.onload
+    </script>
+</body>
+</html>

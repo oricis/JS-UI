@@ -1,7 +1,64 @@
-# JS UI
+# JS UI - v.1.2.0
 
 Collection of JS functions to DOM manipulation.
 
+
+***
+
+## How to use
+
+Import the bundle file with all the functions. For example:
+
+    <script src="../dist/src/index.js" defer></script>
+
+
+## Available functions
+
+### ui.js
+
+ * $( selector )                                                --tested
+ * removeAttr( selector, attrName )                             --tested
+ * removeAttrFrom( element, attrName )                          --tested
+ * getAttrValue( selector, attrName )                           --tested
+ * getAttrValueFrom( element, attrName )                        --tested
+ * getDataValue( selector, dataName )                           --tested
+ * getDataValueFrom( element, dataName )                        --tested
+
+
+### ui-styles.js
+
+ * addCssClass( selector, className, position = 0 )             --tested
+ * addCssClassTo( element, className )                          --tested
+ * getCssClass( selector, position = 0 )                        --tested
+ * getCssClassFrom( element )                                   --tested
+ * hasCssClass( element, className )                            --tested
+ * removeCssClass( selector, className, position = 0 )          --tested
+ * removeCssClassFrom( element, className )                     --tested
+
+
+### ui-texts.js
+
+ * addTextById( id, content )                                   --tested
+ * removeText( selector, position = 0 )                         --tested
+ * removeTextById( id )                                         --tested
+ * setTextById( id, content )                                   --tested
+
+
+### utils.js
+
+ * existObjectKey( obj, key )                                  -- tested
+ * submitFormTo( route, form )                                 -- tested
+
+
+### utils-strings.js
+
+ * getLastSlice( str, separator )                               --tested
+ * getSlice( str, position, separator )                         --tested
+ * getSlicesLength( str, separator )                            --tested
+ * replaceLastSlice( str, newSlice, separator )                 --tested
+ * replaceSlice( str, newSlice, position, separator )           --tested
+ * strhas( haystack, needle )                                   --tested
+ * strpos( haystack, needle )                                   --tested
 
 
 ***

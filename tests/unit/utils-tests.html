@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing file "utils.js"</title>
+
+    <link href="../assets/css/styles.css" rel="stylesheet">
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/asserts.js"></script>
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/datatype-checks.js"></script>
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/framework.js"></script>
+    <script src="../../dist/src/index.js" defer></script>
+</head>
+<body>
+    <main class="content">
+        <h2 class="cblue">Open the dev tools / console to watch the tests</h2>
+
+        <section class="top-5">
+            <h3>Tested:</h3>
+            <ul>
+                <li>existObjectKey()</li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        window.onload = () => {
+
+            const cGreen = '#2ba029';
+            const cRed   = '#fa0808';
+            let key = '';
+            let result = false;
+            let testedFunName = '';
+
+            let greensCounter = 0;
+            let totalTests    = 0;
+            function check(expected, result)
+            {
+                if (expected === result)
+                    greensCounter++;
+            }
+
+
+            /**
+             * Data for test one
+             *
+             */
+
+            testedFunName = 'existObjectKey';
+            const arr = new Array();
+            arr['fruits'] = ['banana', 'orange'];
+
+            const obj = {
+                'fruits': ['banana', 'orange'],
+            };
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+            console.log('\n');
+            console.log(checkArray(arr), checkArray(obj));
+            console.log(checkObject(arr), checkObject(obj));
+            console.log('\n');
+
+            key = 'fruits';
+            result = existObjectKey(arr, key);
+            if (result) {
+                console.log(key + '%c is an object/array key', 'color: ' + cGreen);
+            } else {
+                console.log(key + '%c isn\'t an object/array key', 'color: ' + cRed);
+            }
+            console.log('\n');
+
+            result = existObjectKey(obj, key);
+            if (result) {
+                console.log(key + '%c is an object/array key', 'color: ' + cGreen);
+            } else {
+                console.log(key + '%c isn\'t an object/array key', 'color: ' + cRed);
+            }
+            console.log('\n');
+
+            key = 'no-exist';
+            result = existObjectKey(arr, key);
+            if (result) {
+                console.log(key + '%c is an object/array key', 'color: ' + cGreen);
+            } else {
+                console.log(key + '%c isn\'t an object/array key', 'color: ' + cRed);
+            }
+            console.log('\n');
+
+            result = existObjectKey(obj, key);
+            if (result) {
+                console.log(key + '%c is an object/array key', 'color: ' + cGreen);
+            } else {
+                console.log(key + '%c isn\'t an object/array key', 'color: ' + cRed);
+            }
+
+
+            /**
+             * Data for test two
+             *
+             */
+
+            testedFunName = '';
+
+
+            // console.log('\n================================================');
+            // console.log('Testing "' + testedFunName + '()"...');
+            // console.log('\n');
+
+
+        }; // window.onload
+    </script>
+</body>
+</html>

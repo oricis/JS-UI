@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://gitcdn.link/repo/oricis/notes/master/contents/css/reset.css" rel="stylesheet">
+    <link href="https://gitcdn.link/repo/oricis/bootstrap-based-styles/master/assets/buttons-bootstrap-based.css"
+        rel="stylesheet">
+
+    <link href="./assets/css/styles.css" rel="stylesheet">
+</head>
+<body class="content">
+    <h1 class="foo">Get DOM nodes with (querySelector / querySelectorAll)</h1>
+    <h2 class="top-2">Testing: "ui-styles.js /  getCssClass()"</h2>
+    <p class="baz top-5">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate, sint error.</p>
+    <p class="baz">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+    <div class="button-group right-content top-5">
+        <button class="btn btn-default btn-small" id="one">Get one</button>
+        <button class="btn btn-default btn-small" id="several">Get several</button>
+    </div>
+
+
+    <script src="../dist/src/index.js"></script>
+    <script>
+        $('#one').addEventListener('click', (event) => {
+            const selector = 'body h1';
+            const result = $(selector);
+
+            // HACK:
+
+            console.log('Class names: ', result.className, result[0].className);
+
+            console.log('\nClass names with "getCssClass()"');
+            console.log('DOM nodes: ' + result.length);
+            console.log(getCssClass(selector));
+        });
+
+        $('#several').addEventListener('click', (event) => {
+            const selector = 'body p';
+            const result = $(selector);
+
+            // HACK:
+            console.log('Class names: ', result.className, result[0].className);
+
+            console.log('\nClass names with "getCssClass()"');
+            console.log('DOM nodes: ' + result.length);
+            console.log('First CSS class/es: ' + getCssClass(selector));
+            console.log('All: ', getCssClass(selector, 'all'));
+        });
+    </script>
+</body>
+</html>
