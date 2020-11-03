@@ -1,4 +1,4 @@
-# JS UI - v.1.2.0
+# JS UI - v.1.3.0
 
 Collection of JS functions to DOM manipulation.
 
@@ -29,11 +29,13 @@ Import the bundle file with all the functions. For example:
 
  * addCssClass( selector, className, position = 0 )             --tested
  * addCssClassTo( element, className )                          --tested
+ * addCssClassToAll( elements, className )                      --tested
  * getCssClass( selector, position = 0 )                        --tested
  * getCssClassFrom( element )                                   --tested
  * hasCssClass( element, className )                            --tested
  * removeCssClass( selector, className, position = 0 )          --tested
  * removeCssClassFrom( element, className )                     --tested
+ * removeCssClassFromAll( elements, className )                 --tested
 
 
 ### ui-texts.js

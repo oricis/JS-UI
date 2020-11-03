@@ -148,6 +148,19 @@ var addCssClassTo = function addCssClassTo(element, className) {
   element.classList.add(className);
 }
 
+var addCssClassToAll = function addCssClassToAll(elements, className) {
+  {
+    if (!elements || typeof(elements) !== 'object') {
+      console.error('addCssClassToAll() - Err args');
+      return;
+    }
+
+    elements.forEach(function (element) {
+      addCssClassTo(element, className);
+    });
+  }
+}
+
 var getCssClass = function getCssClass(selector, position) {
   position = position ? position : 0;
   var target = $(selector);
@@ -198,6 +211,12 @@ var removeCssClass = function removeCssClass(selector, className, position) {
 
 var removeCssClassFrom = function removeCssClassFrom(element, className) {
   element.classList.remove(className);
+}
+
+var removeCssClassFromAll = function removeCssClassFromAll(arrElements, className) {
+  arrElements.forEach(function (element) {
+    removeCssClassFrom(element, className);
+  });
 }
 
 var addTextById = function addTextById(id, content) {

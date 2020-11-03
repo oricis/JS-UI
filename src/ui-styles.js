@@ -35,6 +35,18 @@ const addCssClassTo = (element, className) => {
     element.classList.add(className);
 }
 
+const addCssClassToAll = (elements, className) => {
+    {
+        if (!elements || typeof (elements) !== 'object') {
+            console.error('addCssClassToAll() - Err args');
+            return;
+        }
+        elements.forEach(element => {
+            addCssClassTo(element, className);
+        })
+    }
+}
+
 const getCssClass = (selector, position) => {
     position = position ? position : 0;
     let target = $(selector);
@@ -90,4 +102,10 @@ const removeCssClass = (selector, className, position) => {
 
 const removeCssClassFrom = (element, className) => {
     element.classList.remove(className);
+}
+
+const removeCssClassFromAll = (arrElements, className) => {
+    arrElements.forEach(element => {
+        removeCssClassFrom(element, className);
+    })
 }
