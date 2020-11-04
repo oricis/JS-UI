@@ -23,8 +23,10 @@
             <h3>Testing functions:</h3>
             <ul id="list" class="top-2">
                 <li>addTextById( id, content )</li>
+                <li>getText( element )</li>
                 <li>removeText( selector, position = 0 )</li>
                 <li>removeTextById( id )</li>
+                <li>setText( element, content )</li>
                 <li>setTextById( id, content )</li>
             </ul>
         </section>
@@ -66,6 +68,19 @@
             funName = 'setTextById';    // replace text content
             console.log('Adding text to "' + idFive + '" with ' + funName + '()');
             setTextById(idFive, idFive + ': Some text here!');
+
+            console.log('\n================================================');
+            funName = 'getText';    // replace text content
+            console.log('Text content on sandbox "' + idFive + '" with ' + funName + '()');
+            const nodeFive = $('#' + idFive);
+            console.log('---> ' + getText(nodeFive));
+
+            console.log('\n================================================');
+            funName = 'setText';    // replace text content
+            console.log('Replacing text on sandbox "' + idFive + '" with ' + funName + '()');
+            setTimeout(() => {
+                setText(nodeFive, ' Bla, bla...')
+            }, 2500);
         };
     </script>
 </body>

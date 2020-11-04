@@ -171,6 +171,61 @@
 
 
             /***********************************************************
+             * Data for test four B
+             *
+             */
+            // const str1 = 'Open-bananas';
+            // const str2 = 'https//www.miweb.com/param-1/param-2/foo';
+
+            testedFunName = 'replaceSlice';
+            greensCounter = 0;
+            totalTests    = 7;
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+            const replaceSlice = (str, newSlice, position, separator) => {
+                if (!str || !newSlice || position === undefined) {
+                    console.error('ERR - Something is wrong with the params!');
+                    return '';
+                }
+
+                separator = separator ? separator : '/';
+
+                const strSlices = str.split(separator);
+                if (position < 0) {
+                    position = strSlices.length + position;
+                }
+
+                if (position >= strSlices.length) {
+                    console.error('ERR - Too few parts for position: ' + position);
+                    return '';
+                }
+                strSlices[position] = newSlice;
+
+                return strSlices.join(separator);
+            }
+            result = replaceSlice(str1);
+            check(true, assertEquals('', result));
+            result = replaceSlice(str1, 'got');
+            check(true, assertEquals('', result));
+            result = replaceSlice(str1, 'got', 0);
+            check(true, assertEquals('got', result));
+
+            result = replaceSlice(str2, 'got', -1);
+            check(true, assertEquals('https//www.miweb.com/param-1/param-2/got', result));
+            result = replaceSlice(str2, 'got', -1, '-');
+            check(true, assertEquals('https//www.miweb.com/param-1/param-got', result));
+
+            result = replaceSlice(str2, 'got', -2);
+            check(true, assertEquals('https//www.miweb.com/param-1/got/foo', result));
+            result = replaceSlice(str2, 'got', 0);
+            check(true, assertEquals('got//www.miweb.com/param-1/param-2/foo', result));
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+
+
+            /***********************************************************
              * Data for test five
              *
              */

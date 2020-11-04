@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing ui-styles.js: addCssClassToAll() / removeCssClassFromAll()</title>
+
+    <link href="./assets/css/styles.css" rel="stylesheet">
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/asserts.js"></script>
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/datatype-checks.js"></script>
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/framework.js"></script>
+    <script src="../dist/src/index.js" defer></script>
+</head>
+
+<body>
+    <main class="content">
+        <h2>Testing ui-styles.js:</h2>
+        <h3>addCssClassToAll() / removeCssClassFromAll()</h3>
+
+        <p>Watch results on developer tools / console</p>
+
+        <section class="top-5">
+            <h3>Testing functions:</h3>
+            <ul id="list" class="top-2">
+                <li>addCssClassToAll( elements, className )</li>
+                <li>removeCssClassFromAll( elements, className )</li>
+            </ul>
+        </section>
+
+        <h3 class="top-5">Sandboxes:</h3>
+        <div id="sandbox-one" class="sandbox" title="No text here"></div>
+        <div id="sandbox-two" class="sandbox" data-name="two" title="Hoo">Lorem ipsum...</div>
+        <div id="sandbox-three" class="sandbox">Lorem ipsum...</div>
+    </main>
+
+    <script>
+        window.onload = () => {
+            let originalClassName = 'sandbox';
+            let newClassName = 'bg-salmon';
+            let testedFunName = '';
+
+            let greensCounter = 0;
+            let totalTests = 0;
+            function check(expected, result) {
+                if (expected === result)
+                    greensCounter++;
+            }
+
+
+            /***********************************************************
+             * Data for test one
+             *
+             */
+
+            testedFunName = 'addCssClassToAll';
+            greensCounter = 0;
+            totalTests = 3;
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+            console.log('Change the box backgrounds');
+
+            const elements = $('.' + originalClassName); // get a node list
+            addCssClassToAll(elements, newClassName);
+
+            elements.forEach(element => {
+                const classNames = getCssClassFrom(element);
+                const expectedClassNames = originalClassName + ' ' + newClassName;
+                check(true, assertEquals(expectedClassNames, classNames));
+            });
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+
+
+            /***********************************************************
+             * Data for test two
+             *
+             */
+
+            testedFunName = 'removeCssClassFromAll';
+            greensCounter = 0;
+            totalTests = 3;
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+            console.log('Get a node attribute value');
+
+            // time to watch UI changes done by the previous script
+            setTimeout(() => {
+                removeCssClassFromAll(elements, newClassName);
+
+                elements.forEach(element => {
+                    const classNames = getCssClassFrom(element);
+                    const expectedClassNames = originalClassName;
+                    check(true, assertEquals(expectedClassNames, classNames));
+                });
+
+                // Show results
+                showTestsResult(totalTests, greensCounter);
+            }, 2500);
+
+        };
+    </script>
+</body>
+
+</html>

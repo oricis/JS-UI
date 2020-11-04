@@ -45,7 +45,11 @@ var replaceLastSlice = function replaceLastSlice(str, newSlice, separator) {
 }
 
 var replaceSlice = function replaceSlice(str, newSlice, position, separator) {
-  if (!str || !newSlice) return str;
+  if (!str || !newSlice || position === undefined) {
+    console.error('ERR - Something is wrong with the params!');
+    return '';
+  }
+
   separator = separator ? separator : '/';
   var strSlices = str.split(separator);
 
@@ -54,11 +58,11 @@ var replaceSlice = function replaceSlice(str, newSlice, position, separator) {
   }
 
   if (position >= strSlices.length) {
-    console.error('ERR - too few parts for position: ' + position);
+    console.error('ERR - Too few parts for position: ' + position);
     return '';
   }
 
-  strSlices[strSlices.length - 1] = newSlice;
+  strSlices[position] = newSlice;
   return strSlices.join(separator);
 }
 
@@ -71,8 +75,10 @@ var strpos = function strpos(haystack, needle) {
 }
 
 var $ = function $(selector) {
-  if (selector.indexOf("#") === 0 && selector.indexOf(' ') < 0)
+  if (selector.indexOf("#") === 0 && selector.indexOf(' ') < 0) {
     return document.querySelector(selector);
+  }
+
   return document.querySelectorAll(selector);
 }
 
@@ -86,28 +92,24 @@ var removeAttrFrom = function removeAttrFrom(element, attrName) {
 }
 
 var getAttrValue = function getAttrValue(selector, attrName) {
-  const target = getTargetDomNode(selector);
-  const result = target.getAttribute(attrName);
-
+  var target = getTargetDomNode(selector);
+  var result = target.getAttribute(attrName);
   return result ? result : '';
 }
 
 var getAttrValueFrom = function getAttrValueFrom(element, attrName) {
-  const result = element.getAttribute(attrName);
-
+  var result = element.getAttribute(attrName);
   return result ? result : '';
 }
 
 var getDataValue = function getDataValue(selector, dataName) {
-  const target = getTargetDomNode(selector);
-  const result = target.dataset[dataName];
-
+  var target = getTargetDomNode(selector);
+  var result = target.dataset[dataName];
   return result ? result : '';
 }
 
 var getDataValueFrom = function getDataValueFrom(element, dataName) {
-  const result = element.dataset[dataName];
-
+  var result = element.dataset[dataName];
   return result ? result : '';
 }
 
@@ -144,6 +146,17 @@ var addCssClass = function addCssClass(selector, className, position) {
 
 var addCssClassTo = function addCssClassTo(element, className) {
   element.classList.add(className);
+}
+
+var addCssClassToAll = function addCssClassToAll(elements, className) {
+  if (!elements || typeof(elements) !== 'object') {
+    console.error('addCssClassToAll() - Err args');
+    return;
+  }
+
+  elements.forEach(function (element) {
+    addCssClassTo(element, className);
+  });
 }
 
 var getCssClass = function getCssClass(selector, position) {
@@ -198,14 +211,29 @@ var removeCssClassFrom = function removeCssClassFrom(element, className) {
   element.classList.remove(className);
 }
 
+var removeCssClassFromAll = function removeCssClassFromAll(elements, className) {
+  if (!elements || typeof(elements) !== 'object') {
+    console.error('removeCssClassFromAll() - Err args');
+    return;
+  }
+
+  elements.forEach(function (element) {
+    removeCssClassFrom(element, className);
+  });
+}
+
 var addTextById = function addTextById(id, content) {
   id = getId(id);
-  var textContent = $(id).innerText;
-  $(id).innerText = textContent + content;
+  var textContent = getText($(id));
+  setText($(id), textContent + content);
 }
 
 function getId(id) {
   return id.indexOf('#') === 0 ? id : '#' + id;
+}
+
+function getText(element) {
+  return element.innerText;
 }
 
 var removeText = function removeText(selector, position) {
@@ -224,15 +252,19 @@ var removeText = function removeText(selector, position) {
     return;
   }
 
-  target.innerText = '';
+  setText(target, '');
 }
 
 var removeTextById = function removeTextById(id) {
   id = getId(id);
-  $(id).innerText = '';
+  setText($(id), '');
+}
+
+function setText(element, content) {
+  element.innerText = content;
 }
 
 var setTextById = function setTextById(id, content) {
   id = getId(id);
-  $(id).innerText = content;
+  setText($(id), content);
 }
