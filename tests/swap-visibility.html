@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://gitcdn.link/repo/oricis/notes/master/contents/css/reset.css" rel="stylesheet">
+    <link href="https://gitcdn.link/repo/oricis/bootstrap-based-styles/master/assets/buttons-bootstrap-based.css"
+        rel="stylesheet">
+
+    <link href="./assets/css/styles.css" rel="stylesheet">
+
+    <script src="../dist/src/index.js" defer></script>
+</head>
+<body class="pad-10">
+    <main>
+        <div class="box pad-10 none" id="box">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, at ab. Praesentium eaque facilis possimus, iste similique ipsam sapiente in distinctio magni, veniam doloremque voluptates hic assumenda dolores maiores porro!</p>
+
+            <section class="button-group top-5">
+                <button class="btn btn-default" id="close">Cerrar cuadro</button>
+            </section>
+        </div>
+
+        <section class="button-group top-5">
+            <button class="btn btn-default" id="open">Abrir cuadro</button>
+        </section>
+    </main>
+
+    <script>
+        window.onload = () => {
+            function swapVisibility(node) {
+                const className = 'none';
+                toggleCssClassOf(node, className);
+            }
+
+            ////////////////////////////////////////////////////////////////
+            // Page logic
+
+            const openButton = $('#open');
+            const closeButton = $('#close');
+            const textBox = $('#box');
+
+            openButton.addEventListener('click', (event) => {
+                swapVisibility(textBox);
+            });
+            closeButton.addEventListener('click', (event) => {
+                swapVisibility(textBox);
+            });
+        };
+    </script>
+</body>
+</html>

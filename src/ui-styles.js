@@ -113,3 +113,7 @@ const removeCssClassFromAll = (elements, className) => {
         removeCssClassFrom(element, className);
     })
 }
+
+const toggleCssClassOf = (node, className) => {
+    node.classList.toggle(className);
+}

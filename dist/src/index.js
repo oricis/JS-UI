@@ -222,6 +222,10 @@ var removeCssClassFromAll = function removeCssClassFromAll(elements, className) 
   });
 }
 
+var toggleCssClassOf = function toggleCssClassOf(node, className) {
+  node.classList.toggle(className);
+}
+
 var addTextById = function addTextById(id, content) {
   id = getId(id);
   var textContent = getText($(id));

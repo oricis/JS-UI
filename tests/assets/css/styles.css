@@ -24,6 +24,10 @@
 .flex-column {
     flex-direction: column;
 }
+.none {
+    display: none;
+}
+
 .no-bg {
     background: transparent;
 }
@@ -60,6 +64,10 @@
 }
 .bg-salmon {
     background-color: salmon;
+}
+.box {
+    border: 2px solid blue;
+    margin: 5rem auto;
 }
 header nav div {
     width: 130px;
