@@ -6,18 +6,18 @@
  * MIT Licence
  */
 
-const addCssClass = (selector, className, position) => {
+const addClass = (selector, className, position) => {
     position = position ? position : 0;
     let target = $(selector);
 
     if (target && target.length > 1) {
         if (position === 'all') {
             target.forEach(element => {
-                addCssClassTo(element, className);
+                addClassTo(element, className);
             });
 
         } else {
-            addCssClassTo(target[position], className);
+            addClassTo(target[position], className);
         }
 
         return;
@@ -26,27 +26,27 @@ const addCssClass = (selector, className, position) => {
     // $('#foo')  returns an element
     // $('div p') returns an node collection
     if (target[position] != undefined)
-        addCssClassTo(target[position], className);
+        addClassTo(target[position], className);
     else
-        addCssClassTo(target, className);
+        addClassTo(target, className);
 }
 
-const addCssClassTo = (element, className) => {
+const addClassTo = (element, className) => {
     element.classList.add(className);
 }
 
-const addCssClassToAll = (elements, className) => {
+const addClassToAll = (elements, className) => {
     if (!elements || typeof (elements) !== 'object') {
-        console.error('addCssClassToAll() - Err args');
+        console.error('addClassToAll() - Err args');
         return;
     }
 
     elements.forEach(element => {
-        addCssClassTo(element, className);
+        addClassTo(element, className);
     })
 }
 
-const getCssClass = (selector, position) => {
+const getClass = (selector, position) => {
     position = position ? position : 0;
     let target = $(selector);
 
@@ -60,32 +60,32 @@ const getCssClass = (selector, position) => {
             return classNames; // array
         }
 
-        return getCssClassFrom(target[position]); // string
+        return getClassFrom(target[position]); // string
     }
 
-    return getCssClassFrom(target[position]); // string
+    return getClassFrom(target[position]); // string
 }
 
-const getCssClassFrom = (element) => {
+const getClassFrom = (element) => {
     return element.className; // string
 }
 
-const hasCssClass = (element, className) => {
+const hasClass = (element, className) => {
     return element.classList.contains(className);
 }
 
-const removeCssClass = (selector, className, position) => {
+const removeClass = (selector, className, position) => {
     position = position ? position : 0;
     let target = $(selector);
 
     if (target && target.length > 1) {
         if (position === 'all') {
             target.forEach(element => {
-                removeCssClassFrom(element, className);
+                removeClassFrom(element, className);
             });
 
         } else {
-            removeCssClassFrom(target[position], className);
+            removeClassFrom(target[position], className);
         }
 
         return;
@@ -94,26 +94,26 @@ const removeCssClass = (selector, className, position) => {
     // $('#foo')  returns an element
     // $('div p') returns an node collection
     if (target[position] != undefined)
-        removeCssClassFrom(target[position], className);
+        removeClassFrom(target[position], className);
     else
-        removeCssClassFrom(target, className);
+        removeClassFrom(target, className);
 }
 
-const removeCssClassFrom = (element, className) => {
+const removeClassFrom = (element, className) => {
     element.classList.remove(className);
 }
 
-const removeCssClassFromAll = (elements, className) => {
+const removeClassFromAll = (elements, className) => {
     if (!elements || typeof (elements) !== 'object') {
-        console.error('removeCssClassFromAll() - Err args');
+        console.error('removeClassFromAll() - Err args');
         return;
     }
 
     elements.forEach(element => {
-        removeCssClassFrom(element, className);
+        removeClassFrom(element, className);
     })
 }
 
-const toggleCssClassOf = (node, className) => {
+const toggleClassOf = (node, className) => {
     node.classList.toggle(className);
 }

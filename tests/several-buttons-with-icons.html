@@ -55,14 +55,14 @@
     <script src="../dist/src/index.min.js"></script>
     <script>
         const swapHeartAppearance = (targetId, clicked) => {
-            const cssClassName = 'filled-heart';
-            const target       = $('#' + targetId);
+            const className = 'filled-heart';
+            const target    = $('#' + targetId);
 
             if (clicked == 1) {
-                addCssClassTo(target, cssClassName);
+                addClassTo(target, className);
             } else {
-                if (hasCssClass(target, cssClassName)) {
-                    removeCssClassFrom(target, cssClassName);
+                if (hasClass(target, className)) {
+                    removeClassFrom(target, className);
                 }
             }
         }

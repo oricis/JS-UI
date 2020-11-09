@@ -123,17 +123,17 @@ function getTargetDomNode(selector) {
   return target;
 }
 
-var addCssClass = function addCssClass(selector, className, position) {
+var addClass = function addClass(selector, className, position) {
   position = position ? position : 0;
   var target = $(selector);
 
   if (target && target.length > 1) {
     if (position === 'all') {
       target.forEach(function (element) {
-        addCssClassTo(element, className);
+        addClassTo(element, className);
       });
     } else {
-      addCssClassTo(target[position], className);
+      addClassTo(target[position], className);
     }
 
     return;
@@ -141,25 +141,25 @@ var addCssClass = function addCssClass(selector, className, position) {
   // $('div p') returns an node collection
 
 
-  if (target[position] != undefined) addCssClassTo(target[position], className);else addCssClassTo(target, className);
+  if (target[position] != undefined) addClassTo(target[position], className);else addClassTo(target, className);
 }
 
-var addCssClassTo = function addCssClassTo(element, className) {
+var addClassTo = function addClassTo(element, className) {
   element.classList.add(className);
 }
 
-var addCssClassToAll = function addCssClassToAll(elements, className) {
+var addClassToAll = function addClassToAll(elements, className) {
   if (!elements || typeof(elements) !== 'object') {
-    console.error('addCssClassToAll() - Err args');
+    console.error('addClassToAll() - Err args');
     return;
   }
 
   elements.forEach(function (element) {
-    addCssClassTo(element, className);
+    addClassTo(element, className);
   });
 }
 
-var getCssClass = function getCssClass(selector, position) {
+var getClass = function getClass(selector, position) {
   position = position ? position : 0;
   var target = $(selector);
 
@@ -172,31 +172,31 @@ var getCssClass = function getCssClass(selector, position) {
       return classNames; // array
     }
 
-    return getCssClassFrom(target[position]); // string
+    return getClassFrom(target[position]); // string
   }
 
-  return getCssClassFrom(target[position]); // string
+  return getClassFrom(target[position]); // string
 }
 
-var getCssClassFrom = function getCssClassFrom(element) {
+var getClassFrom = function getClassFrom(element) {
   return element.className; // string
 }
 
-var hasCssClass = function hasCssClass(element, className) {
+var hasClass = function hasClass(element, className) {
   return element.classList.contains(className);
 }
 
-var removeCssClass = function removeCssClass(selector, className, position) {
+var removeClass = function removeClass(selector, className, position) {
   position = position ? position : 0;
   var target = $(selector);
 
   if (target && target.length > 1) {
     if (position === 'all') {
       target.forEach(function (element) {
-        removeCssClassFrom(element, className);
+        removeClassFrom(element, className);
       });
     } else {
-      removeCssClassFrom(target[position], className);
+      removeClassFrom(target[position], className);
     }
 
     return;
@@ -204,25 +204,25 @@ var removeCssClass = function removeCssClass(selector, className, position) {
   // $('div p') returns an node collection
 
 
-  if (target[position] != undefined) removeCssClassFrom(target[position], className);else removeCssClassFrom(target, className);
+  if (target[position] != undefined) removeClassFrom(target[position], className);else removeClassFrom(target, className);
 }
 
-var removeCssClassFrom = function removeCssClassFrom(element, className) {
+var removeClassFrom = function removeClassFrom(element, className) {
   element.classList.remove(className);
 }
 
-var removeCssClassFromAll = function removeCssClassFromAll(elements, className) {
+var removeClassFromAll = function removeClassFromAll(elements, className) {
   if (!elements || typeof(elements) !== 'object') {
-    console.error('removeCssClassFromAll() - Err args');
+    console.error('removeClassFromAll() - Err args');
     return;
   }
 
   elements.forEach(function (element) {
-    removeCssClassFrom(element, className);
+    removeClassFrom(element, className);
   });
 }
 
-var toggleCssClassOf = function toggleCssClassOf(node, className) {
+var toggleClassOf = function toggleClassOf(node, className) {
   node.classList.toggle(className);
 }
 

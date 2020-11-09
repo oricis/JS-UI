@@ -27,16 +27,16 @@ Import the bundle file with all the functions. For example:
 
 ### ui-styles.js
 
- * addCssClass( selector, className, position = 0 )             --tested
- * addCssClassTo( element, className )                          --tested
- * addCssClassToAll( elements, className )                      --tested
- * getCssClass( selector, position = 0 )                        --tested
- * getCssClassFrom( element )                                   --tested
- * hasCssClass( element, className )                            --tested
- * removeCssClass( selector, className, position = 0 )          --tested
- * removeCssClassFrom( element, className )                     --tested
- * removeCssClassFromAll( elements, className )                 --tested
- * toggleCssClassOf( element, className )                       --tested
+ * addClass( selector, className, position = 0 )             --tested
+ * addClassTo( element, className )                          --tested
+ * addClassToAll( elements, className )                      --tested
+ * getClass( selector, position = 0 )                        --tested
+ * getClassFrom( element )                                   --tested
+ * hasClass( element, className )                            --tested
+ * removeClass( selector, className, position = 0 )          --tested
+ * removeClassFrom( element, className )                     --tested
+ * removeClassFromAll( elements, className )                 --tested
+ * toggleClassOf( element, className )                       --tested
 
 
 ### ui-texts.js

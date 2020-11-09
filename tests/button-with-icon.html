@@ -53,12 +53,12 @@
                     console.log('Already clicked');
                     clicked = false;
 
-                    removeCssClass(selector, className, 0);
+                    removeClass(selector, className, 0);
                 } else {
                     console.log('NO clicked before');
                     clicked = true;
 
-                    addCssClass(selector, className, 0);
+                    addClass(selector, className, 0);
                 }
             });
         };

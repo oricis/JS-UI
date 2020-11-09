@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testing ui-styles.js: addCssClassToAll() / removeCssClassFromAll()</title>
+    <title>Testing ui-styles.js: addClassToAll() / removeClassFromAll()</title>
 
     <link href="./assets/css/styles.css" rel="stylesheet">
     <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/asserts.js"></script>
@@ -16,15 +16,15 @@
 <body>
     <main class="content">
         <h2>Testing ui-styles.js:</h2>
-        <h3>addCssClassToAll() / removeCssClassFromAll()</h3>
+        <h3>addClassToAll() / removeClassFromAll()</h3>
 
         <p>Watch results on developer tools / console</p>
 
         <section class="top-5">
             <h3>Testing functions:</h3>
             <ul id="list" class="top-2">
-                <li>addCssClassToAll( elements, className )</li>
-                <li>removeCssClassFromAll( elements, className )</li>
+                <li>addClassToAll( elements, className )</li>
+                <li>removeClassFromAll( elements, className )</li>
             </ul>
         </section>
 
@@ -53,7 +53,7 @@
              *
              */
 
-            testedFunName = 'addCssClassToAll';
+            testedFunName = 'addClassToAll';
             greensCounter = 0;
             totalTests = 3;
 
@@ -62,10 +62,10 @@
             console.log('Change the box backgrounds');
 
             const elements = $('.' + originalClassName); // get a node list
-            addCssClassToAll(elements, newClassName);
+            addClassToAll(elements, newClassName);
 
             elements.forEach(element => {
-                const classNames = getCssClassFrom(element);
+                const classNames = getClassFrom(element);
                 const expectedClassNames = originalClassName + ' ' + newClassName;
                 check(true, assertEquals(expectedClassNames, classNames));
             });
@@ -79,7 +79,7 @@
              *
              */
 
-            testedFunName = 'removeCssClassFromAll';
+            testedFunName = 'removeClassFromAll';
             greensCounter = 0;
             totalTests = 3;
 
@@ -89,10 +89,10 @@
 
             // time to watch UI changes done by the previous script
             setTimeout(() => {
-                removeCssClassFromAll(elements, newClassName);
+                removeClassFromAll(elements, newClassName);
 
                 elements.forEach(element => {
-                    const classNames = getCssClassFrom(element);
+                    const classNames = getClassFrom(element);
                     const expectedClassNames = originalClassName;
                     check(true, assertEquals(expectedClassNames, classNames));
                 });
