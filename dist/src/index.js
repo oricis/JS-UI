@@ -116,7 +116,7 @@ var getDataValueFrom = function getDataValueFrom(element, dataName) {
 function getTargetDomNode(selector) {
   var target = $(selector);
 
-  if (Array.isArray(target) && target) {
+  if (Array.isArray(target) || target) {
     target = target[0];
   }
 
@@ -141,7 +141,8 @@ var addClass = function addClass(selector, className, position) {
   // $('div p') returns an node collection
 
 
-  if (target[position] != undefined) addClassTo(target[position], className);else addClassTo(target, className);
+  if (target[position] != undefined) addClassTo(target[position], className);
+  else addClassTo(target, className);
 }
 
 var addClassTo = function addClassTo(element, className) {

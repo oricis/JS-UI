@@ -7,11 +7,9 @@
  */
 
 const $ = (selector) => {
-
     if (selector.indexOf("#") === 0 && selector.indexOf(' ') < 0) {
         return document.querySelector(selector);
     }
-
 
     return document.querySelectorAll(selector);
 }
@@ -61,8 +59,7 @@ const getDataValueFrom = (element, dataName) => {
 function getTargetDomNode(selector)
 {
     let target = $(selector);
-
-    if (Array.isArray(target) && target) {
+    if (Array.isArray(target) || target) {
         target = target[0];
     }
 
