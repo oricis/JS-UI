@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing file "utils.js"</title>
+
+    <link href="../assets/css/styles.css" rel="stylesheet">
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/asserts.js"></script>
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/datatype-checks.js"></script>
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/framework.js"></script>
+    <script>
+        const cRed = "red";
+        const cGreen = "green";
+    </script>
+    <script src="../../src/utils-arrays.js"></script>
+</head>
+<body>
+    <main class="content">
+        <h2 class="cblue">Open the dev tools / console to watch the tests</h2>
+
+        <section class="top-5">
+            <h3>Tested:</h3>
+            <ul>
+                <li>getPositionFromArray()</li>
+                <li>removeFromArray()</li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        window.onload = () => {
+            let key = '';
+            let result = false;
+            let expected = null;
+            let testedFunName = '';
+
+            let greensCounter = 0;
+            let totalTests    = 0;
+            function check(expected, result)
+            {
+                if (expected === result)
+                    greensCounter++;
+            }
+
+            /***********************************************************
+             * Data for test one
+             *
+             */
+
+            testedFunName = 'getPositionFromArray';
+            totalTests    = 3;
+
+            let arr = ['Jan', 'Feb', 'March', 'April', 'May', 'June'];
+            let str1 = 'Foo';
+            let str2 = 'Jan';
+            let str3 = 'April';
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+
+            result = getPositionFromArray(arr, str1);
+            check(true, assertEquals(-1, result));
+
+            result = getPositionFromArray(arr, str2);
+            check(true, assertEquals(0, result));
+
+            result = getPositionFromArray(arr, str3);
+            check(true, assertEquals(3, result));
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+
+
+            /***********************************************************
+             * Data for test two
+             *
+             */
+
+            testedFunName = 'removeFromArray';
+            greensCounter = 0;
+            totalTests    = 2;
+            arr = ['Jan', 'Feb', 'March', 'April', 'May', 'June'];
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+
+            expected = arr;
+            result = removeFromArray(arr, str1);
+            check(true, assertEquals(expected, result));
+
+            result = arr;
+            result = removeFromArray(result, 'March');
+            result = removeFromArray(result, 'April');
+            result = removeFromArray(result, 'May');
+            expected = ['Jan', 'Feb', 'June'];
+            result = removeFromArray(arr, str1);
+            check(true, assertEquals(expected, result));
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+
+
+            /***********************************************************
+             * Data for test three
+             *
+             */
+
+            testedFunName = 'removeArrayMatches';
+            greensCounter = 0;
+            totalTests = 4;
+            arr = ['Jan', 'Feb', 'March', 'April', 'May', 'June'];
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+
+            expected = arr;
+            result = removeArrayMatches(arr, str1);
+            check(true, assertEquals(expected, result));
+
+            expected = ['Jan', 'Feb', 'April', 'May', 'June'];
+            result = removeArrayMatches(arr, 'March');
+            check(true, assertEquals(expected, result));
+
+            const arr2 = [1, 2, 4, 5, 3, 5, 7, 1, 3, 2, 1];
+            expected = [2, 4, 5, 3, 5, 7, 1, 3, 2, 1];
+            result = removeArrayMatches(arr2, 1, true);
+            check(true, assertEquals(expected, result));
+
+            expected = [2, 4, 5, 3, 5, 7, 3, 2];
+            result = removeArrayMatches(arr2, 1, false);
+            check(true, assertEquals(expected, result));
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+
+        }; // window.onload
+    </script>
+</body>
+</html>
