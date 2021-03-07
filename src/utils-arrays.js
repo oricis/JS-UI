@@ -6,7 +6,7 @@
  * MIT Licence
  */
 
-function getPositionFromArray(arr, element) // int
+function getArrayPosition(arr, element) // int
 {
     return arr.indexOf(element);
 }
@@ -15,9 +15,9 @@ function getPositionFromArray(arr, element) // int
  * Removes the first match from the array
  *
  */
-function removeFromArray(arr, element) // array
+function removeArrayMatch(arr, element) // array
 {
-    const position = getPositionFromArray(arr, element);
+    const position = getArrayPosition(arr, element);
     if (position >= 0) {
         arr.splice(position, 1);
     }
@@ -32,7 +32,7 @@ function removeFromArray(arr, element) // array
 function removeArrayMatches(arr, element, onlyFirst) // array
 {
     if (onlyFirst !== undefined && onlyFirst) {
-        return removeFromArray(arr, element);
+        return removeArrayMatch(arr, element);
     }
 
     let position = 0;

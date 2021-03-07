@@ -3,6 +3,11 @@ import {
     submitFormTo,
 } from './utils.js';
 import {
+    getArrayPosition,
+    removeArrayMatch,
+    removeArrayMatches,
+} from './utils-arrays.js'
+import {
     getLastSlice,
     replaceLastSlice,
     strpos,

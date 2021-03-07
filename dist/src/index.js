@@ -5,6 +5,7 @@
  * https://www.ironwoods.es
  * MIT Licence
  */
+
 // check if the key exist in object / array
 var existObjectKey = function existObjectKey(obj, key) {
   return obj[key] !== undefined;
@@ -13,6 +14,49 @@ var existObjectKey = function existObjectKey(obj, key) {
 var submitFormTo = function submitFormTo(route, form) {
   form.action = route;
   form.submit();
+}
+
+function getArrayPosition(arr, element) // int
+{
+  return arr.indexOf(element);
+}
+
+/**
+ * Removes the first match from the array
+ *
+ */
+function removeArrayMatch(arr, element) // array
+{
+  var position = getArrayPosition(arr, element);
+
+  if (position >= 0) {
+    arr.splice(position, 1);
+  }
+
+  return arr;
+}
+
+/**
+ * Removes the first | all the matches from the array
+ *
+ */
+function removeArrayMatches(arr, element, onlyFirst) // array
+{
+  if (onlyFirst !== undefined && onlyFirst) {
+    return removeArrayMatch(arr, element);
+  }
+
+  var position = 0;
+
+  while (position < arr.length) {
+    if (arr[position] === element) {
+      arr.splice(position, 1);
+    } else {
+      position++;
+    }
+  }
+
+  return arr;
 }
 
 var getLastSlice = function getLastSlice(str, separator) {
@@ -141,8 +185,7 @@ var addClass = function addClass(selector, className, position) {
   // $('div p') returns an node collection
 
 
-  if (target[position] != undefined) addClassTo(target[position], className);
-  else addClassTo(target, className);
+  if (target[position] != undefined) addClassTo(target[position], className); else addClassTo(target, className);
 }
 
 var addClassTo = function addClassTo(element, className) {
@@ -150,7 +193,7 @@ var addClassTo = function addClassTo(element, className) {
 }
 
 var addClassToAll = function addClassToAll(elements, className) {
-  if (!elements || typeof(elements) !== 'object') {
+  if (!elements || _typeof(elements) !== 'object') {
     console.error('addClassToAll() - Err args');
     return;
   }
@@ -205,7 +248,10 @@ var removeClass = function removeClass(selector, className, position) {
   // $('div p') returns an node collection
 
 
-  if (target[position] != undefined) removeClassFrom(target[position], className);else removeClassFrom(target, className);
+  if (target[position] != undefined)
+    removeClassFrom(target[position], className);
+  else
+    removeClassFrom(target, className);
 }
 
 var removeClassFrom = function removeClassFrom(element, className) {
@@ -213,7 +259,7 @@ var removeClassFrom = function removeClassFrom(element, className) {
 }
 
 var removeClassFromAll = function removeClassFromAll(elements, className) {
-  if (!elements || typeof(elements) !== 'object') {
+  if (!elements || _typeof(elements) !== 'object') {
     console.error('removeClassFromAll() - Err args');
     return;
   }

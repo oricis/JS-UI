@@ -22,8 +22,9 @@
         <section class="top-5">
             <h3>Tested:</h3>
             <ul>
-                <li>getPositionFromArray()</li>
-                <li>removeFromArray()</li>
+                <li>getArrayPosition()</li>
+                <li>removeArrayMatch()</li>
+                <li>removeArrayMatches()</li>
             </ul>
         </section>
     </main>
@@ -48,7 +49,7 @@
              *
              */
 
-            testedFunName = 'getPositionFromArray';
+            testedFunName = 'getArrayPosition';
             totalTests    = 3;
 
             let arr = ['Jan', 'Feb', 'March', 'April', 'May', 'June'];
@@ -59,13 +60,13 @@
             console.log('\n================================================');
             console.log('Testing "' + testedFunName + '()"...');
 
-            result = getPositionFromArray(arr, str1);
+            result = getArrayPosition(arr, str1);
             check(true, assertEquals(-1, result));
 
-            result = getPositionFromArray(arr, str2);
+            result = getArrayPosition(arr, str2);
             check(true, assertEquals(0, result));
 
-            result = getPositionFromArray(arr, str3);
+            result = getArrayPosition(arr, str3);
             check(true, assertEquals(3, result));
 
             // Show results
@@ -77,7 +78,7 @@
              *
              */
 
-            testedFunName = 'removeFromArray';
+            testedFunName = 'removeArrayMatch';
             greensCounter = 0;
             totalTests    = 2;
             arr = ['Jan', 'Feb', 'March', 'April', 'May', 'June'];
@@ -86,15 +87,15 @@
             console.log('Testing "' + testedFunName + '()"...');
 
             expected = arr;
-            result = removeFromArray(arr, str1);
+            result = removeArrayMatch(arr, str1);
             check(true, assertEquals(expected, result));
 
             result = arr;
-            result = removeFromArray(result, 'March');
-            result = removeFromArray(result, 'April');
-            result = removeFromArray(result, 'May');
+            result = removeArrayMatch(result, 'March');
+            result = removeArrayMatch(result, 'April');
+            result = removeArrayMatch(result, 'May');
             expected = ['Jan', 'Feb', 'June'];
-            result = removeFromArray(arr, str1);
+            result = removeArrayMatch(arr, str1);
             check(true, assertEquals(expected, result));
 
             // Show results

@@ -51,19 +51,26 @@ Import the bundle file with all the functions. For example:
 
 ### utils.js
 
- * existObjectKey( obj, key )                                  -- tested
- * submitFormTo( route, form )                                 -- tested
+ * existObjectKey( obj, key ) // bool                          -- tested
+ * submitFormTo( route, form ) // void                         -- tested
 
 
 ### utils-strings.js
 
- * getLastSlice( str, separator )                               --tested
- * getSlice( str, position, separator )                         --tested
- * getSlicesLength( str, separator )                            --tested
- * replaceLastSlice( str, newSlice, separator )                 --tested
- * replaceSlice( str, newSlice, position, separator )           --tested
- * strhas( haystack, needle )                                   --tested
- * strpos( haystack, needle )                                   --tested
+ * getArrayPosition( arr, needle ) // int                       --tested
+ * removeArrayMatch( arr, needle ) // array                     --tested
+ * removeArrayMatches( arr, needle, onlyFirst = false) // array --tested
+
+
+### utils-strings.js
+
+ * getLastSlice( str, separator ) // string                     --tested
+ * getSlice( str, position, separator ) // string               --tested
+ * getSlicesLength( str, separator ) // int                     --tested
+ * replaceLastSlice( str, newSlice, separator ) // string       --tested
+ * replaceSlice( str, newSlice, position, separator ) // string --tested
+ * strhas( haystack, needle ) // bool                           --tested
+ * strpos( haystack, needle ) // int                            --tested
 
 
 ***
