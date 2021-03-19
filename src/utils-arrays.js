@@ -47,3 +47,15 @@ function removeArrayMatches(arr, element, onlyFirst) // array
 
     return arr;
 }
+
+function removeDuplicateValues(arr) // array
+{
+    return [...new Set(arr)];
+}
+
+function removeEmptyValues(arr) // array
+{
+    return arr.filter(n => {
+        return (n && n.length > 0);
+    });
+}

@@ -25,6 +25,8 @@
                 <li>getArrayPosition()</li>
                 <li>removeArrayMatch()</li>
                 <li>removeArrayMatches()</li>
+                <li>removeDuplicateValues()</li>
+                <li>removeEmptyValues()</li>
             </ul>
         </section>
     </main>
@@ -131,6 +133,58 @@
             expected = [2, 4, 5, 3, 5, 7, 3, 2];
             result = removeArrayMatches(arr2, 1, false);
             check(true, assertEquals(expected, result));
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+
+
+            /***********************************************************
+             * Data for test four
+             *
+             */
+
+            testedFunName = 'removeDuplicateValues';
+            greensCounter = 0;
+            totalTests = 2;
+            arr = ['Jan', 'Feb', 'Feb'];
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+
+            expected = ['Jan', 'Feb'];
+            result = removeDuplicateValues(arr);
+            check(true, assertEquals(expected, result));
+
+            arr = [1,1,1,2,3,3,4];
+            expected = [1,2,3,4];
+            result = removeDuplicateValues(arr);
+            check(true, assertEquals(expected, result));
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+
+            /***********************************************************
+             * Data for test five
+             *
+             */
+
+            testedFunName = 'removeEmptyValues';
+            greensCounter = 0;
+            totalTests = 2;
+            arr = ['Jan', '', 'Feb', ''];
+
+            expected = ['Jan', 'Feb'];
+            result = removeEmptyValues(arr);
+            check(true, assertEquals(expected, result));
+
+            arr = ['Jan', 0, 'Feb', null, ''];
+
+            expected = ['Jan', 'Feb'];
+            result = removeEmptyValues(arr);
+            check(true, assertEquals(expected, result));
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
 
             // Show results
             showTestsResult(totalTests, greensCounter);

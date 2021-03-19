@@ -13,7 +13,7 @@
         const cGreen = "green";
     </script>
     <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/framework.js"></script>
-    <script src="../../dist/src/index.js" defer></script>
+    <script src="../../src/utils-strings.js" defer></script>
 </head>
 <body>
     <main class="content">
@@ -25,6 +25,8 @@
                 <li>getLastSlice()</li>
                 <li>getSlice()</li>
                 <li>getSlicesLength()</li>
+                <li>reduceWhiteSpaces()</li>
+                <li>removeWhiteSpaces()</li>
                 <li>replaceLastSlice()</li>
                 <li>replaceSlice()</li>
                 <li>strhas()</li>
@@ -55,8 +57,8 @@
             testedFunName = 'getLastSlice';
             totalTests    = 6;
 
-            const str1 = 'Open-bananas';
-            const str2 = 'https//www.miweb.com/param-1/param-2/foo';
+            let str1 = 'Open-bananas';
+            let str2 = 'https//www.miweb.com/param-1/param-2/foo';
 
             console.log('\n================================================');
             console.log('Testing "' + testedFunName + '()"...');
@@ -284,6 +286,58 @@
             check(true, assertEquals(7, result));
             result = strpos(str2, 'param-1');
             check(true, assertEquals(21, result));
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+
+
+            /***********************************************************
+             * Data for test n
+             *
+             */
+
+            testedFunName = 'reduceWhiteSpaces';
+            greensCounter = 0;
+            totalTests    = 2;
+            str1 = 'hola mundo!';
+            str2 = ' hola   mundo   !';
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+
+            expected = 'hola mundo!';
+            result = reduceWhiteSpaces(str1);
+            check(true, assertEquals(expected, result));
+
+            expected = ' hola mundo !';
+            result = reduceWhiteSpaces(str2);
+            check(true, assertEquals(expected, result));
+
+            // Show results
+            showTestsResult(totalTests, greensCounter);
+
+            /***********************************************************
+             * Data for test n
+             *
+             */
+
+            testedFunName = 'removeWhiteSpaces';
+            greensCounter = 0;
+            totalTests    = 2;
+
+            str1 = 'hola mundo!';
+            str2 = ' hola   mundo   !';
+
+            console.log('\n================================================');
+            console.log('Testing "' + testedFunName + '()"...');
+
+            expected = 'holamundo!';
+            result = removeWhiteSpaces(str1);
+            check(true, assertEquals(expected, result));
+
+            expected = 'holamundo!';
+            result = removeWhiteSpaces(str2);
+            check(true, assertEquals(expected, result));
 
             // Show results
             showTestsResult(totalTests, greensCounter);

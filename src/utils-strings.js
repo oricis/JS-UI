@@ -41,7 +41,7 @@ const replaceLastSlice = (str, newSlice, separator) => {
 }
 
 const replaceSlice = (str, newSlice, position, separator) => {
-    if (!str || !newSlice || position === undefined) {
+    if (!str || !newSlice || typeof position == 'undefined') {
         console.error('ERR - Something is wrong with the params!');
         return '';
     }
@@ -68,4 +68,24 @@ const strhas = (haystack, needle) => {
 
 const strpos = (haystack, needle) => {
     return haystack.indexOf(needle);
+}
+
+function reduceWhiteSpaces(str) // string
+{
+    str = new String(str);
+    while (str.includes('  ')) {
+        str = str.replace('  ', ' ');
+    }
+
+    return '' + str;
+}
+
+function removeWhiteSpaces(str) // string
+{
+    str = new String(str);
+    while (str.includes(' ')) {
+        str = str.replace(' ', '');
+    }
+
+    return '' + str;
 }

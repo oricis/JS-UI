@@ -1,4 +1,4 @@
-# JS UI - v.1.4.0
+# JS UI - v.1.5.0
 
 Collection of JS functions to DOM manipulation.
 
@@ -55,11 +55,13 @@ Import the bundle file with all the functions. For example:
  * submitFormTo( route, form ) // void                         -- tested
 
 
-### utils-strings.js
+### utils-arrays.js
 
  * getArrayPosition( arr, needle ) // int                       --tested
  * removeArrayMatch( arr, needle ) // array                     --tested
  * removeArrayMatches( arr, needle, onlyFirst = false) // array --tested
+ * removeDuplicateValues( arr ) // array                        --tested
+ * removeEmptyValues( arr ) // array                            --tested
 
 
 ### utils-strings.js
@@ -67,6 +69,8 @@ Import the bundle file with all the functions. For example:
  * getLastSlice( str, separator ) // string                     --tested
  * getSlice( str, position, separator ) // string               --tested
  * getSlicesLength( str, separator ) // int                     --tested
+ * reduceWhiteSpaces() // string                                --tested
+ * removeWhiteSpaces() // string                                --tested
  * replaceLastSlice( str, newSlice, separator ) // string       --tested
  * replaceSlice( str, newSlice, position, separator ) // string --tested
  * strhas( haystack, needle ) // bool                           --tested

@@ -1,11 +1,3 @@
-/**
- * JS-UI
- *
- * Moisés Alcocer, 2020
- * https://www.ironwoods.es
- * MIT Licence
- */
-
 // check if the key exist in object / array
 var existObjectKey = function existObjectKey(obj, key) {
   return obj[key] !== undefined;
@@ -57,6 +49,18 @@ function removeArrayMatches(arr, element, onlyFirst) // array
   }
 
   return arr;
+}
+
+function removeDuplicateValues(arr) // array
+{
+  return [...new Set(arr)];
+}
+
+function removeEmptyValues(arr) // array
+{
+  return arr.filter(function (n) {
+    return (n && n.length > 0);
+  });
 }
 
 var getLastSlice = function getLastSlice(str, separator) {
@@ -116,6 +120,28 @@ var strhas = function strhas(haystack, needle) {
 
 var strpos = function strpos(haystack, needle) {
   return haystack.indexOf(needle);
+}
+
+function reduceWhiteSpaces(str) // string
+{
+  str = new String(str);
+
+  while (str.includes('  ')) {
+    str = str.replace('  ', ' ');
+  }
+
+  return '' + str;
+}
+
+function removeWhiteSpaces(str) // string
+{
+  str = new String(str);
+
+  while (str.includes(' ')) {
+    str = str.replace(' ', '');
+  }
+
+  return '' + str;
 }
 
 var $ = function $(selector) {
