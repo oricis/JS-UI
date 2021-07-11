@@ -29,3 +29,18 @@ function getTargetDomNode(selector) // js node
 
     return target;
 }
+
+function qi(selector) // js node
+{
+    return document.getElementById(selector);
+}
+
+function qs(selector) // js node
+{
+    return document.querySelector(selector);
+}
+
+function qsa(selector) // js node/s
+{
+    return document.querySelectorAll(selector);
+}
