@@ -97,20 +97,14 @@
             const removeTextStr      = 'remove-text-';
             const swapColorStr       = 'swap-color-';
 
-            const buttonDataObj     = {};
-            const defaultCssClass   = 'cblue';
-            const secondaryCssClass = 'cgrey';
-            const textsSelector     = 'section article p';
+            const buttonDataObj  = {};
+            const defaultClass   = 'cblue';
+            const secondaryClass = 'cgrey';
+            const textsSelector  = 'section article p';
 
-            const removeTextContentByTextId = (id) => {
-                console.log('removeTextContent() - ID: ' + id); // HACK:
-                const key = swapColorStr + id;
 
-                const textId = 'text-' + id;
-                removeTextById(textId);
-            }
             const swapTextColor = (id) => {
-                const key = removeTextStr + id;
+                const key = swapColorStr + id;
 
                 // HACK: traces
                 // console.log('clicked button on element ID: ' + id);
@@ -118,18 +112,21 @@
                 // console.log($('#' + id).id, $('#' + id).className);
 
                 if (! existObjectKey(buttonDataObj, key)) {
-                    buttonDataObj[key] = defaultCssClass;
+                    buttonDataObj[key] = defaultClass;
                 }
 
-                if (buttonDataObj[key] === defaultCssClass) {
-                    buttonDataObj[key] = secondaryCssClass;
-                    removeCssClass('#' + id + ' article p', defaultCssClass);
-                    addCssClass('#' + id + ' article p', secondaryCssClass);
+                const selector = '#' + id + ' article p';
+                console.log(666, selector, $(selector));
+                if (buttonDataObj[key] === defaultClass) {
+                    buttonDataObj[key] = secondaryClass;
+
+                    removeClass(selector, defaultClass);
+                    addClass(selector, secondaryClass);
 
                 } else {
-                    buttonDataObj[key] = defaultCssClass;
-                    removeCssClass('#' + id + ' article p', secondaryCssClass);
-                    addCssClass('#' + id + ' article p', defaultCssClass);
+                    buttonDataObj[key] = defaultClass;
+                    removeClass(selector, secondaryClass);
+                    addClass(selector, defaultClass);
                 }
 
                 console.log('Actual CSS class (text with ID: ' + id + '): '
@@ -137,26 +134,19 @@
             }
 
 
-            const buttons = $('.btn');
+            const buttons = $('article section .btn');
             buttons.forEach(btn => {
 
-                if (strpos(btn.id, swapColorStr)) {
-                    btn.addEventListener('click', (event, btn) => {
-                        const id = getLastSlice(event.target.id, '-');
+                btn.addEventListener('click', (event) => {
+                    const clickedButtonId = event.target.id;
+                    const textId = getLastSlice(clickedButtonId, '-');
 
-                        swapTextColor(id);
-                    });
-
-                    return;
-                }
-
-                if (strpos(btn.id, removeTextStr)) {
-                    btn.addEventListener('click', (event, btn) => {
-                        const id = getLastSlice(event.target.id, '-');
-
-                        removeTextContentByTextId(id);
-                    });
-                }
+                    if (strpos(clickedButtonId, removeTextStr) > -1) {
+                        removeTextById(textId);
+                        return;
+                    }
+                    swapTextColor(textId);
+                });
             });
 
             $('#' + removeAllTextsStr).addEventListener('click', (event) => {

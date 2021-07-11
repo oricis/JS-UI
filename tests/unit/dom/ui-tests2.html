@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="../assets/css/styles.css" rel="stylesheet">
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/asserts.js"></script>
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/datatype-checks.js"></script>
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/framework.js"></script>
+    <script>
+        const $ = (selector) => {
+            if (selector.indexOf("#") === 0 && selector.indexOf(' ') < 0) {
+                return document.querySelector(selector);
+            }
+
+            return document.querySelectorAll(selector);
+        }
+
+        function getAttrValue(selector, attrName)
+        {
+            console.log('getAttrValue()'); // HACK:
+            let target = getTargetDomNode(selector);
+            const result = target.getAttribute(attrName);
+
+            return result ? result : '';
+        }
+        function getTargetDomNode(selector)
+        {
+            console.log('getAttrValue()'); // HACK:
+
+            let target = $(selector);
+            console.log(666, target)
+            if (Array.isArray(target) || target) {
+                console.log(777);
+                return target[0];
+            }
+
+            return target;
+        }
+    </script>
+</head>
+<body>
+    <main class="content">
+        <h2>Test "ui-texts.js" functions</h2>
+
+        <p>Watch results on developer tools / console</p>
+
+        <section class="top-5">
+            <h3 class="top-5">Sandboxes:</h3>
+
+            <div id="sandbox-one" class="sandbox" title="No text here"></div>
+            <div id="sandbox-two" class="sandbox" data-name="two" title="Hoo">Lorem ipsum...</div>
+            <div id="sandbox-three" class="sandbox">Lorem ipsum...</div>
+        </section>
+    </main>
+
+    <script>
+        window.onload = () => {
+            const idOne = 's#andbox-one';
+            const idTwo = '#sandbox-two';
+            const idThree = '#sandbox-three';
+
+            console.log('\n================================================');
+            console.log('Testing "getTargetDomNode()"...');
+            console.log('Get a node');
+
+            let selector = 'div[title="Hoo"]';
+            let node = $(selector);
+            console.log(111, node); // HACK:
+
+            node = getTargetDomNode(selector);
+            console.log(222, node); // HACK:
+
+            console.log('\n================================================');
+            console.log('Testing "getAttrValue()"...');
+            console.log('Get a node attribute value');
+
+            let result = getAttrValue(selector, 'id');
+            console.log(333, result); // result:
+        };
+    </script>
+</body>
+</html>

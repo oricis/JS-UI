@@ -13,7 +13,7 @@
 </head>
 <body class="content">
     <h1 class="foo">Get DOM nodes with (querySelector / querySelectorAll)</h1>
-    <h2 class="top-2">Testing: "ui-styles.js /  getCssClass()"</h2>
+    <h2 class="top-2">Testing: "ui-styles.js /  getClass()"</h2>
     <p class="baz top-5">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate, sint error.</p>
     <p class="baz">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
 
@@ -33,9 +33,9 @@
 
             console.log('Class names: ', result.className, result[0].className);
 
-            console.log('\nClass names with "getCssClass()"');
+            console.log('\nClass names with "getClass()"');
             console.log('DOM nodes: ' + result.length);
-            console.log(getCssClass(selector));
+            console.log(getClass(selector));
         });
 
         $('#several').addEventListener('click', (event) => {
@@ -45,10 +45,10 @@
             // HACK:
             console.log('Class names: ', result.className, result[0].className);
 
-            console.log('\nClass names with "getCssClass()"');
+            console.log('\nClass names with "getClass()"');
             console.log('DOM nodes: ' + result.length);
-            console.log('First CSS class/es: ' + getCssClass(selector));
-            console.log('All: ', getCssClass(selector, 'all'));
+            console.log('First CSS class/es: ' + getClass(selector));
+            console.log('All: ', getClass(selector, 'all'));
         });
     </script>
 </body>

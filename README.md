@@ -1,4 +1,4 @@
-# JS UI - v.1.2.0
+# JS UI - v.1.5.0
 
 Collection of JS functions to DOM manipulation.
 
@@ -27,38 +27,54 @@ Import the bundle file with all the functions. For example:
 
 ### ui-styles.js
 
- * addCssClass( selector, className, position = 0 )             --tested
- * addCssClassTo( element, className )                          --tested
- * getCssClass( selector, position = 0 )                        --tested
- * getCssClassFrom( element )                                   --tested
- * hasCssClass( element, className )                            --tested
- * removeCssClass( selector, className, position = 0 )          --tested
- * removeCssClassFrom( element, className )                     --tested
+ * addClass( selector, className, position = 0 )             --tested
+ * addClassTo( element, className )                          --tested
+ * addClassToAll( elements, className )                      --tested
+ * getClass( selector, position = 0 )                        --tested
+ * getClassFrom( element )                                   --tested
+ * hasClass( element, className )                            --tested
+ * removeClass( selector, className, position = 0 )          --tested
+ * removeClassFrom( element, className )                     --tested
+ * removeClassFromAll( elements, className )                 --tested
+ * toggleClassOf( element, className )                       --tested
 
 
 ### ui-texts.js
 
  * addTextById( id, content )                                   --tested
+ * getText( element )                                           --tested
  * removeText( selector, position = 0 )                         --tested
  * removeTextById( id )                                         --tested
+ * setText( element, content )                                  --tested
  * setTextById( id, content )                                   --tested
 
 
 ### utils.js
 
- * existObjectKey( obj, key )                                  -- tested
- * submitFormTo( route, form )                                 -- tested
+ * existObjectKey( obj, key ) // bool                          -- tested
+ * submitFormTo( route, form ) // void                         -- tested
+
+
+### utils-arrays.js
+
+ * getArrayPosition( arr, needle ) // int                       --tested
+ * removeArrayMatch( arr, needle ) // array                     --tested
+ * removeArrayMatches( arr, needle, onlyFirst = false) // array --tested
+ * removeDuplicateValues( arr ) // array                        --tested
+ * removeEmptyValues( arr ) // array                            --tested
 
 
 ### utils-strings.js
 
- * getLastSlice( str, separator )                               --tested
- * getSlice( str, position, separator )                         --tested
- * getSlicesLength( str, separator )                            --tested
- * replaceLastSlice( str, newSlice, separator )                 --tested
- * replaceSlice( str, newSlice, position, separator )           --tested
- * strhas( haystack, needle )                                   --tested
- * strpos( haystack, needle )                                   --tested
+ * getLastSlice( str, separator ) // string                     --tested
+ * getSlice( str, position, separator ) // string               --tested
+ * getSlicesLength( str, separator ) // int                     --tested
+ * reduceWhiteSpaces() // string                                --tested
+ * removeWhiteSpaces() // string                                --tested
+ * replaceLastSlice( str, newSlice, separator ) // string       --tested
+ * replaceSlice( str, newSlice, position, separator ) // string --tested
+ * strhas( haystack, needle ) // bool                           --tested
+ * strpos( haystack, needle ) // int                            --tested
 
 
 ***

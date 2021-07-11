@@ -299,7 +299,7 @@ var removeClass = function removeClass(selector, className, position) {
   // $('div p') returns an node collection
 
 
-  if (target[position] != undefined) removeClassFrom(target[position], className); else removeClassFrom(target, className);
+  if (target[position] != undefined) removeClassFrom(target[position], className);else removeClassFrom(target, className);
 };
 
 var removeClassFrom = function removeClassFrom(element, className) {

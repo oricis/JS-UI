@@ -49,24 +49,24 @@
     <script>
         window.onload = () => {
             const buttonDataObj     = {};
-            const defaultCssClass   = 'cblue';
-            const secondaryCssClass = 'cgrey';
+            const defaultClass   = 'cblue';
+            const secondaryClass = 'cgrey';
 
             const swapTextColor = (id) => {
                 const key = 'swap-color-' + id;
                 if (! existObjectKey(buttonDataObj, key)) {
-                    buttonDataObj[key] = defaultCssClass;
+                    buttonDataObj[key] = defaultClass;
                 }
 
-                if (buttonDataObj[key] === defaultCssClass) {
-                    buttonDataObj[key] = secondaryCssClass;
-                    removeCssClass('#' + id + ' article p', defaultCssClass);
-                    addCssClass('#' + id + ' article p', secondaryCssClass);
+                if (buttonDataObj[key] === defaultClass) {
+                    buttonDataObj[key] = secondaryClass;
+                    removeClass('#' + id + ' article p', defaultClass);
+                    addClass('#' + id + ' article p', secondaryClass);
 
                 } else {
-                    buttonDataObj[key] = defaultCssClass;
-                    removeCssClass('#' + id + ' article p', secondaryCssClass);
-                    addCssClass('#' + id + ' article p', defaultCssClass);
+                    buttonDataObj[key] = defaultClass;
+                    removeClass('#' + id + ' article p', secondaryClass);
+                    addClass('#' + id + ' article p', defaultClass);
                 }
 
                 console.log('Actual CSS class (text with ID: ' + id + '): '
@@ -74,11 +74,10 @@
             }
 
 
-            const buttons = $('.btn');
-            buttons.forEach(btn => {
+            $('.btn').forEach(button => {
 
-                if (strpos(btn.id, 'swap-css-')) {
-                    btn.addEventListener('click', (event, btn) => {
+                if (strpos(button.id, 'swap-css-') > -1) {
+                    button.addEventListener('click', (event) => {
                         const id = getLastSlice(event.target.id, '-');
 
                         swapTextColor(id);
