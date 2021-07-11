@@ -1,23 +1,35 @@
 import {
     existObjectKey,
     submitFormTo,
-} from './utils.js';
+} from './utils/var.js';
+
 import {
     getArrayPosition,
     removeArrayMatch,
     removeArrayMatches,
-} from './utils-arrays.js'
+} from './utils/arrays.js';
+
 import {
     getLastSlice,
     replaceLastSlice,
     strpos,
-} from './utils-strings.js'
+} from './utils/strings.js';
+
 import {
     $,
-    removeAttrFrom,
+    getId,
+    getTargetDomNode
+} from './dom/query';
+
+import {
     getAttrValue,
-    getDataValue
-} from './ui.js';
+    getAttrValueFrom,
+    getDataValue,
+    getDataValueFrom,
+    removeAttr,
+    removeAttrFrom
+} from './dom/attributes';
+
 import {
     addCssClass,
     addCssClassTo,
@@ -26,10 +38,11 @@ import {
     hasCssClass,
     removeCssClass,
     removeCssClassFrom,
-} from './ui-styles.js';
+} from './dom/style-attributes.js';
+
 import {
     addTextById,
     removeText,
     removeTextById,
     setTextById,
-} from './ui-texts.js';
+} from './dom/texts.js';

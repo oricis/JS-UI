@@ -13,11 +13,6 @@ const addTextById = (id, content) => {
     setText($(id), textContent + content)
 }
 
-function getId(id)
-{
-    return (id.indexOf('#') === 0) ? id : '#' + id;
-}
-
 function getText(element) {
     return element.innerText;
 }

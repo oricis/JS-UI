@@ -1,3 +1,11 @@
+/**
+ * JS-UI - v.1.5.0
+ *
+ * Moisés Alcocer, 2020
+ * https://www.ironwoods.es
+ * MIT Licence
+ */
+
 // check if the key exist in object / array
 var existObjectKey = function existObjectKey(obj, key) {
   return obj[key] !== undefined;
