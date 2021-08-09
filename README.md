@@ -17,12 +17,18 @@ Import the bundle file with all the functions. For example:
 ### ui.js
 
  * $( selector )                                                --tested
- * removeAttr( selector, attrName )                             --tested
- * removeAttrFrom( element, attrName )                          --tested
  * getAttrValue( selector, attrName )                           --tested
  * getAttrValueFrom( element, attrName )                        --tested
  * getDataValue( selector, dataName )                           --tested
  * getDataValueFrom( element, dataName )                        --tested
+ * getIdSelector( selector )
+ * getTargetDomNode( selector )
+ * isIdSelector( selector )
+ * qi( selector )  // document.getElementById( id )
+ * qs( selector )  // document.querySelector( selector )
+ * qsa( selector ) // document.querySelectorAll( selector )
+ * removeAttr( selector, attrName )                             --tested
+ * removeAttrFrom( element, attrName )                          --tested
 
 
 ### ui-styles.js
