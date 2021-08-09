@@ -17,6 +17,7 @@ import {
 
 import {
     $,
+    getIdFromSelector,
     getIdSelector,
     getTargetDomNode,
     isIdSelector,

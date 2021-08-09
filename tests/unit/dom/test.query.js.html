@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test "ui-texts.js" functions</title>
+
+    <link href="https://gitcdn.link/repo/oricis/notes/master/contents/css/reset.css" rel="stylesheet">
+    <link href="https://gitcdn.link/repo/oricis/bootstrap-based-styles/master/assets/buttons-bootstrap-based.css"
+        rel="stylesheet">
+
+    <title>Document</title>
+
+    <link href="../../assets/css/styles.css" rel="stylesheet">
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/check-types.js"></script>
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/asserts.js"></script>
+    <script src="../../../src/dom/query.js" defer></script>
+</head>
+
+<body>
+    <main class="content">
+        <h2>Test "query.js" functions</h2>
+
+        <p>Watch results on developer tools / console</p>
+
+        <section class="top-5">
+            <h3>Testing functions:</h3>
+            <ul id="list" class="top-2">
+                <li>getIdFromSelector( selector )</li>
+                <li>getIdSelector( id )</li>
+            </ul>
+        </section>
+
+        <h3 class="top-5">Sandboxes:</h3>
+        <div id="sandbox-one"></div>
+        <div id="sandbox-two">Lorem ipsum...</div>
+        <div id="sandbox-three" class="foo">Lorem ipsum...</div>
+        <div id="sandbox-four" class="foo" data-name="Foo">Lorem ipsum...</div>
+        <div id="sandbox-five" class="foo" data-name="Baz">Lorem ipsum...</div>
+    </main>
+
+    <script>
+        window.onload = () => {
+            const idOne = 'sandbox-one';
+            const idTwo = 'sandbox-two';
+            const idSelector = '#sandbox-three';
+            const nodeSelector = 'div#sandbox-four.foo[data-name="Foo"]';
+            const nodeSelectorWithoutId = '.foo[data-name="Foo"]'
+
+            console.log('\n================================================');
+            console.log('Testing "getIdFromSelector()"...');
+            console.log('Get the node ID value');
+
+            let result = getIdFromSelector(idOne);
+            console.log(assertEquals(idOne, result));
+
+            result = getIdFromSelector(idSelector);
+            console.log(assertEquals('sandbox-three', result));
+
+            result = getIdFromSelector(nodeSelector);
+            console.log(assertEquals('sandbox-four', result));
+
+            result = getIdFromSelector(nodeSelectorWithoutId);
+            console.log(assertEquals('', result));
+
+            console.log('\n================================================');
+            console.log('Testing "getIdSelector()"...');
+            console.log('Get the node ID value');
+
+            result = getIdSelector(idOne);
+            console.log(assertEquals('#' + idOne, result));
+
+            result = getIdSelector(idSelector);
+            console.log(assertEquals(idSelector, result));
+
+            result = getIdSelector(nodeSelector);
+            console.log(assertEquals('#sandbox-four', result));
+
+            result = getIdSelector(nodeSelectorWithoutId);
+            console.log(assertEquals('', result));
+        };
+    </script>
+</body>
+
+</html>

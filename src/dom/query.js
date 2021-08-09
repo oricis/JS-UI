@@ -15,9 +15,27 @@ function $(selector) // js node/s
     return document.querySelectorAll(selector);
 }
 
-function getIdSelector(id) // string
+function getIdFromSelector(selector) // string
 {
-    return (id[0] === '#') ? id : '#' + id;
+    let cutPosition = selector.indexOf('#');
+    let temp = selector.substr(cutPosition + 1);
+
+    if (temp.includes('.')) {
+        cutPosition = temp.indexOf('.');
+        temp = temp.substr(0, cutPosition);
+    }
+    if (temp.includes('[')) {
+        cutPosition = temp.indexOf('[');
+        temp = temp.substr(0, cutPosition);
+    }
+
+    return temp.trim();
+}
+function getIdSelector(idOrSelector) // string
+{
+    const temp = getIdFromSelector(idOrSelector);
+
+    return (temp) ? '#' + temp : '';
 }
 
 function getTargetDomNode(selector) // js node

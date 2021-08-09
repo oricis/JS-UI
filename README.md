@@ -21,7 +21,8 @@ Import the bundle file with all the functions. For example:
  * getAttrValueFrom( element, attrName )                        --tested
  * getDataValue( selector, dataName )                           --tested
  * getDataValueFrom( element, dataName )                        --tested
- * getIdSelector( selector )
+ * getIdFromSelector( selector )                                --tested
+ * getIdSelector( idOrSelector )                                --tested
  * getTargetDomNode( selector )
  * isIdSelector( selector )
  * qi( selector )  // document.getElementById( id )
