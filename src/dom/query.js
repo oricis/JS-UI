@@ -30,6 +30,16 @@ function getTargetDomNode(selector) // js node
     return target;
 }
 
+function isIdSelector(selector) // bool
+{
+    let response = true;
+    if (selector.includes('.') || selector.includes('[')) {
+        response = false;
+    }
+
+    return response;
+}
+
 function qi(selector) // js node
 {
     return document.getElementById(selector);

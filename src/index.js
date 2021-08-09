@@ -18,7 +18,11 @@ import {
 import {
     $,
     getIdSelector,
-    getTargetDomNode
+    getTargetDomNode,
+    isIdSelector,
+    qi,
+    qs,
+    qsa
 } from './dom/query';
 
 import {
