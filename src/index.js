@@ -17,7 +17,7 @@ import {
 
 import {
     $,
-    getId,
+    getIdSelector,
     getTargetDomNode
 } from './dom/query';
 

@@ -15,9 +15,9 @@ function $(selector) // js node/s
     return document.querySelectorAll(selector);
 }
 
-function getId(id) // string
+function getIdSelector(id) // string
 {
-    return (id.indexOf('#') === 0) ? id : '#' + id;
+    return (id[0] === '#') ? id : '#' + id;
 }
 
 function getTargetDomNode(selector) // js node

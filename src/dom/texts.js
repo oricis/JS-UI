@@ -7,7 +7,7 @@
  */
 
 const addTextById = (id, content) => {
-    id = getId(id);
+    id = getIdSelector(id);
 
     let textContent = getText($(id));
     setText($(id), textContent + content)
@@ -38,7 +38,7 @@ const removeText = (selector, position) => {
 }
 
 const removeTextById = (id) => {
-    id = getId(id);
+    id = getIdSelector(id);
 
     setText($(id), '')
 }
@@ -48,7 +48,7 @@ function setText(element, content) {
 }
 
 const setTextById = (id, content) => {
-    id = getId(id);
+    id = getIdSelector(id);
 
     setText($(id), content)
 }
