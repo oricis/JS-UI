@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing NodeBuilder.js</title>
+
+    <link href="./assets/css/styles.css" rel="stylesheet">
+    <script src="../dist/src/index.js"></script>
+    <script src="../src/dom/NodeBuilder.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Next visible content are being generated with "NodeBuilder.js"</h1>
+    </header>
+
+    <script>
+        const containerNodeAttrs = { 
+            class: 'bordered rounded pad-2 all-5',
+            title: 'this is the main element',
+            'data-author': 'Moisés Alcocer',
+        };
+        
+        let mainTitle = nodeBuilder.build('h3', { class: 'title cblue' });
+        let p1 = nodeBuilder.build('p', { class: 'b' }, null, 'Some text');
+        let p2 = nodeBuilder.build('p', { class: 'cgreen' });
+        mainTitle = nodeBuilder.addHtmlContent(mainTitle, '<strong class="cgrey">Hello World<strong>');
+        p2 = nodeBuilder.addTextContent(p2, 'The second "p" content');
+
+        let main = nodeBuilder.build('main', containerNodeAttrs, null, 'Lorem ipsum');
+        main = nodeBuilder.addChildren(main, [
+            mainTitle,
+            p1,
+            p2,
+        ]);
+
+        const body = qs('body');
+        body.appendChild(main);
+    </script>
+</body>
+</html>
