@@ -1,3 +1,13 @@
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing  : border-box;
+    font-weight : 200;
+    margin      : 0;
+    padding     : 0;
+    text-decoration : none;
+}
+
 .border-box
 {
     border: 1px solid grey;
@@ -13,6 +23,10 @@
 }
 .cgreen {
     color: green;
+}
+
+.block {
+    display: block;
 }
 .flex {
     display: flex;
@@ -37,6 +51,12 @@
 .all-5 {
     margin: 5%;
 }
+.bottom-2 {
+    margin-bottom: 2%;
+}
+.pad-1 {
+    padding: 1%;
+}
 .pad-2 {
     padding: 2%;
 }
@@ -60,6 +80,9 @@
 }
 .w-80 {
     width: 80%;
+}
+.w-100 {
+    width: 100%;
 }
 
 .b {
@@ -88,4 +111,10 @@ header nav div {
 }
 .rounded {
     border-radius: 3px;
+}
+.no-disc {
+    list-style-type: none;
+}
+.a:hover {
+    cursor: pointer;
 }

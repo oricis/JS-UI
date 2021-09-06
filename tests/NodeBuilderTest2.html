@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing NodeBuilder.js</title>
+
+    <link href="./assets/css/styles.css" rel="stylesheet">
+    <script src="../dist/src/index.js"></script>
+    <script src="../src/dom/NodeBuilder.js"></script>
+</head>
+<body>
+    <header class="all-5 bottom-2">
+        <h1>Next visible content are being generated with "NodeBuilder.js"</h1>
+    </header>
+
+    <script>
+        const containerNodeAttrs = { 
+            class: 'bordered rounded pad-2 all-5 no-disc',
+            title: 'this is a list',
+            'data-author': 'Moisés Alcocer',
+        };
+        
+        let mainTitle = nodeBuilder.build('h3', { class: 'title cblue' });
+        mainTitle = nodeBuilder.addHtmlContent(mainTitle, '<strong class="cgrey">Create inputs<strong>');
+        let li1 = nodeBuilder.build('li', { class: 'a', title: 'Create 1 input', 'data-number': 1 }, null, 'One');
+        let li2 = nodeBuilder.build('li', { class: 'top-2 a', title: 'Create 2 inputs', 'data-number': 2 }, null, 'Two');
+        let li3 = nodeBuilder.build('li', { class: 'top-2 a', title: 'Create 3 inputs', 'data-number': 3 }, null, 'Three');
+        
+        let ul = nodeBuilder.build('ul', containerNodeAttrs);
+        ul = nodeBuilder.addChildren(ul, [
+            li1,
+            li2,
+            li3,
+        ]);
+        ul.classList.remove('all-5');
+
+        let main = nodeBuilder.build('main', containerNodeAttrs);
+        main.setAttribute('title', '');
+        main.appendChild(mainTitle);
+        main.appendChild(ul);
+
+        const body = qs('body');
+        body.appendChild(main);
+    </script>
+
+    <script>
+        qsa('li').forEach(node => // void
+        {
+            node.addEventListener('click', function ()
+            {
+                const selectedLinesNumber = node.dataset.number;
+                addLines(selectedLinesNumber);
+            });
+        });
+        function addLines(number) // void
+        {
+            console.log('Adding ' + number + ' lines...');
+            const inputAttributes = { 
+                class: 'rounded bottom-2 block w-100 pad-2', 
+                type: 'text', 
+                placeholder: 'Label'
+            };
+
+            let inputsContainer = nodeBuilder.build('div', { class: 'bordered rounded top-2 pad-1' });
+            for (let index = 0; index <= number; index++) {
+                const id = 'id_' + index;
+                let label = nodeBuilder.build('label', { for: id }, null, 'Label input ' + index + ':');
+                inputsContainer.appendChild(label);
+
+                inputAttributes.id = id;
+                let input = nodeBuilder.build('input', inputAttributes);
+                inputsContainer.appendChild(input);
+                number--;
+            }
+            main.appendChild(inputsContainer);
+        }
+    </script>
+</body>
+</html>
