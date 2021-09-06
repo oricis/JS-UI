@@ -64,7 +64,7 @@
             };
 
             let inputsContainer = nodeBuilder.build('div', { class: 'bordered rounded top-2 pad-1' });
-            for (let index = 0; index <= number; index++) {
+            for (let index = 1; index <= number; index++) {
                 const id = 'id_' + index;
                 let label = nodeBuilder.build('label', { for: id }, null, 'Label input ' + index + ':');
                 inputsContainer.appendChild(label);
@@ -72,7 +72,6 @@
                 inputAttributes.id = id;
                 let input = nodeBuilder.build('input', inputAttributes);
                 inputsContainer.appendChild(input);
-                number--;
             }
             main.appendChild(inputsContainer);
         }
