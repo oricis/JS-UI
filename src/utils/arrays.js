@@ -2,7 +2,7 @@
  * JS-UI
  *
  * Moisés Alcocer, 2021
- * https://www.ironwoods.es
+ * https://www.ironwoods.es / https://github.com/oricis/js-ui
  * MIT Licence
  */
 
