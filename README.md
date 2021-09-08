@@ -1,4 +1,4 @@
-# JS UI - v.1.5.0
+# JS UI - v.1.6.0
 
 Collection of JS functions to DOM manipulation.
 
@@ -19,11 +19,11 @@ Import the bundle file with all the functions. For example:
  > attributes.js
 
  * getAttrValue( selector, attrName )                           --tested
- * getAttrValueFrom( element, attrName )                        --tested
+ * getAttrValueFrom( node, attrName )                           --tested
  * getDataValue( selector, dataName )                           --tested
- * getDataValueFrom( element, dataName )                        --tested
+ * getDataValueFrom( node, dataName )                           --tested
  * removeAttr( selector, attrName )                             --tested
- * removeAttrFrom( element, attrName )                          --tested
+ * removeAttrFrom( node, attrName )                             --tested
 
  > query.js
 
@@ -39,25 +39,34 @@ Import the bundle file with all the functions. For example:
  > style-attributes.js
 
  * addClass( selector, className, position = 0 )                --tested
- * addClassTo( element, className )                             --tested
- * addClassToAll( elements, className )                         --tested
+ * addClassTo( node, className )                                --tested
+ * addClassToAll( nodes, className )
+ * addClassToNodes( className, arrNodesOrSelector )
  * getClass( selector, position = 0 )                           --tested
- * getClassFrom( element )                                      --tested
- * hasClass( element, className )                               --tested
+ * getClassFrom( node )                                         --tested
+ * hasClass( node, className )                                  --tested
  * removeClass( selector, className, position = 0 )             --tested
- * removeClassFrom( element, className )                        --tested
- * removeClassFromAll( elements, className )                    --tested
- * toggleClassOf( element, className )                          --tested
+ * removeClassFrom( node, className )                           --tested
+ * removeClassFromAll( nodes, className )
+ * removeClassFromNodes( className, arrNodesOrSelector )
+ * toggleClassOf( node, className )                             --tested
 
  > texts.js
 
  * addTextById( id, content )                                   --tested
- * getText( element )                                           --tested
+ * getText( node )                                              --tested
  * removeText( selector, position = 0 )                         --tested
  * removeTextById( id )                                         --tested
- * setText( element, content )                                  --tested
+ * setText( node, content )                                     --tested
  * setTextById( id, content )                                   --tested
 
+ > nodes.js
+
+ * disable( nodeOrSelector )
+ * enable( nodeOrSelector )
+ * getNode( nodeOrSelector )
+ * getNodes( nodesOrSelector )
+ * togglePairedDisplay( nodeOrSelectorToShow, nodeOrSelectorToHide )
 
 ### **utils /**
 

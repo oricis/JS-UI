@@ -12,8 +12,8 @@ const addClass = (selector, className, position) => {
 
     if (target && target.length > 1) {
         if (position === 'all') {
-            target.forEach(element => {
-                addClassTo(element, className);
+            target.forEach(node => {
+                addClassTo(node, className);
             });
 
         } else {
@@ -23,28 +23,32 @@ const addClass = (selector, className, position) => {
         return;
     }
 
-    // $('#foo')  returns an element
-    // $('div p') returns an node collection
+    // $('#foo')  returns a node
+    // $('div p') returns a node collection
     if (target[position] != undefined)
         addClassTo(target[position], className);
     else
         addClassTo(target, className);
 }
 
-const addClassTo = (element, className) => {
-    element.classList.add(className);
+const addClassTo = (node, className) => {
+    node.classList.add(className);
 }
 
-const addClassToAll = (elements, className) => {
-    if (!elements || typeof (elements) !== 'object') {
-        console.error('addClassToAll() - Err args');
-        return;
-    }
-
-    elements.forEach(element => {
-        addClassTo(element, className);
-    })
+const addClassToAll = (nodes, className) => {
+    addClassToNodes(className, nodes);
 }
+function addClassToNodes(className, arrNodesOrSelector) // void
+{
+    const nodes = getNodes(arrNodesOrSelector);
+    nodes.forEach(node => // void
+    {
+        if (node) {
+            node.classList.add(className);
+        }
+    });
+}
+
 
 const getClass = (selector, position) => {
     position = position ? position : 0;
@@ -53,8 +57,8 @@ const getClass = (selector, position) => {
     if (target && target.length > 1) {
         if (position === 'all') {
             const classNames = [];
-            target.forEach(element => {
-                classNames.push(element.className);
+            target.forEach(node => {
+                classNames.push(node.className);
             });
 
             return classNames; // array
@@ -66,12 +70,12 @@ const getClass = (selector, position) => {
     return getClassFrom(target[position]); // string
 }
 
-const getClassFrom = (element) => {
-    return element.className; // string
+const getClassFrom = (node) => {
+    return node.className; // string
 }
 
-const hasClass = (element, className) => {
-    return element.classList.contains(className);
+const hasClass = (node, className) => {
+    return node.classList.contains(className);
 }
 
 const removeClass = (selector, className, position) => {
@@ -80,8 +84,8 @@ const removeClass = (selector, className, position) => {
 
     if (target && target.length > 1) {
         if (position === 'all') {
-            target.forEach(element => {
-                removeClassFrom(element, className);
+            target.forEach(node => {
+                removeClassFrom(node, className);
             });
 
         } else {
@@ -91,27 +95,30 @@ const removeClass = (selector, className, position) => {
         return;
     }
 
-    // $('#foo')  returns an element
-    // $('div p') returns an node collection
+    // $('#foo')  returns a node
+    // $('div p') returns a node collection
     if (target[position] != undefined)
         removeClassFrom(target[position], className);
     else
         removeClassFrom(target, className);
 }
 
-const removeClassFrom = (element, className) => {
-    element.classList.remove(className);
+const removeClassFrom = (node, className) => {
+    node.classList.remove(className);
 }
 
-const removeClassFromAll = (elements, className) => {
-    if (!elements || typeof (elements) !== 'object') {
-        console.error('removeClassFromAll() - Err args');
-        return;
-    }
-
-    elements.forEach(element => {
-        removeClassFrom(element, className);
-    })
+const removeClassFromAll = (nodes, className) => {
+    removeClassFromNodes(className, nodes);
+}
+function removeClassFromNodes(className, arrNodesOrSelector) // void
+{
+    const nodes = getNodes(arrNodesOrSelector);
+    nodes.forEach(node => // void
+    {
+        if (node) {
+            node.classList.remove(className);
+        }
+    });
 }
 
 const toggleClassOf = (node, className) => {

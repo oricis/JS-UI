@@ -36,13 +36,26 @@ import {
 } from './dom/attributes';
 
 import {
-    addCssClass,
-    addCssClassTo,
-    getCssClass,
-    getCssClassFrom,
-    hasCssClass,
-    removeCssClass,
-    removeCssClassFrom,
+    disable,
+    enable,
+    getNode,
+    getNodes,
+    togglePairedDisplay,
+} from './dom/nodes';
+
+import {
+    addClass,
+    addClassTo,
+    addClassToAll,
+    addClassToNodes,
+    getClass,
+    getClassFrom,
+    hasClass,
+    removeClass,
+    removeClassFrom,
+    removeClassFromAll,
+    removeClassFromNodes,
+    toggleClassOf,
 } from './dom/style-attributes.js';
 
 import {

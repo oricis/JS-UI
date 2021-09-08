@@ -2,7 +2,7 @@
  * JS-UI
  *
  * Moisés Alcocer, 2020
- * https://www.ironwoods.es
+ * https://www.ironwoods.es / https://github.com/oricis/js-ui
  * MIT Licence
  */
 
@@ -15,12 +15,14 @@ var submitFormTo = function submitFormTo(route, form) {
   form.action = route;
   form.submit();
 };
-
 function getArrayPosition(arr, element) // int
 {
   return arr.indexOf(element);
 }
-
+/**
+ * Removes the first match from the array
+ *
+ */
 function removeArrayMatch(arr, element) // array
 {
   var position = getArrayPosition(arr, element);
@@ -31,7 +33,10 @@ function removeArrayMatch(arr, element) // array
 
   return arr;
 }
-
+/**
+ * Removes the first | all the matches from the array
+ *
+ */
 function removeArrayMatches(arr, element, onlyFirst) // array
 {
   if (onlyFirst !== undefined && onlyFirst) {
@@ -153,9 +158,28 @@ function $(selector) // js node/s
   return document.querySelectorAll(selector);
 }
 
-function getId(id) // string
+function getIdFromSelector(selector) // string
 {
-  return id.indexOf('#') === 0 ? id : '#' + id;
+  var cutPosition = selector.indexOf('#');
+  var temp = selector.substr(cutPosition + 1);
+
+  if (temp.includes('.')) {
+    cutPosition = temp.indexOf('.');
+    temp = temp.substr(0, cutPosition);
+  }
+
+  if (temp.includes('[')) {
+    cutPosition = temp.indexOf('[');
+    temp = temp.substr(0, cutPosition);
+  }
+
+  return temp.trim();
+}
+
+function getIdSelector(idOrSelector) // string
+{
+  var temp = getIdFromSelector(idOrSelector);
+  return temp ? '#' + temp : '';
 }
 
 function getTargetDomNode(selector) // js node
@@ -167,6 +191,17 @@ function getTargetDomNode(selector) // js node
   }
 
   return target;
+}
+
+function isIdSelector(selector) // bool
+{
+  var response = true;
+
+  if (selector.includes('.') || selector.includes('[')) {
+    response = false;
+  }
+
+  return response;
 }
 
 function qi(selector) // js node
@@ -215,23 +250,65 @@ var removeAttrFrom = function removeAttrFrom(element, attrName) {
   element.removeAttribute(attrName);
 };
 
+function disable(nodeOrSelector) // void
+{
+  var node = getNode(nodeOrSelector);
+
+  if (node) {
+    node.classList.add(Settings.DISABLE_CLASS_NAME);
+  }
+}
+
+function enable(nodeOrSelector) // void
+{
+  var node = getNode(nodeOrSelector);
+
+  if (node) {
+    node.classList.remove(Settings.DISABLE_CLASS_NAME);
+  }
+}
+
+function getNode(nodeOrSelector) // js node
+{
+  return typeof nodeOrSelector === 'string' ? qs(nodeOrSelector) : nodeOrSelector;
+}
+
+function getNodes(nodesOrSelector) // js node
+{
+  return typeof nodesOrSelector === 'string' ? qsa(nodesOrSelector) : nodesOrSelector;
+}
+
+function togglePairedDisplay(nodeOrSelectorToShow, nodeOrSelectorToHide) // void
+{
+  var nodeToShow = getNode(nodeOrSelectorToShow);
+  var nodeToHide = getNode(nodeOrSelectorToHide);
+
+  if (nodeToShow) {
+    nodeToShow.classList.remove(Settings.HIDE_CLASS_NAME);
+    nodeToShow.hidden = false;
+  }
+
+  if (nodeToHide) {
+    nodeToHide.classList.add(Settings.HIDE_CLASS_NAME);
+    nodeToShow.hidden = true;
+  }
+}
+
 var addClass = function addClass(selector, className, position) {
   position = position ? position : 0;
   var target = $(selector);
 
   if (target && target.length > 1) {
     if (position === 'all') {
-      target.forEach(function (element) {
-        addClassTo(element, className);
+      target.forEach(function (node) {
+        addClassTo(node, className);
       });
     } else {
       addClassTo(target[position], className);
     }
 
     return;
-  } // $('#foo')  returns an element
-  // $('div p') returns an node collection
-
+  }
 
   if (target[position] != undefined)
     addClassTo(target[position], className);
@@ -239,20 +316,24 @@ var addClass = function addClass(selector, className, position) {
     addClassTo(target, className);
 };
 
-var addClassTo = function addClassTo(element, className) {
-  element.classList.add(className);
+var addClassTo = function addClassTo(node, className) {
+  node.classList.add(className);
 };
 
-var addClassToAll = function addClassToAll(elements, className) {
-  if (!elements || _typeof(elements) !== 'object') {
-    console.error('addClassToAll() - Err args');
-    return;
-  }
+var addClassToAll = function addClassToAll(nodes, className) {
+  addClassToNodes(className, nodes);
+};
 
-  elements.forEach(function (element) {
-    addClassTo(element, className);
+function addClassToNodes(className, arrNodesOrSelector) // void
+{
+  var nodes = getNodes(arrNodesOrSelector);
+  nodes.forEach(function (node) // void
+  {
+    if (node) {
+      node.classList.add(className);
+    }
   });
-};
+}
 
 var getClass = function getClass(selector, position) {
   position = position ? position : 0;
@@ -261,8 +342,8 @@ var getClass = function getClass(selector, position) {
   if (target && target.length > 1) {
     if (position === 'all') {
       var classNames = [];
-      target.forEach(function (element) {
-        classNames.push(element.className);
+      target.forEach(function (node) {
+        classNames.push(node.className);
       });
       return classNames; // array
     }
@@ -273,12 +354,12 @@ var getClass = function getClass(selector, position) {
   return getClassFrom(target[position]); // string
 };
 
-var getClassFrom = function getClassFrom(element) {
-  return element.className; // string
+var getClassFrom = function getClassFrom(node) {
+  return node.className; // string
 };
 
-var hasClass = function hasClass(element, className) {
-  return element.classList.contains(className);
+var hasClass = function hasClass(node, className) {
+  return node.classList.contains(className);
 };
 
 var removeClass = function removeClass(selector, className, position) {
@@ -287,42 +368,47 @@ var removeClass = function removeClass(selector, className, position) {
 
   if (target && target.length > 1) {
     if (position === 'all') {
-      target.forEach(function (element) {
-        removeClassFrom(element, className);
+      target.forEach(function (node) {
+        removeClassFrom(node, className);
       });
     } else {
       removeClassFrom(target[position], className);
     }
 
     return;
-  } // $('#foo')  returns an element
-  // $('div p') returns an node collection
-
-
-  if (target[position] != undefined) removeClassFrom(target[position], className);else removeClassFrom(target, className);
-};
-
-var removeClassFrom = function removeClassFrom(element, className) {
-  element.classList.remove(className);
-};
-
-var removeClassFromAll = function removeClassFromAll(elements, className) {
-  if (!elements || _typeof(elements) !== 'object') {
-    console.error('removeClassFromAll() - Err args');
-    return;
   }
 
-  elements.forEach(function (element) {
-    removeClassFrom(element, className);
-  });
+  if (target[position] != undefined)
+    removeClassFrom(target[position], className);
+  else
+    removeClassFrom(target, className);
 };
+
+var removeClassFrom = function removeClassFrom(node, className) {
+  node.classList.remove(className);
+};
+
+var removeClassFromAll = function removeClassFromAll(nodes, className) {
+  removeClassFromNodes(className, nodes);
+};
+
+function removeClassFromNodes(className, arrNodesOrSelector) // void
+{
+  var nodes = getNodes(arrNodesOrSelector);
+  nodes.forEach(function (node) // void
+  {
+    if (node) {
+      node.classList.remove(className);
+    }
+  });
+}
 
 var toggleClassOf = function toggleClassOf(node, className) {
   node.classList.toggle(className);
 };
 
 var addTextById = function addTextById(id, content) {
-  id = getId(id);
+  id = getIdSelector(id);
   var textContent = getText($(id));
   setText($(id), textContent + content);
 };
@@ -351,7 +437,7 @@ var removeText = function removeText(selector, position) {
 };
 
 var removeTextById = function removeTextById(id) {
-  id = getId(id);
+  id = getIdSelector(id);
   setText($(id), '');
 };
 
@@ -360,6 +446,6 @@ function setText(element, content) {
 }
 
 var setTextById = function setTextById(id, content) {
-  id = getId(id);
+  id = getIdSelector(id);
   setText($(id), content);
 };
