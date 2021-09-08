@@ -14,39 +14,42 @@ Import the bundle file with all the functions. For example:
 
 ## Available functions
 
-### ui.js
+### **dom /**
 
- * $( selector )                                                --tested
+ > attributes.js
+
  * getAttrValue( selector, attrName )                           --tested
  * getAttrValueFrom( element, attrName )                        --tested
  * getDataValue( selector, dataName )                           --tested
  * getDataValueFrom( element, dataName )                        --tested
+ * removeAttr( selector, attrName )                             --tested
+ * removeAttrFrom( element, attrName )                          --tested
+
+ > query.js
+
+ * $( selector )                                                --tested
  * getIdFromSelector( selector )                                --tested
  * getIdSelector( idOrSelector )                                --tested
  * getTargetDomNode( selector )
  * isIdSelector( selector )
- * qi( selector )  // document.getElementById( id )
- * qs( selector )  // document.querySelector( selector )
- * qsa( selector ) // document.querySelectorAll( selector )
- * removeAttr( selector, attrName )                             --tested
- * removeAttrFrom( element, attrName )                          --tested
+ * qi( selector )  // wrap for document.getElementById( id )
+ * qs( selector )  // wrap for document.querySelector( selector )
+ * qsa( selector ) // wrap for document.querySelectorAll( selector )
 
+ > style-attributes.js
 
-### ui-styles.js
+ * addClass( selector, className, position = 0 )                --tested
+ * addClassTo( element, className )                             --tested
+ * addClassToAll( elements, className )                         --tested
+ * getClass( selector, position = 0 )                           --tested
+ * getClassFrom( element )                                      --tested
+ * hasClass( element, className )                               --tested
+ * removeClass( selector, className, position = 0 )             --tested
+ * removeClassFrom( element, className )                        --tested
+ * removeClassFromAll( elements, className )                    --tested
+ * toggleClassOf( element, className )                          --tested
 
- * addClass( selector, className, position = 0 )             --tested
- * addClassTo( element, className )                          --tested
- * addClassToAll( elements, className )                      --tested
- * getClass( selector, position = 0 )                        --tested
- * getClassFrom( element )                                   --tested
- * hasClass( element, className )                            --tested
- * removeClass( selector, className, position = 0 )          --tested
- * removeClassFrom( element, className )                     --tested
- * removeClassFromAll( elements, className )                 --tested
- * toggleClassOf( element, className )                       --tested
-
-
-### ui-texts.js
+ > texts.js
 
  * addTextById( id, content )                                   --tested
  * getText( element )                                           --tested
@@ -56,13 +59,9 @@ Import the bundle file with all the functions. For example:
  * setTextById( id, content )                                   --tested
 
 
-### utils.js
+### **utils /**
 
- * existObjectKey( obj, key ) // bool                          -- tested
- * submitFormTo( route, form ) // void                         -- tested
-
-
-### utils-arrays.js
+ > arrays.js
 
  * getArrayPosition( arr, needle ) // int                       --tested
  * removeArrayMatch( arr, needle ) // array                     --tested
@@ -71,7 +70,15 @@ Import the bundle file with all the functions. For example:
  * removeEmptyValues( arr ) // array                            --tested
 
 
-### utils-strings.js
+ > NodeBuilder.js (class)
+ * addAttributes( node, objAttributes)                          --tested
+ * addChildren( node, arrChildNodes)                            --tested
+ * addHtmlContent( node, htmlString)                            --tested
+ * addTextContent( node, text)                                  --tested
+ * build( strElement, objAttributes, arrChildNodes, text)       --tested
+
+
+ > strings.js
 
  * getLastSlice( str, separator ) // string                     --tested
  * getSlice( str, position, separator ) // string               --tested
@@ -83,12 +90,17 @@ Import the bundle file with all the functions. For example:
  * strhas( haystack, needle ) // bool                           --tested
  * strpos( haystack, needle ) // int                            --tested
 
+> var.js
+
+ * existObjectKey( obj, key ) // bool                          -- tested
+ * submitFormTo( route, form ) // void                         -- tested
 
 ***
 ## About
 
-This project was started in October of 2020 by ** Moisés Alcocer** to join
-different JavaScript functions used in different projects along the time.
+This project was started in October of 2020 by ** Moisés Alcocer**
+to put in one only place different JavaScript functions
+used in different projects along the time.
 
 To known more email me: contacto@ironwoods.es or visit my website:
 https://www.ironwoods.es

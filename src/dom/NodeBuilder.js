@@ -1,4 +1,12 @@
-class NodeBuilder 
+/**
+ * JS-UI
+ *
+ * Moisés Alcocer, 2021
+ * https://www.ironwoods.es / https://github.com/oricis/js-ui
+ * MIT Licence
+ */
+
+class NodeBuilder
 {
 
     addAttributes(node, objAttributes = {}) // js node
@@ -6,7 +14,7 @@ class NodeBuilder
         for (const key in objAttributes) {
             if (Object.hasOwnProperty.call(objAttributes, key)) {
                 const element = objAttributes[key];
-                
+
                 node.setAttribute(key, element);
             }
         }
