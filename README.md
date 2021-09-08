@@ -1,4 +1,4 @@
-# JS UI - v.1.6.0
+# JS UI - v.1.7.0
 
 Collection of JS functions to DOM manipulation.
 
@@ -11,6 +11,16 @@ Import the bundle file with all the functions. For example:
 
     <script src="../dist/src/index.js" defer></script>
 
+Some specific use functions aren't in the bundle file,
+then they can be used separately, loading their files, f.e.:
+
+    <script src="./src/utils/traces.js" defer></script>
+
+*This file content wrapper function to use `console` methods, possible results:*
+
+![traces1](https://user-images.githubusercontent.com/7187599/132551227-1e5ba469-2273-4a1e-aa2e-7da64a826816.png)
+
+![traces2](https://user-images.githubusercontent.com/7187599/132551232-395c60fd-5103-4311-b2aa-2fdd6bc2a334.png)
 
 ## Available functions
 
@@ -98,6 +108,23 @@ Import the bundle file with all the functions. For example:
  * replaceSlice( str, newSlice, position, separator ) // string --tested
  * strhas( haystack, needle ) // bool                           --tested
  * strpos( haystack, needle ) // int                            --tested
+
+> traces.js
+
+ * api()                                                       -- tested
+ * async()                                                     -- tested
+ * colorize( data, color, bold = false )                       -- tested
+ * echo()                                                      -- tested
+ * err()                                                       -- tested
+ * error()                                                     -- tested
+ * event( message, event = 'click' )                           -- tested
+ * hack()                                                      -- tested
+ * log()                                                       -- tested
+ * logger()                                                    -- tested
+ * note( message )                                             -- tested
+ * todo( message )                                             -- tested
+ * warn( message )                                             -- tested
+ * warning( message )                                          -- tested
 
 > var.js
 

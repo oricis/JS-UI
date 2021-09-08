@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="../../../src/utils/traces.js"></script>
+    <script>
+        const message = 'Lorem ipsum';
+        const message2 = 'Lorem ipsum sit amend';
+
+
+
+        api(message, message2);
+        async(message, message2);
+        colorize(message, 'red')
+        colorize(message, 'red', true);
+        echo(message, message2);
+        err(message, message2);
+        error(message, message2);
+
+        event(message, message2);
+        hack(message, message2);
+        log(message, message2);
+        logger(message, message2);
+
+        note(message, message2);
+        todo(message, message2);
+        warn(message, message2);
+        warning(message, message2);
+        /**/
+    </script>
+</head>
+<body>
+    <main class="content">
+        <h2>Testing ./src/utils/traces.js</h2>
+        <h3>Wrapper function to console methods</h3>
+
+        <p>Watch results on developer tools / console</p>
+    </main>
+</body>
+</html>
