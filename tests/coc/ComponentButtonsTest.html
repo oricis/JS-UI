@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test COC class: ComponentButtons</title>
+
+    <link href="../assets/css/iw-styles.css" rel="stylesheet">
+    <style>
+        * {
+            font-size: 16px;
+        }
+        .multi-check-selector input {
+            height      : 2rem;
+            margin-right: .75rem;
+            width       : 2rem;
+        }
+        .multi-check-selector li {
+            margin-top: 2%;
+        }
+
+        @media (min-width: 800px) {
+            .dropdown-options {
+                padding: 2rem 3rem;
+            }
+        }
+
+        .btn {
+            border        : 1px solid grey;
+            border-radius : 4px;
+            color         : white;
+            cursor        : pointer;
+            font-weight   : bold;
+            padding       : 9px;
+        }
+        .btn:hover {
+            opacity: 0.75;
+        }
+        .btn-danger {
+            border-color: red;
+            background-color: rgb(148, 0, 0);
+        }
+        .btn-primary {
+            border-color: blue;
+            background-color: rgb(51, 51, 194);
+        }
+    </style>
+
+    <script src="../../dist/src/index.js" defer></script>
+    <script src="../../src/coc/ComponentButtons.js" defer></script>
+    <script src="../assets/js/componentButtonsTest.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Testing <em class="cblue">ComponentButtons.js</em></h1>
+    </header>
+    <main>
+        <section class="component dropdown-options
+            form-group centered bordered rounded pad-5 pad-b-2 pad-t-2 wm-30 wmx-30">
+            <h3 hidden>Selector de periodo</h3>
+
+            <label for="select" class="b cblue">
+                Seleccionar período
+            </label>
+            <select class="top-2 rounded pad-2 pad-l-5 pad-r-5 wm-20"
+                id="select">
+                <option value="1">Primer semextre</option>
+                <option value="2">Último semestre</option>
+            </select>
+        </section>
+        <section class="component months-selector
+            bordered rounded centered pad-5 pad-b-2 pad-t-2  wm-30 wmx-30 top-5">
+            <h3 class="cblue">Seleccionar meses</h3>
+
+            <ul class="component multi-check-selector
+                flex flex-column centered bordered rounded pad-2 top-2"
+                id="first-semester">
+                <li class="flex align-center">
+                    <input type="checkbox" class="" name="month[]" value="1">
+                    <label class="">
+                        Enero
+                    </label>
+                </li>
+                <li class="flex align-center">
+                    <input type="checkbox" class="" name="month[]" value="2">
+                    <label class="">
+                        Febrero
+                    </label>
+                </li>
+                <li class="flex align-center">
+                    <input type="checkbox" class="" name="month[]" value="3">
+                    <label class="">
+                        Marzo
+                    </label>
+                </li>
+                <li class="flex align-center">
+                    <input type="checkbox" class="" name="month[]" value="4">
+                    <label class="">
+                        Abril
+                    </label>
+                </li>
+                <li class="flex align-center">
+                    <input type="checkbox" class="" name="month[]" value="5">
+                    <label class="">
+                        Mayo
+                    </label>
+                </li>
+                <li class="flex align-center">
+                    <input type="checkbox" class="" name="month[]" value="6">
+                    <label class="">
+                        Junio
+                    </label>
+                </li>
+            </ul>
+
+            <ul class="component multi-check-selector
+                flex flex-column centered bordered rounded pad-2 top-2 none"
+                id="second-semester">
+                <li class="flex align-center">
+                    <input type="checkbox" class="" name="month[]" value="7">
+                    <label class="">
+                        Julio
+                    </label>
+                </li>
+                <li class="flex align-center">
+                    <input type="checkbox" class="" name="month[]" value="8">
+                    <label class="">
+                        Agosto
+                    </label>
+                </li>
+                <li class="flex align-center">
+                    <input type="checkbox" class="" name="month[]" value="9">
+                    <label class="">
+                        Septiembre
+                    </label>
+                </li>
+                <li class="flex align-center">
+                    <input type="checkbox" class="" name="month[]" value="10">
+                    <label class="">
+                        Octubre
+                    </label>
+                </li>
+                <li class="flex align-center">
+                    <input type="checkbox" class="" name="month[]" value="11">
+                    <label class="">
+                        Noviembre
+                    </label>
+                </li>
+                <li class="flex align-center">
+                    <input type="checkbox" class="" name="month[]" value="12">
+                    <label class="">
+                        Diciembre
+                    </label>
+                </li>
+            </ul>
+
+            <div class="button-group right-content">
+                <button class="btn btn-danger btn-small right-2" data-action="cancel">Cancelar</button>
+                <button class="btn btn-primary btn-small" data-action="accept">Guardar</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

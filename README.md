@@ -22,7 +22,15 @@ then they can be used separately, loading their files, f.e.:
 
 ![traces2](https://user-images.githubusercontent.com/7187599/132551232-395c60fd-5103-4311-b2aa-2fdd6bc2a334.png)
 
+Since v.2.0.0 some COC *(Component Oriented Classes)* were included.
+These classes use different functions from the bundle file,
+but they aren't included themselves.
+
 ## Available functions
+
+### **coc /**
+
+ > ComponentButtons.js                           --tested in progress...
 
 ### **dom /**
 
