@@ -7,6 +7,7 @@
     <title>Test COC class: ComponentButtons</title>
 
     <link href="../assets/css/iw-styles.css" rel="stylesheet">
+    <link href="../assets/css/buttons-bootstrap-based.css" rel="stylesheet">
     <style>
         * {
             font-size: 16px;
@@ -27,30 +28,11 @@
                 padding: .25rem;
             }
         }
-
-        .btn {
-            border        : 1px solid grey;
-            border-radius : 4px;
-            color         : white;
-            cursor        : pointer;
-            font-weight   : bold;
-            padding       : 9px;
-        }
-        .btn:hover {
-            opacity: 0.75;
-        }
-        .btn-danger {
-            border-color: red;
-            background-color: rgb(148, 0, 0);
-        }
-        .btn-primary {
-            border-color: blue;
-            background-color: rgb(51, 51, 194);
-        }
     </style>
 
     <script src="../../dist/src/index.js" defer></script>
     <script src="../../src/coc/ComponentButtons.js" defer></script>
+    <script src="../../src/utils/traces.js" defer></script>
     <script src="../assets/js/componentButtonsTest.js" defer></script>
 </head>
 <body>
@@ -163,8 +145,8 @@
                 </ul>
 
                 <div class="button-group right-content">
-                    <button class="btn btn-danger btn-small right-2" data-action="cancel">Cancelar</button>
-                    <button class="btn btn-primary btn-small" data-action="accept">Guardar</button>
+                    <button class="btn btn-danger btn-small disabled right-2" data-action="cancel">Cancelar</button>
+                    <button class="btn btn-primary btn-small disabled" data-action="accept">Guardar</button>
                 </div>
             </div>
         </section>
