@@ -20,9 +20,11 @@
             margin-top: 2%;
         }
 
-        @media (min-width: 800px) {
-            .dropdown-options {
-                padding: 2rem 3rem;
+        @media (max-width: 400px) {
+            footer,
+            header,
+            main {
+                padding: .25rem;
             }
         }
 
@@ -57,107 +59,113 @@
     </header>
     <main>
         <section class="component dropdown-options
-            form-group centered bordered rounded pad-5 pad-b-2 pad-t-2 wm-30 wmx-30">
-            <h3 hidden>Selector de periodo</h3>
+            centered bordered rounded pad-b-2 pad-t-2 wm-30 wmx-30 top-2">
+            <div class="centered wm-25 wmx-25">
+                <h3 hidden>Selector de periodo</h3>
 
-            <label for="select" class="b cblue">
-                Seleccionar período
-            </label>
-            <select class="top-2 rounded pad-2 pad-l-5 pad-r-5 wm-20"
-                id="select">
-                <option value="1">Primer semextre</option>
-                <option value="2">Último semestre</option>
-            </select>
+                <div class="form-group all-0">
+                    <label for="select" class="b cblue">
+                        Seleccionar período
+                    </label>
+                    <select class="top-2 rounded wm-25"
+                        id="select">
+                        <option value="1">Primer semextre</option>
+                        <option value="2">Último semestre</option>
+                    </select>
+                </div>
+            </div>
         </section>
         <section class="component months-selector
-            bordered rounded centered pad-5 pad-b-2 pad-t-2  wm-30 wmx-30 top-5">
-            <h3 class="cblue">Seleccionar meses</h3>
+            centered bordered rounded pad-b-2 pad-t-2 wm-30 wmx-30 top-5">
+            <div class="centered wm-25 wmx-25">
+                <h3 class="cblue">Seleccionar meses</h3>
 
-            <ul class="component multi-check-selector
-                flex flex-column centered bordered rounded pad-2 top-2"
-                id="first-semester">
-                <li class="flex align-center">
-                    <input type="checkbox" class="" name="month[]" value="1">
-                    <label class="">
-                        Enero
-                    </label>
-                </li>
-                <li class="flex align-center">
-                    <input type="checkbox" class="" name="month[]" value="2">
-                    <label class="">
-                        Febrero
-                    </label>
-                </li>
-                <li class="flex align-center">
-                    <input type="checkbox" class="" name="month[]" value="3">
-                    <label class="">
-                        Marzo
-                    </label>
-                </li>
-                <li class="flex align-center">
-                    <input type="checkbox" class="" name="month[]" value="4">
-                    <label class="">
-                        Abril
-                    </label>
-                </li>
-                <li class="flex align-center">
-                    <input type="checkbox" class="" name="month[]" value="5">
-                    <label class="">
-                        Mayo
-                    </label>
-                </li>
-                <li class="flex align-center">
-                    <input type="checkbox" class="" name="month[]" value="6">
-                    <label class="">
-                        Junio
-                    </label>
-                </li>
-            </ul>
+                <ul class="component multi-check-selector
+                    flex flex-column centered bordered rounded pad-2 top-2"
+                    id="first-semester">
+                    <li class="flex align-center">
+                        <input type="checkbox" class="" name="month[]" value="1">
+                        <label class="">
+                            Enero
+                        </label>
+                    </li>
+                    <li class="flex align-center">
+                        <input type="checkbox" class="" name="month[]" value="2">
+                        <label class="">
+                            Febrero
+                        </label>
+                    </li>
+                    <li class="flex align-center">
+                        <input type="checkbox" class="" name="month[]" value="3">
+                        <label class="">
+                            Marzo
+                        </label>
+                    </li>
+                    <li class="flex align-center">
+                        <input type="checkbox" class="" name="month[]" value="4">
+                        <label class="">
+                            Abril
+                        </label>
+                    </li>
+                    <li class="flex align-center">
+                        <input type="checkbox" class="" name="month[]" value="5">
+                        <label class="">
+                            Mayo
+                        </label>
+                    </li>
+                    <li class="flex align-center">
+                        <input type="checkbox" class="" name="month[]" value="6">
+                        <label class="">
+                            Junio
+                        </label>
+                    </li>
+                </ul>
 
-            <ul class="component multi-check-selector
-                flex flex-column centered bordered rounded pad-2 top-2 none"
-                id="second-semester">
-                <li class="flex align-center">
-                    <input type="checkbox" class="" name="month[]" value="7">
-                    <label class="">
-                        Julio
-                    </label>
-                </li>
-                <li class="flex align-center">
-                    <input type="checkbox" class="" name="month[]" value="8">
-                    <label class="">
-                        Agosto
-                    </label>
-                </li>
-                <li class="flex align-center">
-                    <input type="checkbox" class="" name="month[]" value="9">
-                    <label class="">
-                        Septiembre
-                    </label>
-                </li>
-                <li class="flex align-center">
-                    <input type="checkbox" class="" name="month[]" value="10">
-                    <label class="">
-                        Octubre
-                    </label>
-                </li>
-                <li class="flex align-center">
-                    <input type="checkbox" class="" name="month[]" value="11">
-                    <label class="">
-                        Noviembre
-                    </label>
-                </li>
-                <li class="flex align-center">
-                    <input type="checkbox" class="" name="month[]" value="12">
-                    <label class="">
-                        Diciembre
-                    </label>
-                </li>
-            </ul>
+                <ul class="component multi-check-selector
+                    flex flex-column centered bordered rounded pad-2 top-2 wm-25 wmx-25 none"
+                    id="second-semester">
+                    <li class="flex align-center">
+                        <input type="checkbox" class="" name="month[]" value="7">
+                        <label class="">
+                            Julio
+                        </label>
+                    </li>
+                    <li class="flex align-center">
+                        <input type="checkbox" class="" name="month[]" value="8">
+                        <label class="">
+                            Agosto
+                        </label>
+                    </li>
+                    <li class="flex align-center">
+                        <input type="checkbox" class="" name="month[]" value="9">
+                        <label class="">
+                            Septiembre
+                        </label>
+                    </li>
+                    <li class="flex align-center">
+                        <input type="checkbox" class="" name="month[]" value="10">
+                        <label class="">
+                            Octubre
+                        </label>
+                    </li>
+                    <li class="flex align-center">
+                        <input type="checkbox" class="" name="month[]" value="11">
+                        <label class="">
+                            Noviembre
+                        </label>
+                    </li>
+                    <li class="flex align-center">
+                        <input type="checkbox" class="" name="month[]" value="12">
+                        <label class="">
+                            Diciembre
+                        </label>
+                    </li>
+                </ul>
 
-            <div class="button-group right-content">
-                <button class="btn btn-danger btn-small right-2" data-action="cancel">Cancelar</button>
-                <button class="btn btn-primary btn-small" data-action="accept">Guardar</button>
+                <div class="button-group right-content">
+                    <button class="btn btn-danger btn-small right-2" data-action="cancel">Cancelar</button>
+                    <button class="btn btn-primary btn-small" data-action="accept">Guardar</button>
+                </div>
             </div>
         </section>
     </main>
