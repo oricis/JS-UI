@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test COC class: ComponentButtons</title>
+
+    <link href="../../../assets/css/iw-styles.css" rel="stylesheet">
+    <link href="../../../assets/css/buttons-bootstrap-based.css" rel="stylesheet">
+    <style>
+        * {
+            font-size: 16px;
+        }
+        @media (max-width: 400px) {
+
+            footer,
+            header,
+            main {
+                padding: .25rem;
+            }
+        }
+    </style>
+
+    <script src="../../../../dist/src/index.js" defer></script>
+    <script src="../../../../src/utils/traces.js" defer></script>
+    <script src="../../../../src/dom/forms/common.js" defer></script>
+    <script src="../../../../src/dom/forms/select.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Testing <em class="cblue">ComponentButtons.js</em></h1>
+    </header>
+    <main>
+        <section class="component dropdown-options
+            centered bordered rounded pad-b-2 pad-t-2 wm-30 wmx-30 top-2">
+            <div class="centered wm-25 wmx-25">
+                <h3 hidden>Selector de periodo</h3>
+
+                <div class="form-group all-0">
+                    <label for="select" class="b cblue">
+                        Seleccionar período
+                    </label>
+                    <select class="top-2 rounded wm-25" id="select">
+                        <option value="1" selected>Primer semextre</option>
+                        <option value="2">Último semestre</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        window.onload = () => {
+            const select = qs('select');
+
+            log('Select options: ', getOptions(select));
+            log('Select selected options: ', getSelectedOptions(select));
+            log('Select values: ', getOptionsValues(select));
+            log('Select contents: ', getOptionsContents(select));
+        };
+    </script>
+</body>
+</html>

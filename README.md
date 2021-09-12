@@ -86,6 +86,20 @@ but they aren't included themselves.
  * getNodes( nodesOrSelector )
  * togglePairedDisplay( nodeOrSelectorToShow, nodeOrSelectorToHide )
 
+### **dom / forms/ **
+
+ > common.js
+
+ * getValuesFromNodes( nodes )                                  --tested
+ * getTextContentsFromNodes( nodes )                            --tested
+
+ > select.js
+
+ * getOptions( select, onlySelected = false )                   --tested
+ * getOptionsContents( selectOrOptions )                        --tested
+ * getOptionsValues( selectOrOptions )                          --tested
+ * getSelectedOptions( select )                                 --tested
+
 ### **utils /**
 
  > arrays.js
