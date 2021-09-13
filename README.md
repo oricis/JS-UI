@@ -88,6 +88,11 @@ but they aren't included themselves.
 
 ### **dom / forms/ **
 
+> checkboxes-and-radios.js
+
+ * checkAll
+ * uncheckAll
+
  > common.js
 
  * getValuesFromNodes( nodes )                                  --tested
