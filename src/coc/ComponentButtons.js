@@ -2,14 +2,21 @@ console.log('loaded ./coc/ComponentButtons.js'); // HACK:
 
 class ComponentButtons
 {
-    COMPONENT_SELECTOR = '';
-    CANCEL_BUTTON_SELECTOR = 'button[data-action="cancel"]';
     ACCEPT_BUTTON_SELECTOR = 'button[data-action="accept"]';
+    CANCEL_BUTTON_SELECTOR = 'button[data-action="cancel"]';
+    COMPONENT_SELECTOR = '';
 
 
     constructor(componentSelector, acceptButtonSelector, cancelButtonSelector) // void
     {
         this.COMPONENT_SELECTOR = componentSelector;
+
+        if (acceptButtonSelector) {
+            this.ACCEPT_BUTTON_SELECTOR = acceptButtonSelector;
+        }
+        if (cancelButtonSelector) {
+            this.CANCEL_BUTTON_SELECTOR = cancelButtonSelector;
+        }
     }
 
     getAcceptButtonNode() // js node
