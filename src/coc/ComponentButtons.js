@@ -1,4 +1,4 @@
-console.log('loaded js/pages/shop/classes/CustomizationLines.js'); // HACK:
+console.log('loaded ./coc/ComponentButtons.js'); // HACK:
 
 class ComponentButtons
 {

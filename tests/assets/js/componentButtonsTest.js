@@ -1,4 +1,4 @@
-event('Loaded script to test "ComponentButtons.js"', 'loaded');
+console.log('Loaded script to test "ComponentButtons.js"...');
 
 const MONTHS_SELECTION_COMPONENT_SELECTOR = '.component.months-selector';
 
@@ -64,7 +64,24 @@ function handleSelect() // void
     if (select) {
         select.onchange = () => // void
         {
-            event('handleSelect has changed', 'onchange');
+            const selectedOptions = getSelectedOptions(select);
+            if (selectedOptions.length) {
+                const selectedOptionValue = selectedOptions[0].value;
+
+                const monthSelectors = qsa('ul.component.multi-check-selector');
+                monthSelectors.forEach((node, index) => // void
+                {
+                    toggleMonthSelectors(selectedOptionValue, node, index);
+                });
+            }
+        }
+    }
+
+    function toggleMonthSelectors(selectedOptionValue, node, index) // void
+    {
+        node.classList.add('none');
+        if ((index + 1) == selectedOptionValue) {
+            node.classList.remove('none');
         }
     }
 }
