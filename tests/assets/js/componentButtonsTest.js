@@ -52,9 +52,9 @@ function handleSelect() // void
 
     function toggleMonthSelectors(selectedOptionValue, node, index) // void
     {
-        node.classList.add('none');
+        node.classList.add(Settings.HIDE_CLASS_NAME);
         if ((index + 1) == selectedOptionValue) {
-            node.classList.remove('none');
+            node.classList.remove(Settings.HIDE_CLASS_NAME);
         }
     }
 }
