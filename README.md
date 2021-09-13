@@ -30,7 +30,19 @@ but they aren't included themselves.
 
 ### **coc /**
 
- > ComponentButtons.js                           --tested in progress...
+ > CheckboxesSelector.js
+
+ * @getCheckboxes()                                             --tested
+ * @getCheckboxesValues( checkboxNodes = null )                 --tested
+ * @getCheckedCheckboxes( checkboxNodes = null )                --tested
+ * @handleCheckboxesActivation( callback, callbackParams, confirmMessage = '' ) --tested
+
+ > ComponentButtons.js
+ * @getAcceptButtonNode()                                       --tested
+ * @getCancelButtonNode()                                       --tested
+ * @handleAcceptButtonActivation( callback, callbackParams, confirmMessage = '' ) --tested
+ * @handleCancelButtonActivation( callback, callbackParams, confirmMessage = '' ) --tested
+ * @handleRelatedButtonsGroup( groupSelector, callback, callbackParams )
 
 ### **dom /**
 

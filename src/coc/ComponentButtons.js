@@ -1,4 +1,4 @@
-console.log('loaded ./coc/ComponentButtons.js'); // HACK:
+console.log('Loaded ./coc/ComponentButtons.js'); // HACK:
 
 class ComponentButtons
 {
@@ -71,11 +71,11 @@ class ComponentButtons
         });
     }
 
-    handleRelatedButtonsGroup(serieSelector, callback, callbackParams) // void
+    handleRelatedButtonsGroup(groupSelector, callback, callbackParams) // void
     {
-        const buttonNodes = qsa(serieSelector);
-        if (serieSelector.length) {
-            serieSelector.forEach(buttonNode => // void
+        const buttonNodes = qsa(groupSelector);
+        if (groupSelector.length) {
+            groupSelector.forEach(buttonNode => // void
             {
                 buttonNode.addEventListener('click', function (ev) // void
                 {

@@ -1,25 +1,19 @@
-console.log('Loaded script to test "ComponentButtons.js"...');
+console.log('Loaded script to test "checkboxesSelector.js"...');
 
 const MONTHS_SELECTION_COMPONENT_SELECTOR = '.component.months-selector';
 
-const componentButtons = new ComponentButtons(MONTHS_SELECTION_COMPONENT_SELECTOR);
-componentButtons.handleAcceptButtonActivation(clickedAccept);
-componentButtons.handleCancelButtonActivation(clickedCancel);
+const checkboxesSelector = new CheckboxesSelector(MONTHS_SELECTION_COMPONENT_SELECTOR);
+checkboxesSelector.handleAcceptButtonActivation(clickedAccept);
+checkboxesSelector.handleCancelButtonActivation(clickedCancel);
 handleCheckboxes();
 handleSelect();
 
 
 function clickedAccept() // void
 {
-    const checkboxes = qsa('input[type="checkbox"]');
-    const selectedMonths = [];
-    checkboxes.forEach(checkbox => // void
-    {
-        if (checkbox.checked) {
-            selectedMonths.push(checkbox.value);
-        }
-    });
-
+    const selectedMonths = checkboxesSelector.getCheckboxesValues(
+        checkboxesSelector.getCheckedCheckboxes()
+    );
     saveData(selectedMonths);
 
     function saveData(selectedMonths) // void
@@ -29,35 +23,14 @@ function clickedAccept() // void
 }
 function clickedCancel() // cancel
 {
-    const checkboxes = qsa('input[type="checkbox"]');
-    checkboxes.forEach(checkbox => // void
-    {
-        checkbox.checked = false;
-    });
+    const checkboxes = checkboxesSelector.getCheckboxes();
+    uncheckAll(checkboxes);
 }
 function handleCheckboxes() // void
 {
-    const acceptButton = componentButtons.getAcceptButtonNode();
-    const cancelButton = componentButtons.getCancelButtonNode();
-
-    const monthlyCheckboxes
-        = qsa(MONTHS_SELECTION_COMPONENT_SELECTOR + ' [type="checkbox"]');
-    monthlyCheckboxes.forEach(checkbox => // void
-    {
-        checkbox.onclick = () => // void
-        {
-            handleCheckboxActivation(checkbox);
-        }
-    });
-
-    function handleCheckboxActivation(checkbox) // void
-    {
-        if (checkbox.checked) {
-            enable(acceptButton);
-            enable(cancelButton);
-        }
-    }
+    checkboxesSelector.handleCheckboxesActivation();
 }
+
 function handleSelect() // void
 {
     const select = qs('select');
