@@ -8,7 +8,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.5"
   },
   "extra": {
     "unit-tests": {
@@ -21,11 +21,11 @@
     }
   },
   "scripts": {
-    "build"     : "parcel ./src/index.js",
+    "build": "parcel ./src/index.js",
     "build-prod": "parcel build ./src/index.js",
-    "clean"     : "rm dist/* -R",
-    "dev"       : "parcel ./index.html",
-    "start"     : "parcel ./index.html"
+    "clean": "rm dist/* -R",
+    "dev": "parcel ./index.html",
+    "start": "parcel ./index.html"
   },
   "repository": {
     "type": "git",
