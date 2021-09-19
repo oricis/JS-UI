@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing NodeBuilder.js</title>
+
+    <link href="./assets/css/styles.css" rel="stylesheet">
+    <script src="../dist/src/index.js"></script>
+    <script src="../src/dom/NodeBuilder.js"></script>
+</head>
+<body>
+    <header class="all-5 bottom-2">
+        <h1>Next visible content are being generated with "NodeBuilder.js"</h1>
+    </header>
+    <main class="all-5 top-0">
+        <h2>Create inputs</h2>
+
+        <div class="buttons-group right-content">
+            <button
+                class="btn btn-default btn-small pad-2"
+                id="add"
+                title="Añadir línea">
+                +
+            </button>
+        </div>
+        <section class="bordered rounded pad-2 top-2">
+            <h3 hidden>Form lines</h3>
+            <form action="" method="POST">
+
+            </form>
+        </section>
+    </main>
+
+    <script>
+        let totalLines = 0;
+        const addButton = qs('button#add');
+        addButton.onclick = () => // void
+        {
+            addLine();
+        }
+
+        function addLine() // void
+        {
+            totalLines += 1;
+
+            const lineNodes = [];
+            let labelNode = getLabel(
+                'Etiqueta:',
+                'label_' + totalLines
+            );
+            let inputNode = getInput(
+                'label_' + totalLines,
+                'Línea ' + totalLines + '(por defecto)'
+            );
+            let formGroupNode = getFormGroup(labelNode, inputNode);
+            lineNodes.push(formGroupNode);
+
+            labelNode = getLabel(
+                'Máx. caracteres:',
+                'maxlength_' + totalLines
+            );
+            inputNode = getInput(
+                'maxlength_' + totalLines,
+                '12 (por defecto)'
+            );
+            formGroupNode = getFormGroup(labelNode, inputNode);
+            lineNodes.push(formGroupNode);
+
+            const lineNode = getLine('line_' + totalLines);
+            for (let index = 0; index < lineNodes.length; index++) {
+                lineNode.appendChild(lineNodes[index]);
+            }
+
+            const inputLinesContainer = qs('form');
+            inputLinesContainer.appendChild(lineNode);
+        }
+
+
+        function getFormGroup(labelNode, inputNode) // js node
+        {
+            return nodeBuilder.build(
+                'div',
+                { class: 'form-group' },
+                [labelNode, inputNode]
+            );
+        }
+
+        function getInput(id, placeholder, type = 'text', maxlength = 50) // js node
+        {
+            const inputAttributes = {
+                class       : 'rounded bottom-2 block w-100 pad-2',
+                maxlength   : maxlength,
+                placeholder : placeholder,
+                type        : type,
+            };
+            let input = nodeBuilder.build('input', inputAttributes);
+            input.setAttribute('id', id)
+
+            return input;
+        }
+        function getLabel(str, inputId) // js node
+        {
+            let label = nodeBuilder.build(
+                'label',
+                { for: inputId },
+                null,
+                str
+            );
+
+            return label
+        }
+        function getLine(id) // js node
+        {
+            let classList = 'line-of-inputs top-2 pad-t-1';
+            if (totalLines > 1) {
+                classList = classList + ' border-top blue-border';
+            }
+
+            return nodeBuilder.build(
+                'div',
+                { class: classList, id: id }
+            );
+        }
+    </script>
+</body>
+</html>
