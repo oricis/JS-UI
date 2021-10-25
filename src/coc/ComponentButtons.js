@@ -1,10 +1,9 @@
 console.log('Loaded ./coc/ComponentButtons.js'); // HACK:
 
-class ComponentButtons
+class ComponentButtons extends BaseComponent
 {
     ACCEPT_BUTTON_SELECTOR = 'button[data-action="accept"]';
     CANCEL_BUTTON_SELECTOR = 'button[data-action="cancel"]';
-    COMPONENT_SELECTOR = '';
 
 
     constructor(componentSelector, acceptButtonSelector, cancelButtonSelector) // void
@@ -71,11 +70,11 @@ class ComponentButtons
         });
     }
 
-    handleRelatedButtonsGroup(groupSelector, callback, callbackParams) // void
+    handleRelatedButtonsGroup(groupSelectorOrNodes, callback, callbackParams) // void
     {
-        const buttonNodes = qsa(groupSelector);
-        if (groupSelector.length) {
-            groupSelector.forEach(buttonNode => // void
+        const buttonNodes = getNodes(groupSelectorOrNodes);
+        if (buttonNodes.length) {
+            buttonNodes.forEach(buttonNode => // void
             {
                 buttonNode.addEventListener('click', function (ev) // void
                 {

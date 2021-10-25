@@ -34,6 +34,20 @@ function getNodes(nodesOrSelector) // js node
         : nodesOrSelector;
 }
 
+function toggleClassNameOfPairedNodes(nodes, className) // void
+{
+    const nodeOne = nodes[0];
+    const nodeTwo = nodes[1];
+
+    if (hasClass(nodeOne, className)) {
+        removeClassFrom(nodeOne, className);
+        addClassTo(nodeTwo, className);
+        return;
+    }
+    removeClassFrom(nodeTwo, className);
+    addClassTo(nodeOne, className);
+}
+
 function togglePairedDisplay(nodeOrSelectorToShow, nodeOrSelectorToHide) // void
 {
     const nodeToShow = getNode(nodeOrSelectorToShow);
