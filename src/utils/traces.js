@@ -29,7 +29,12 @@ function colorize(data, color, bold = false) // void
 {
     bold = (bold) ? ';font-weight:bold' : '';
     color = (color) ? color : 'grey';
-    console.log('%c' + data, 'color:' + color + bold);
+
+    if (typeof data !== 'object') {
+        console.log('%c' + data, 'color:' + color + bold);
+        return;
+    }
+    log(data);
 }
 function echo() // void
 {
