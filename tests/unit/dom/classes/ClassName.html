@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="../../../assets/css/styles.css" rel="stylesheet">
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/asserts.js"></script>
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/check-types.js"></script>
+    <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/framework.js"></script>
+
+    <script src="../../../../src/dom/classes/ClassName.js" defer></script>
+    <script src="../../../../src/dom/nodes.js" defer></script>
+    <script src="../../../../src/dom/query.js" defer></script>
+</head>
+<body>
+    <main class="content">
+        <h2>Test "ClassName.js"</h2>
+
+        <p>Watch results on developer tools / console</p>
+
+        <section class="top-5">
+            <h3>Testing methods:</h3>
+            <ul id="list" class="top-2">
+                <li>@add( nodeOrSelector, className )</li>
+                <li>@addToGroup( nodesOrSelectors, className, position )</li>
+                <li>@remove( nodeOrSelector, className )</li>
+                <li>@removeFromGroup( nodesOrSelectors, className, position )</li>
+                <li>@toggle( nodeOrSelector, className )</li>
+                <li>@toggleOnGroup( nodesOrSelectors, className, position )</li>
+            </ul>
+        </section>
+
+        <section class="button-group right-content top-2">
+            <h3 class="none">Test button</h3>
+            <button class="btn btn-dafault" data-action="add">Add classes</button>
+            <button class="btn btn-dafault" data-action="remove">Remove classes</button>
+            <button class="btn btn-dafault" data-action="toggle">Toggle classes</button>
+        </section>
+
+        <div class="top-5">
+            <h3>Sandboxes:</h3>
+            <div id="sandbox-one"></div>
+            <div id="sandbox-two">Lorem ipsum...</div>
+            <div id="sandbox-three">Lorem ipsum...</div>
+            <div id="sandbox-four">Lorem ipsum...</div>
+            <div id="sandbox-five">Lorem ipsum...</div>
+        </div>
+
+        <ul class="top-5">
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+            <li>Four</li>
+            <li>Five</li>
+            <li>Six</li>
+        </ul>
+    </main>
+
+    <script>
+        window.onload = () => {
+            const boxes = qsa('.top-5');
+            const firstBox = boxes[0];
+
+            const addButton = qs('button[data-action="add"]');
+            const removeButton = qs('button[data-action="remove"]');
+            const toggleButton = qs('button[data-action="toggle"]');
+            addButton.onclick = (ev) => {
+                ev.preventDefault;
+                testAddMethods();
+            }
+            removeButton.onclick = (ev) => {
+                ev.preventDefault;
+                testRemoveMethods();
+            }
+            toggleButton.onclick = (ev) => {
+                ev.preventDefault;
+                testToggleMethods();
+            }
+
+            function testAddMethods() // void
+            {
+                className.add(firstBox, 'bg-lavender');
+                className.add('.top-5.bg-lavender', 'cgreen');
+
+                className.addToGroup(boxes, 'bordered');
+                className.addToGroup('.top-5', 'rounded');
+            }
+            function testRemoveMethods() // void
+            {
+                className.remove(firstBox, 'bg-lavender');
+                className.remove('.top-5', 'cgreen');
+
+                className.removeFromGroup(boxes, 'bordered');
+                className.removeFromGroup('.top-5', 'rounded');
+            }
+            function testToggleMethods() // void
+            {
+                className.toggle(firstBox, 'bg-lavender');
+                className.toggle('.top-5', 'cgreen');
+
+                className.toggleOnGroup(boxes, 'bordered');
+                className.toggleOnGroup('.top-5', 'rounded');
+            }
+
+        };
+    </script>
+</body>
+</html>

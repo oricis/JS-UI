@@ -95,6 +95,9 @@
     max-width : 920px;
     width     : 90%;
 }
+.bg-lavender {
+    background-color: lavender;
+}
 .bg-salmon {
     background-color: salmon;
 }

@@ -6,7 +6,9 @@
  * MIT Licence
  */
 
-class NodeBuilder
+'use strict';
+
+class NodeBuilder // class
 {
 
     addAttributes(node, objAttributes = {}) // js node

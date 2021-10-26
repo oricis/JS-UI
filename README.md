@@ -98,7 +98,7 @@ but they aren't included themselves.
  * getNodes( nodesOrSelector )
  * togglePairedDisplay( nodeOrSelectorToShow, nodeOrSelectorToHide )
 
-### **dom / forms/ **
+### **dom / forms/**
 
 > checkboxes-and-radios.js
 
@@ -116,6 +116,17 @@ but they aren't included themselves.
  * getOptionsContents( selectOrOptions )                        --tested
  * getOptionsValues( selectOrOptions )                          --tested
  * getSelectedOptions( select )                                 --tested
+
+### **dom / classes/**
+
+ > ClassName.js"
+
+ * @add( nodeOrSelector, className )                            --tested
+ * @addToGroup( nodesOrSelectors, className, position )         --tested
+ * @remove( nodeOrSelector, className )                         --tested
+ * @removeFromGroup( nodesOrSelectors, className, position )    --tested
+ * @toggle( nodeOrSelector, className )                         --tested
+ * @toggleOnGroup( nodesOrSelectors, className, position )      --tested
 
 ### **utils /**
 
