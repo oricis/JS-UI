@@ -119,7 +119,7 @@ but they aren't included themselves.
 
 ### **dom / classes/**
 
- > ClassName.js"
+ > ClassName.js
 
  * @add( nodeOrSelector, className )                            --tested
  * @addToGroup( nodesOrSelectors, className, position )         --tested
@@ -127,6 +127,15 @@ but they aren't included themselves.
  * @removeFromGroup( nodesOrSelectors, className, position )    --tested
  * @toggle( nodeOrSelector, className )                         --tested
  * @toggleOnGroup( nodesOrSelectors, className, position )      --tested
+
+ > SetStatus.js
+
+ * @activate(nodeOrSelector, className = 'active' )
+ * @deactivate( nodeOrSelector, className = 'active' )
+ * @disable( nodeOrSelector )
+ * @enable( nodeOrSelector )
+ * @hide( nodeOrSelector )
+ * @show( nodeOrSelector )
 
 ### **utils /**
 
