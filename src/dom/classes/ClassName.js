@@ -8,7 +8,7 @@
 
 'use strict';
 
-// depends of "src/dom/nodes.js"
+// depends of "src/dom/nodes.js": @getNode / @getNodes
 
 class ClassName // class
 {

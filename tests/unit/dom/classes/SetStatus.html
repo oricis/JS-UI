@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="../../../assets/css/styles.css" rel="stylesheet">
+
+    <script src="../../../../src/dom/classes/SetStatus.js" defer></script>
+    <script src="../../../../src/dom/nodes.js" defer></script>
+    <script src="../../../../src/dom/query.js" defer></script>
+
+    <style>
+        .active {
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="content">
+        <h2>Test "SetStatus.js"</h2>
+
+        <p>Watch results on developer tools / console</p>
+
+        <section class="top-5">
+            <h3>Testing methods:</h3>
+            <ul id="list" class="top-2">
+                <li>@activate( nodeOrSelector, className )</li>
+                <li>@deactivate( nodesOrSelector, className )</li>
+                <li>@disable( nodeOrSelector )</li>
+                <li>@enable( nodesOrSelector )</li>
+                <li>@hide( nodeOrSelector )</li>
+                <li>@show( nodesOrSelector )</li>
+            </ul>
+        </section>
+
+        <section class="button-group right-content top-2">
+            <h3 class="none">Test button</h3>
+            <button class="btn btn-dafault" data-action="activate">Activate</button>
+            <button class="btn btn-dafault" data-action="deactivate">Deactivate</button>
+
+            <button class="btn btn-dafault" data-action="disable">Disable</button>
+            <button class="btn btn-dafault" data-action="enable">Enable</button>
+
+            <button class="btn btn-dafault" data-action="hide">Hide</button>
+            <button class="btn btn-dafault" data-action="show">Show</button>
+        </section>
+
+        <div class="test-box">
+            <button>Test this...</button>
+        </div>
+    </main>
+
+    <script>
+        window.onload = () => {
+            'use strict';
+
+            const buttonActions = {
+                activate,
+                deactivate,
+                disable,
+                enable,
+                hide,
+                show
+            };
+
+            Object.keys(buttonActions).forEach(key => {
+                const selector = 'button[data-action="' + key + '"]';
+                document.querySelector(selector)
+                    .addEventListener('click', buttonActions[key]);
+            });
+
+            function activate() // void
+            {
+                console.log('activate');
+                setStatus.activate(getTestNode())
+            }
+            function deactivate() // void
+            {
+                console.log('deactivate');
+                setStatus.deactivate(getTestNode())
+            }
+            function disable() // void
+            {
+                console.log('disable');
+                setStatus.disable(getTestNode())
+            }
+            function enable() // void
+            {
+                console.log('enable');
+                setStatus.enable(getTestNode())
+            }
+            function hide() // void
+            {
+                console.log('hide');
+                setStatus.hide(getTestNode())
+            }
+            function show() // void
+            {
+                console.log('show');
+                setStatus.show(getTestNode())
+            }
+
+            function getTestNode(selector = '.test-box button')
+            {
+                return qs(selector);
+            }
+        };
+    </script>
+</body>

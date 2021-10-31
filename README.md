@@ -130,12 +130,12 @@ but they aren't included themselves.
 
  > SetStatus.js
 
- * @activate(nodeOrSelector, className = 'active' )
- * @deactivate( nodeOrSelector, className = 'active' )
- * @disable( nodeOrSelector )
- * @enable( nodeOrSelector )
- * @hide( nodeOrSelector )
- * @show( nodeOrSelector )
+ * @activate(nodeOrSelector, className = 'active' )             --tested
+ * @deactivate( nodeOrSelector, className = 'active' )          --tested
+ * @disable( nodeOrSelector )                                   --tested
+ * @enable( nodeOrSelector )                                    --tested
+ * @hide( nodeOrSelector )                                      --tested
+ * @show( nodeOrSelector )                                      --tested
 
 ### **utils /**
 
