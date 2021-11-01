@@ -5,41 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link href="../assets/css/styles.css" rel="stylesheet">
     <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/asserts.js"></script>
     <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/check-types.js"></script>
     <script src="https://gitcdn.link/repo/oricis/JS-Assertions/master/src/js/framework.js"></script>
-    <script>
-        const $ = (selector) => {
-            if (selector.indexOf("#") === 0 && selector.indexOf(' ') < 0) {
-                return document.querySelector(selector);
-            }
 
-            return document.querySelectorAll(selector);
-        }
-
-        function getAttrValue(selector, attrName)
-        {
-            console.log('getAttrValue()'); // HACK:
-            let target = getTargetDomNode(selector);
-            const result = target.getAttribute(attrName);
-
-            return result ? result : '';
-        }
-        function getTargetDomNode(selector)
-        {
-            console.log('getAttrValue()'); // HACK:
-
-            let target = $(selector);
-            console.log(666, target)
-            if (Array.isArray(target) || target) {
-                console.log(777);
-                return target[0];
-            }
-
-            return target;
-        }
-    </script>
+    <link href="../../assets/css/styles.css" rel="stylesheet">
+    <script src="../../../dist/src/index.js" defer></script>
 </head>
 <body>
     <main class="content">

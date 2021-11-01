@@ -8,11 +8,11 @@
 
 function $(selector) // js node/s
 {
-    if (selector.indexOf("#") === 0 && selector.indexOf(' ') < 0) {
-        return document.querySelector(selector);
-    }
+    const loaded = qsa(selector);
 
-    return document.querySelectorAll(selector);
+    return (loaded.length === 1)
+        ? loaded[0]
+        : loaded;
 }
 
 function getIdFromSelector(selector) // string
@@ -41,17 +41,23 @@ function getIdSelector(idOrSelector) // string
 function getTargetDomNode(selector) // js node
 {
     let target = $(selector);
-    if (Array.isArray(target) || target) {
-        target = target[0];
-    }
 
-    return target;
+    return (target.nodeType === 1)
+        ? target
+        : ((target.length)
+            ? target[0]
+            : null);
 }
 
 function isIdSelector(selector) // bool
 {
+    selector = selector.trim();
+
     let response = true;
-    if (selector.includes('.') || selector.includes('[')) {
+    if (!selector.includes('#')
+        || selector.includes('.')
+        || selector.includes(' ')
+        || selector.includes('[')) {
         response = false;
     }
 

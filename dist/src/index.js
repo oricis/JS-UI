@@ -190,13 +190,13 @@ function getIdSelector(idOrSelector) // string
 
 function getTargetDomNode(selector) // js node
 {
-  var target = $(selector);
+  let target = $(selector);
 
-  if (Array.isArray(target) || target) {
-    target = target[0];
-  }
-
-  return target;
+  return (target.nodeType === 1)
+    ? target
+    : ((target.length)
+      ? target[0]
+      : null);
 }
 
 function isIdSelector(selector) // bool
@@ -225,27 +225,28 @@ function qsa(selector) // js node/s
   return document.querySelectorAll(selector);
 }
 
-var getAttrValue = function getAttrValue(selector, attrName) {
-  var target = getTargetDomNode(selector);
-  var result = target.getAttribute(attrName);
-  return result ? result : '';
-};
+const getAttrValue = (selector, attrName) => {
+  return getAttrValueFrom(getTargetDomNode(selector), attrName);
+}
 
-var getAttrValueFrom = function getAttrValueFrom(element, attrName) {
-  var result = element.getAttribute(attrName);
-  return result ? result : '';
-};
+const getAttrValueFrom = (element, attrName) => {
+  const node = getNode(element);
 
-var getDataValue = function getDataValue(selector, dataName) {
-  var target = getTargetDomNode(selector);
-  var result = target.dataset[dataName];
-  return result ? result : '';
-};
+  return (node.hasAttribute(attrName))
+    ? node.getAttribute(attrName)
+    : '';
+}
 
-var getDataValueFrom = function getDataValueFrom(element, dataName) {
-  var result = element.dataset[dataName];
-  return result ? result : '';
-};
+const getDataValue = (selector, dataName) => {
+  return getDataValueFrom(selector, dataName);
+}
+
+const getDataValueFrom = (element, dataName) => {
+  const node = getNode(element);
+  const result = node.dataset[dataName];
+
+  return (result) ? result : '';
+}
 
 var removeAttr = function removeAttr(selector, attrName) {
   var target = getTargetDomNode(selector);

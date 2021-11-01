@@ -7,29 +7,26 @@
  */
 
 const getAttrValue = (selector, attrName) => {
-    const target = getTargetDomNode(selector);
-    const result = target.getAttribute(attrName);
-
-    return result ? result : '';
+    return getAttrValueFrom(getTargetDomNode(selector), attrName);
 }
 
 const getAttrValueFrom = (element, attrName) => {
-    const result = element.getAttribute(attrName);
+    const node = getNode(element);
 
-    return result ? result : '';
+    return (node.hasAttribute(attrName))
+        ? node.getAttribute(attrName)
+        : '';
 }
 
 const getDataValue = (selector, dataName) => {
-    const target = getTargetDomNode(selector);
-    const result = target.dataset[dataName];
-
-    return result ? result : '';
+    return getDataValueFrom(selector, dataName);
 }
 
 const getDataValueFrom = (element, dataName) => {
-    const result = element.dataset[dataName];
+    const node = getNode(element);
+    const result = node.dataset[dataName];
 
-    return result ? result : '';
+    return (result) ? result : '';
 }
 
 const removeAttr = (selector, attrName) => {
