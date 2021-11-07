@@ -8,6 +8,7 @@ class ComponentButtons extends BaseComponent
 
     constructor(componentSelector, acceptButtonSelector, cancelButtonSelector) // void
     {
+        super();
         this.COMPONENT_SELECTOR = componentSelector;
 
         if (acceptButtonSelector) {
