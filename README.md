@@ -92,6 +92,8 @@ but they aren't included themselves.
 
  > nodes.js
 
+ * addClasses( node, arrClassNames )
+ * removeClasses( node, arrClassNames )
  * disable( nodeOrSelector )
  * enable( nodeOrSelector )
  * getNode( nodeOrSelector )

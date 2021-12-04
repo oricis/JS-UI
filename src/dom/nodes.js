@@ -6,6 +6,29 @@
  * MIT Licence
  */
 
+function addClasses(node, arrClassNames) // js node
+{
+    if (!node) {
+        return;
+    }
+    arrClassNames.forEach(className => {
+        node.classList.add(className);
+    });
+
+    return node;
+}
+function removeClasses(node, arrClassNames) // js node
+{
+    if (!node) {
+        return;
+    }
+    arrClassNames.forEach(className => {
+        node.classList.remove(className);
+    });
+
+    return node;
+}
+
 function disable(nodeOrSelector) // void
 {
     const node = getNode(nodeOrSelector);
