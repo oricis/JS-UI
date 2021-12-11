@@ -15,3 +15,7 @@ const submitFormTo = (route, form) => {
     form.action = route;
     form.submit();
 }
+
+const stop = (something = '') => {
+    throw new Error(((something) ? '' + something : 'STOP SCRIPT'));
+}

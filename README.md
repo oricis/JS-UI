@@ -190,6 +190,7 @@ but they aren't included themselves.
 > var.js
 
  * existObjectKey( obj, key ) // bool                          -- tested
+ * stop( something = '' )
  * submitFormTo( route, form ) // void                         -- tested
 
 ***

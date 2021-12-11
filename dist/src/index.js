@@ -1,7 +1,7 @@
 /**
  * JS-UI
  *
- * Moisés Alcocer, 2020
+ * Moisés Alcocer, 2020-21
  * https://www.ironwoods.es / https://github.com/oricis/js-ui
  * MIT Licence
  */
@@ -16,6 +16,10 @@ const Settings = {
 var existObjectKey = function existObjectKey(obj, key) {
   return obj[key] !== undefined;
 };
+
+var stop = function stop(something = '') {
+  throw new Error(((something) ? '' + something : 'STOP SCRIPT'));
+}
 
 var submitFormTo = function submitFormTo(route, form) {
   form.action = route;
@@ -237,16 +241,21 @@ const getAttrValueFrom = (element, attrName) => {
     : '';
 }
 
-const getDataValue = (selector, dataName) => {
-  return getDataValueFrom(selector, dataName);
-}
+var getDataValue = function getDataValue(nodeOrSelector, dataName) {
+  dataName = (dataName.includes('data-'))
+    ? dataName
+    : 'data-' + dataName;
 
-const getDataValueFrom = (element, dataName) => {
-  const node = getNode(element);
-  const result = node.dataset[dataName];
+  const target = getNode(nodeOrSelector);
 
-  return (result) ? result : '';
-}
+  return (target.hasAttribute(dataName))
+    ? target.getAttribute(dataName)
+    : '';
+};
+
+var getDataValueFrom = function getDataValueFrom(element, dataName) {
+  return getDataValue(element, dataName);
+};
 
 var removeAttr = function removeAttr(selector, attrName) {
   var target = getTargetDomNode(selector);
