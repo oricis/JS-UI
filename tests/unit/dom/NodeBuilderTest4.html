@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- constructor de nodos DOM -->
+    <script defer
+        src="https://rawcdn.githack.com/oricis/JS-UI/e467ecb5a515e235cc85bdf9972399ef37fa92cf/src/dom/NodeBuilder.js"></script>
+
+    <script defer src="../../../dist/src/index.js"></script>
+    <script defer src="../../assets/js/NodeBuilderTest4.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Ejemplo lista de personas</h1>
+    </header>
+    <main>
+        <input type="hidden" id="people-total" value="2">
+        <section id="name-list"
+            data-people='[{"name":"Foo","age":21},{"name":"Baz","age":36}]'>
+            <h3>Nombres y edades:</h3>
+            <ul id="people"></ul>
+            <p>Total: <strong class="people-total">0</strong></p>
+        </section>
+    </main>
+    <footer>
+        <p>Footer content</p>
+    </footer>
+</body>
+</html>
