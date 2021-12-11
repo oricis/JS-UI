@@ -18,15 +18,20 @@ const getAttrValueFrom = (element, attrName) => {
         : '';
 }
 
-const getDataValue = (selector, dataName) => {
-    return getDataValueFrom(selector, dataName);
+const getDataValue = (nodeOrSelector, dataName) => {
+    dataName = (dataName.includes('data-'))
+        ? dataName
+        : 'data-' + dataName;
+
+    const target = getNode(nodeOrSelector);
+
+    return (target.hasAttribute(dataName))
+        ? target.getAttribute(dataName)
+        : '';
 }
 
 const getDataValueFrom = (element, dataName) => {
-    const node = getNode(element);
-    const result = node.dataset[dataName];
-
-    return (result) ? result : '';
+    return getDataValue(element, dataName);
 }
 
 const removeAttr = (selector, attrName) => {

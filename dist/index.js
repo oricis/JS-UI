@@ -230,15 +230,20 @@ var getAttrValueFrom = function getAttrValueFrom(element, attrName) {
   return result ? result : '';
 };
 
-var getDataValue = function getDataValue(selector, dataName) {
-  var target = getTargetDomNode(selector);
-  var result = target.dataset[dataName];
-  return result ? result : '';
+var getDataValue = function getDataValue(nodeOrSelector, dataName) {
+  dataName = (dataName.includes('data-'))
+    ? dataName
+    : 'data-' + dataName;
+
+  const target = getNode(nodeOrSelector);
+
+  return (target.hasAttribute(dataName))
+    ? target.getAttribute(dataName)
+    : '';
 };
 
 var getDataValueFrom = function getDataValueFrom(element, dataName) {
-  var result = element.dataset[dataName];
-  return result ? result : '';
+  return getDataValue(element, dataName);
 };
 
 var removeAttr = function removeAttr(selector, attrName) {
