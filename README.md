@@ -1,6 +1,7 @@
-# JS UI - v.1.7.0
+# JS UI - v.2.0.0
 
-Collection of JS functions to DOM manipulation.
+Collection of JS functions to DOM manipulation and common actions
+(less 6Kb minified).
 
 
 ***
@@ -10,6 +11,10 @@ Collection of JS functions to DOM manipulation.
 Import the bundle file with all the functions. For example:
 
     <script src="../dist/src/index.js" defer></script>
+
+or
+
+    <script src="../dist/src/index.min.js" defer></script>
 
 Some specific use functions aren't in the bundle file,
 then they can be used separately, loading their files, f.e.:
