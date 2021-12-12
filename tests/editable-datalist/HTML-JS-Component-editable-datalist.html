@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="./../assets/css/reset.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/oricis/bootstrap-based-styles@master/assets/buttons-bootstrap-based-extended.css"
+        rel="stylesheet">
+
+    <link href="./../assets/css/styles.css" rel="stylesheet">
+    <script src="../../src/utils/traces.js"></script>
+    <script src="../../src/dom/query.js"></script>
+    <script src="../../src/dom/nodes.js"></script>
+
+    <script defer src="./assets/js/classes/ComponentSettings.js"></script>
+    <script defer src="./assets/js/classes/ComponentNodes.js"></script>
+    <script defer src="./assets/js/classes/ComponentData.js"></script>
+    <script defer src="./assets/js/classes/ComponentUi.js"></script>
+    <script defer src="./assets/js/classes/ComponentActions.js"></script>
+    <script defer src="./assets/js/classes/AsyncHandler.js"></script>
+    <script defer src="./assets/js/classes/ComponentHandlers.js"></script>
+
+    <script defer src="./assets/js/datalist-handler.js"></script>
+
+    <style>
+        .component.async-editable input {
+            background  : transparent;
+            border      : none;
+            margin-left : 2%;
+            outline     : none;
+            padding     : 1%;
+        }
+    </style>
+</head>
+<body>
+    <main class="all-5 bordered rounded pad-5 center-content">
+        <h3 class="bottom-5">Inline edition - Datalist</h3>
+
+        <div class="component async-editable async-editable-datalist pad-5">
+            <label class="flex flex-center">
+                <img src="./assets/svg/pen.svg" class="icon" alt="">
+                <input
+                    class="disabled"
+                    data-id="oneUniqueId"
+                    data-old="Foo is here!"
+                    data-resource="something"
+                    list="editable-list-x"
+                    name="myBrowser"
+                    title="Editar" id="editable-x"
+                    value="Foo is here!">
+                    <!-- restore old content if lost focus and not ENTER -->
+            </label>
+            <datalist id="editable-list-x" autocapitalize="on">
+                <option value="Chrome"  data-id="1">Chrome</option>
+                <option value="Firefox" data-id="2">Firefox</option>
+                <option value="Opera"   data-id="3">Opera</option>
+                <option value="Opera Mini" data-id="4">Opera Mini</option>
+                <option value="Edge"    data-id="5">Edge</option>
+                <option value="Safari"  data-id="6">Safari</option>
+                <option value="Safari IOS" data-id="7">Safari IOS</option>
+            </datalist>
+        </div>
+    </main>
+    <footer>
+        <a href="htpps://www.ironwoods.es"
+        target="_blank"
+        rel="nofollow noopener noreferrer external">
+        ironwoods, 2021</a> -
+        Icons front <a href="https://www.fontawesome.com"
+        target="_blank"
+        rel="nofollow noopener noreferrer external">
+        fontawesome</a>
+    </footer>
+</body>
+</html>
