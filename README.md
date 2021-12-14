@@ -103,6 +103,7 @@ but they aren't included themselves.
  * enable( nodeOrSelector )
  * getNode( nodeOrSelector )
  * getNodes( nodesOrSelector )
+ * getNodesFromSelector( arrSelectors )
  * togglePairedDisplay( nodeOrSelectorToShow, nodeOrSelectorToHide )
 
 ### **dom / forms/**

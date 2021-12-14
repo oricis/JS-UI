@@ -57,6 +57,23 @@ function getNodes(nodesOrSelector) // js node
         : nodesOrSelector;
 }
 
+function getNodesFromSelector(arrSelectors) // js nodes
+{
+    const selectableItems = [];
+    for (let index = 0; index < arrSelectors.length; index++) {
+        const selector = arrSelectors[index];
+
+        const nodes = qsa(selector);
+        if (nodes.length) {
+            nodes.forEach(node => {
+                selectableItems.push(node);
+            });
+        }
+    }
+
+    return selectableItems;
+}
+
 function toggleClassNameOfPairedNodes(nodes, className) // void
 {
     const nodeOne = nodes[0];
