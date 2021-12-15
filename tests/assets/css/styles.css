@@ -90,6 +90,18 @@
 .w-100 {
     width: 100%;
 }
+.wmx-10 {
+    max-width: 100px;
+}
+.h-100 {
+    height: 100%;
+}
+.hm-10 {
+    min-height: 100px;
+}
+.hmx-10 {
+    max-height: 100px;
+}
 
 .b {
     font-weight: bold;

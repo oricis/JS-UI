@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test "ui.js" functions</title>
+
+    <link href="./../../assets/css/reset.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/oricis/bootstrap-based-styles@master/assets/buttons-bootstrap-based-extended.css"
+        rel="stylesheet">
+
+    <link href="../../assets/css/styles.css" rel="stylesheet">
+    <style>
+        .small-boxes {
+            display     : flex;
+            gap         : 1%;
+        }
+        .small-boxes .box {
+            background-color: lavender;
+            border          : 1px solid rgb(73, 131, 179);
+            border-radius   : 3px;
+            height          : 50px;
+            width           : 50px;
+        }
+    </style>
+    <script src="../../../src/dom/query.js" defer></script>
+    <script src="../../../src/dom/nodes.js" defer></script>
+</head>
+
+<body>
+    <main class="content" id="wrap">
+        <h2>Test "ui.js" functions</h2>
+
+        <p>Watch results on developer tools / console</p>
+
+        <section class="top-5">
+            <h3>Testing functions:</h3>
+            <ul id="list" class="top-2">
+                <li>getNodesFromSelector( arrSelectors )</li>
+            </ul>
+        </section>
+
+        <h3 class="top-5">Sandboxes:</h3>
+        <div id="sandbox-one" class="sandbox" title="No text here"></div>
+        <div id="sandbox-two" class="sandbox" data-name="two" title="Hoo">Lorem ipsum...</div>
+        <div id="sandbox-three" class="sandbox">Lorem ipsum...</div>
+
+        <section class="small-boxes">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </section>
+    </main>
+
+    <script>
+        window.onload = () => {
+            let funName = '';
+            let element = null;
+            let result  = null;
+            const idOne = 'sandbox-one';
+            const idTwo = 'sandbox-two';
+            const idThree = 'sandbox-three';
+
+            console.log('\n==========================================');
+            funName = 'getNodesFromSelector';  // remove attr DOM node
+            console.log('Get an array of nodes with ' + funName + '()');
+
+            const selectorOne = '.sandbox';
+            const selectorTwo = 'section.small-boxes .box';
+            result = getNodesFromSelector([selectorTwo]);
+            console.log('Result: ' + (result.length === 10), result.length);
+
+            result = getNodesFromSelector([selectorOne, selectorTwo]);
+            console.log('Result: ' + (result.length === 13), result.length);
+
+            /**/
+            console.log('\n==========================================');
+        };
+    </script>
+</body>
+
+</html>
