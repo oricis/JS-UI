@@ -68,8 +68,8 @@ but they aren't included themselves.
  * getTargetDomNode( selector )
  * isIdSelector( selector )
  * qi( selector )  // wrap for document.getElementById( id )
- * qs( selector )  // wrap for document.querySelector( selector )
- * qsa( selector ) // wrap for document.querySelectorAll( selector )
+ * qs( selector, node )  // wrap node|document.querySelector( selector )
+ * qsa( selector, node ) // wrap node|document.querySelectorAll( selector )
 
  > style-attributes.js
 
@@ -103,7 +103,7 @@ but they aren't included themselves.
  * enable( nodeOrSelector )
  * getNode( nodeOrSelector )
  * getNodes( nodesOrSelector )
- * getNodesFromSelector( arrSelectors )
+ * getNodesFromSelector( arrSelectors )                         --tested
  * togglePairedDisplay( nodeOrSelectorToShow, nodeOrSelectorToHide )
 
 ### **dom / forms/**

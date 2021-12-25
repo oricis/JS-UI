@@ -69,12 +69,12 @@ function qi(selector) // js node
     return document.getElementById(selector);
 }
 
-function qs(selector) // js node
+function qs(selector, node) // js node
 {
-    return document.querySelector(selector);
+    return (node || document).querySelector(selector);
 }
 
-function qsa(selector) // js node/s
+function qsa(selector, node) // js node/s
 {
-    return document.querySelectorAll(selector);
+    return (node || document).querySelectorAll(selector);
 }
