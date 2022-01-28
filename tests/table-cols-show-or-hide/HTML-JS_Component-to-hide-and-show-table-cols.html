@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="./../assets/css/reset.css" rel="stylesheet">
+    <link href="./assets/css/app.css" rel="stylesheet">
+
+    <script src="../../src/utils/traces.js"></script>
+    <script src="../../src/dom/query.js"></script>
+    <script src="../../src/dom/nodes.js"></script>
+
+    <script defer src="./assets/js/classes/ComponentNodes.js"></script>
+    <script defer src="./assets/js/handler.js"></script>
+</head>
+<body>
+    <div class="flex">
+        <div class="form-group column-content right-2">
+            <label for="visible_columns">Columnas visibles</label>
+            <select name="visible_columns" id="visible_columns" class="top-2">
+                <option value="col_1">col 1</option>
+                <option value="col_2">col 2</option>
+                <option value="col_3">col 3</option>
+                <option value="col_4">col 4</option>
+                <option value="col_5">col 5</option>
+                <option value="col_6">col 6</option>
+                <option value="col_7">col 7</option>
+                <option value="col_8">col 8</option>
+            </select>
+        </div>
+
+        <div class="form-group column" hidden>
+            <label for="hidden_columns">Columnas ocultas</label>
+            <select name="hidden_columns" id="hidden_columns" class="top-2"></select>
+        </div>
+    </div>
+
+    <table class="top-2">
+        <thead>
+            <tr>
+                <th id="col_1">col 1</th>
+                <th id="col_2">col 2</th>
+                <th id="col_3">col 3</th>
+                <th id="col_4">col 4</th>
+                <th id="col_5">col 5</th>
+                <th id="col_6">col 6</th>
+                <th id="col_7">col 7</th>
+                <th id="col_8">col 8</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+            </tr>
+            <tr>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+            </tr>
+            <tr>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+            </tr>
+        </tbody>
+    </table
+</body>
+</html>

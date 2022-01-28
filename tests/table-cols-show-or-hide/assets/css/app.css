@@ -1,0 +1,41 @@
+body {
+    padding: 8%;
+}
+
+select {
+    padding : 9px;
+    width   : 100%;
+}
+select#hidden_columns option {
+    background-color: rgba(0, 0, 0, 0.782);
+    color           : white
+}
+
+table {
+    border-collapse:collapse;
+}
+option,
+td,
+th {
+    border        : 1px solid grey;
+    border-radius : 3px;
+    padding       : .25em 1em;
+    text-align    : center;
+}
+th {
+    background: rgba(153, 187, 238, 0.25);
+}
+
+.right-2 {
+    margin-right: 2%
+}
+.top-2 {
+    margin-top: 2%;
+}
+
+.flex {
+    display: flex;
+}
+.column-content * {
+    display: block;
+}
