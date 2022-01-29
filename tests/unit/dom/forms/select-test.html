@@ -31,29 +31,40 @@
 
 <body>
     <header>
-        <h1>Testing <em class="cblue">ComponentButtons.js</em></h1>
+        <h1>Testing <em class="cblue">select.js</em></h1>
     </header>
     <main>
-        <section class="component dropdown-options
-            centered bordered rounded pad-b-2 pad-t-2 wm-30 wmx-30 top-2">
-            <div class="centered wm-25 wmx-25">
-                <h3 hidden>Selector de periodo</h3>
+        <section class="top-5 w-50 centered">
+            <h3>Testing functions:</h3>
+            <ul>
+                <li>getOptions( selectNode )</li>
+                <li>getSelectedOptions( selectNode )</li>
+                <li>getOptionsValues( selectNode )</li>
+                <li>getOptionsContents( selectNode )</li>
+                <li></li>
+            </ul>
 
-                <div class="form-group all-0">
-                    <label for="select" class="b cblue">
-                        Seleccionar período
-                    </label>
-                    <select class="top-2 rounded wm-25" id="select">
-                        <option value="1" selected>Primer semextre</option>
-                        <option value="2">Último semestre</option>
-                    </select>
+            <section class="component dropdown-options
+                centered bordered rounded pad-b-2 pad-t-2 wm-30 wmx-30 top-2">
+                <div class="centered wm-25 wmx-25">
+                    <h3 hidden>Selector de periodo</h3>
+
+                    <div class="form-group all-0">
+                        <label for="select" class="b cblue">
+                            Seleccionar período
+                        </label>
+                        <select class="top-2 rounded wm-25" id="select">
+                            <option value="1" selected>Primer semextre</option>
+                            <option value="2">Último semestre</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
+            </section>
         </section>
     </main>
     <script>
         window.onload = () => {
-            const select = qs('select');
+            const select = qs('select#select');
 
             log('Select options: ', getOptions(select));
             log('Select selected options: ', getSelectedOptions(select));

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test COC class: ComponentButtons</title>
+
+    <link href="../../../assets/css/iw-styles.css" rel="stylesheet">
+    <link href="../../../assets/css/buttons-bootstrap-based.css" rel="stylesheet">
+    <style>
+        * {
+            font-size: 16px;
+        }
+        @media (max-width: 400px) {
+
+            footer,
+            header,
+            main {
+                padding: .25rem;
+            }
+        }
+    </style>
+
+    <script src="../../../../dist/src/index.js" defer></script>
+    <script src="../../../../src/utils/traces.js" defer></script>
+    <script src="../../../../src/dom/forms/common.js" defer></script>
+    <script src="../../../../src/dom/forms/select.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Testing <em class="cblue">select.js</em></h1>
+    </header>
+    <main>
+        <section class="top-5 w-50 centered">
+            <h3>Testing functions:</h3>
+            <ul>
+                <li>addOptions( selectNode, arrOptions )</li>
+                <li>replaceOptions( selectNode, arrOptions )</li>
+                <li>selectOptionByPosition( selectNode, position = 0 )</li>
+                <li>selectOptionByValue( selectNode, value  )</li>
+            </ul>
+
+
+            <div class="flex flex-both top-2 both-5">
+                <div class="form-group column-content right-2">
+                    <label for="visible_columns">Visible columns</label>
+                    <select id="visible_columns" class="top-2">
+                        <option value="0">Choose one...</option>
+                        <option value="col_1">col 1</option>
+                        <option value="col_2">col 2</option>
+                        <option value="col_3">col 3</option>
+                        <option value="col_4">col 4</option>
+                        <option value="col_5">col 5</option>
+                    </select>
+
+                    <!-- use this options to restore select before -->
+                    <select id="repository" hidden>
+                        <option value="0">Choose one...</option>
+                        <option value="col_1">col 1</option>
+                        <option value="col_2">col 2</option>
+                        <option value="col_3">col 3</option>
+                        <option value="col_4">col 4</option>
+                        <option value="col_5">col 5</option>
+                    </select>
+                </div>
+
+                <div class="form-group column-content right-2">
+                    <label for="fruits">Fruits</label>
+                    <select id="fruits" class="top-2">
+                        <option value="0">Choose one...</option>
+                        <option value="apple">Apple</option>
+                        <option value="banana">Banana</option>
+                        <option value="pear">Pear</option>
+                        <option value="grape">Grape</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="button-group right-content">
+                <button type="button" class="btn btn-default right-1 top-1" id="addOptions">@addOptions</button>
+                <button type="button" class="btn btn-default right-1 top-1" id="replaceOptions">@replaceOptions</button>
+                <button type="button" class="btn btn-default right-1 top-1" id="selectOptionByPosition">@selectOptionByPosition</button>
+                <button type="button" class="btn btn-default right-2 top-1" id="selectOptionByValue">@selectOptionByValue</button>
+
+                <button type="button" class="btn btn-danger top-1" data-action="reset">Reset selects</button>
+            </div>
+        </section>
+    </main>
+    <script>
+        window.onload = () => {
+            const selectOne = qs('select#visible_columns');
+            const selectTwo = qs('select#fruits');
+            qs('button#addOptions').onclick = () => {
+                resetFirstSelect();
+                const selectClone = selectTwo.cloneNode(true);
+                log('First select total options before: ' + selectOne.options.length);
+                addOptions(selectOne, getOptions(selectClone));
+                log('First select total options after: ' + selectOne.options.length);
+                log('In the second select: ' + selectTwo.options.length);
+            }
+            qs('button#replaceOptions').onclick = () => {
+                resetFirstSelect();
+                const selectClone = selectTwo.cloneNode(true);
+                log('First select total options before: ' + selectOne.options.length);
+                replaceOptions(selectOne, getOptions(selectClone));
+                log('First select total options after: ' + selectOne.options.length);
+                log('In the second select: ' + selectTwo.options.length);
+            }
+
+            qs('button#selectOptionByPosition').onclick = () => {
+                resetSecondSelect();
+                selectOptionByPosition(selectTwo, 3);
+                log('selected fruit in position 3');
+            }
+            qs('button#selectOptionByValue').onclick = () => {
+                resetSecondSelect();
+                selectOptionByValue(selectTwo, 'apple');
+                log('selected fruit "apple"');
+            }
+
+            qs('button[data-action="reset"]').onclick = () => {
+                resetFirstSelect();
+                resetSecondSelect();
+            }
+
+            function resetFirstSelect() // void
+            {
+                selectOne.innerHTML = null;
+
+                const options = qs('select#repository').cloneNode(true).options;
+                selectOne.append(...options);
+                selectOne.options[0].selected = true;
+            }
+            function resetSecondSelect() // void
+            {
+                selectTwo.options[0].selected = true;
+                selectTwo.options[1].selected = false;
+                selectTwo.options[3].selected = false;
+            }
+        };
+    </script>
+</body>
+</html>

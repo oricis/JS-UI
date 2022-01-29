@@ -120,10 +120,15 @@ but they aren't included themselves.
 
  > select.js
 
+ * addOptions( selectNode, arrOptions )        @return void     --tested
  * getOptions( select, onlySelected = false )                   --tested
  * getOptionsContents( selectOrOptions )                        --tested
  * getOptionsValues( selectOrOptions )                          --tested
  * getSelectedOptions( select )                                 --tested
+ * replaceOptions( selectNode, arrOptions )    @return void     --tested
+ * selectOptionByPosition( selectNode, position = 0 ) @return void --tested
+ * selectOptionByValue( selectNode, value )    @return void     --tested
+ * sortOptions( optionNodes, arrSortedValues ) @return array
 
 ### **dom / classes/**
 
