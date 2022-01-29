@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test COC class: ComponentButtons</title>
+
+    <link href="../../../assets/css/iw-styles.css" rel="stylesheet">
+    <link href="../../../assets/css/buttons-bootstrap-based.css" rel="stylesheet">
+    <style>
+        * {
+            font-size: 16px;
+        }
+        @media (max-width: 400px) {
+
+            footer,
+            header,
+            main {
+                padding: .25rem;
+            }
+        }
+    </style>
+
+    <script src="../../../../dist/src/index.js" defer></script>
+    <script src="../../../../src/utils/traces.js" defer></script>
+    <script src="../../../../src/dom/forms/common.js" defer></script>
+    <script src="../../../../src/dom/forms/select.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Testing <em class="cblue">select.js</em></h1>
+    </header>
+    <main>
+        <section class="top-5 w-50 centered">
+            <h3>Testing function @sortOptions( optionNodes, arrSortedValues ) @return array</h3>
+
+
+            <div class="flex flex-both top-2 both-5">
+                <div class="form-group column-content right-2">
+                    <label for="visible_columns">Visible columns</label>
+                    <select id="visible_columns" class="top-2">
+                        <option value="0">Choose one...</option>
+                        <option value="col_1">col 1</option>
+                        <option value="col_2">col 2</option>
+                        <option value="col_3">col 3</option>
+                        <option value="col_4">col 4</option>
+                        <option value="col_5">col 5</option>
+                    </select>
+
+                    <!-- use this options to restore select before -->
+                    <select id="repository_one" hidden>
+                        <option value="0">Choose one...</option>
+                        <option value="col_1">col 1</option>
+                        <option value="col_2">col 2</option>
+                        <option value="col_3">col 3</option>
+                        <option value="col_4">col 4</option>
+                        <option value="col_5">col 5</option>
+                    </select>
+                </div>
+
+                <div class="form-group column-content right-2">
+                    <label for="fruits">Fruits</label>
+                    <select id="fruits" class="top-2">
+                        <option value="0">Choose one...</option>
+                        <option value="apple">Apple</option>
+                        <option value="banana">Banana</option>
+                        <option value="grape">Grape</option>
+                        <option value="pear">Pear</option>
+                    </select>
+
+                    <!-- use this options to restore select before -->
+                    <select id="repository_two" hidden>
+                        <option value="0">Choose one...</option>
+                        <option value="apple">Apple</option>
+                        <option value="banana">Banana</option>
+                        <option value="grape">Grape</option>
+                        <option value="pear">Pear</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="button-group right-content">
+                <button type="button" class="btn btn-default right-1 top-1" id="addOptions">sort cols</button>
+                <button type="button" class="btn btn-default right-1 top-1" id="replaceOptions">sort fruits</button>
+
+                <button type="button" class="btn btn-danger top-1" data-action="reset">Reset selects</button>
+            </div>
+        </section>
+    </main>
+    <script>
+        window.onload = () => {
+            const selectOne = qs('select#visible_columns');
+            const selectTwo = qs('select#fruits');
+
+            qs('button#addOptions').onclick = () => {
+                resetFirstSelect();
+
+                const arrOrderedValues = ['col_5','col_4','col_3','col_2','col_1'];
+                log('Sorting cols...');
+                sort(selectOne, arrOrderedValues);
+            }
+            qs('button#replaceOptions').onclick = () => {
+                resetSecondSelect();
+                const arrOrderedValues = ['pear','grape','banana','apple'];
+                log('Sorting fruits...');
+                sort(selectTwo, arrOrderedValues);
+            }
+
+            qs('button[data-action="reset"]').onclick = () => {
+                resetFirstSelect();
+                resetSecondSelect();
+            }
+
+            function resetFirstSelect() // void
+            {
+                selectOne.innerHTML = null;
+
+                const options = qs('#repository_one').cloneNode(true).options;
+                selectOne.append(...options);
+                selectOne.options[0].selected = true;
+            }
+            function resetSecondSelect() // void
+            {
+                selectTwo.innerHTML = null;
+
+                const options = qs('#repository_two').cloneNode(true).options;
+                selectTwo.append(...options);
+                selectTwo.options[0].selected = true;
+            }
+
+            function sort(selector, arrOrderedValues) // void
+            {
+                let options = [...selector.options];
+                const firstOption = options.shift();
+                options = sortOptions(options, arrOrderedValues);
+                replaceOptions(selector, [firstOption].concat(options));
+            }
+        };
+    </script>
+</body>
+</html>

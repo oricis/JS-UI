@@ -128,7 +128,7 @@ but they aren't included themselves.
  * replaceOptions( selectNode, arrOptions )    @return void     --tested
  * selectOptionByPosition( selectNode, position = 0 ) @return void --tested
  * selectOptionByValue( selectNode, value )    @return void     --tested
- * sortOptions( optionNodes, arrSortedValues ) @return array
+ * sortOptions( optionNodes, arrSortedValues ) @return array    --tested
 
 ### **dom / classes/**
 

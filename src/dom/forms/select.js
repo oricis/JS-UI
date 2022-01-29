@@ -93,24 +93,15 @@ function selectOptionByValue(selectNode, value) // void
 
 function sortOptions(optionNodes, arrSortedValues) // array
 {
-    log('@sortOptions', optionNodes, arrSortedValues, 555)
-    for (let i = 0; i < optionNodes.length; i++) {
-        for (let j = 0; j < arrSortedValues.length; j++) {
-            const thisOption = optionNodes[i];
-            const nextOption = (optionNodes[i + 1])
-                ? (optionNodes[i + 1])
-                : null;
-
-            if (nextOption) {
-                const thisOptionValuePos = arrSortedValues.indexOf(thisOption.value);
-                const nextOptionValuePos = arrSortedValues.indexOf(nextOption.value);
-                if (thisOptionValuePos > nextOptionValuePos) {
-                    optionNodes[i] = nextOption;
-                    optionNodes[i + 1] = thisOption;
-                }
+    const result = [];
+    arrSortedValues.forEach(value => {
+        optionNodes.forEach(option => {
+            log(option.value + '==' + value);
+            if (option.value == value) {
+                result.push(option);
             }
-        }
-    }
+        });
+    });
 
-    return Array.from(optionNodes);
+    return result;
 }
