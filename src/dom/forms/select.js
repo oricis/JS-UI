@@ -96,7 +96,6 @@ function sortOptions(optionNodes, arrSortedValues) // array
     const result = [];
     arrSortedValues.forEach(value => {
         optionNodes.forEach(option => {
-            log(option.value + '==' + value);
             if (option.value == value) {
                 result.push(option);
             }

@@ -26,6 +26,10 @@ th {
     background: rgba(153, 187, 238, 0.25);
 }
 
+
+body .none {
+    display: none;
+}
 .right-2 {
     margin-right: 2%
 }
@@ -33,8 +37,16 @@ th {
     margin-top: 2%;
 }
 
+.align-center {
+    align-items: center;
+}
 .flex {
     display: flex;
+}
+.flex-floor {
+    display         : flex;
+    flex-direction  : column;
+    justify-content : end;
 }
 .column-content * {
     display: block;

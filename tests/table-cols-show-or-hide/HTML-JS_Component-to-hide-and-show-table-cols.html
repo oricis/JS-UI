@@ -8,20 +8,27 @@
     <title>Document</title>
 
     <link href="./../assets/css/reset.css" rel="stylesheet">
+    <link href="./../assets/css/buttons-bootstrap-based.css" rel="stylesheet">
     <link href="./assets/css/app.css" rel="stylesheet">
 
     <script src="../../src/utils/traces.js"></script>
     <script src="../../src/dom/query.js"></script>
     <script src="../../src/dom/nodes.js"></script>
+    <script src="../../src/dom/forms/select.js"></script>
 
     <script defer src="./assets/js/classes/ComponentNodes.js"></script>
+    <script defer src="./assets/js/classes/ColsSelectorsUiActions.js"></script>
+    <script defer src="./assets/js/classes/TableUiActions.js"></script>
     <script defer src="./assets/js/handler.js"></script>
 </head>
 <body>
     <div class="flex">
+        <input type="hidden" id="ordered_cols" value="col_1,col_2,col_3,col_4,col_5,col_6,col_7,col_8">
+
         <div class="form-group column-content right-2">
             <label for="visible_columns">Columnas visibles</label>
             <select name="visible_columns" id="visible_columns" class="top-2">
+                <option value="0">Seleccionar...</option>
                 <option value="col_1">col 1</option>
                 <option value="col_2">col 2</option>
                 <option value="col_3">col 3</option>
@@ -33,9 +40,21 @@
             </select>
         </div>
 
-        <div class="form-group column" hidden>
-            <label for="hidden_columns">Columnas ocultas</label>
-            <select name="hidden_columns" id="hidden_columns" class="top-2"></select>
+        <div class="flex align-center none" id="hide_cols_selector_container">
+            <div class="form-group column right-2">
+                <label for="hidden_columns">Columnas ocultas</label>
+                <select name="hidden_columns" id="hidden_columns" class="top-2">
+                    <option value="0">Seleccionar...</option>
+                </select>
+            </div>
+
+            <div class="button-group">
+                <button type="button"
+                    class="btn btn-primary btn-small"
+                    data-action="restore-all-cols">
+                    Reset
+                </button>
+            </div>
         </div>
     </div>
 
